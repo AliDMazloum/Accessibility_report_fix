@@ -17,6 +17,7 @@ from playwright.sync_api import sync_playwright
 from bb_utils import (connect, disconnect, dismiss_popup, navigate_to_report,
                       COURSE_DIR, CDP_URL)
 from add_headings import add_headings_to_pdf, analyze_fonts, detect_heading_sizes, extract_headings
+from fix_office import fix_office, scan_pptx, scan_docx
 
 SCORE_THRESHOLD = 85
 MAX_FILE_SIZE_MB = 5
@@ -306,21 +307,30 @@ def scan_and_fix_page(items_frame, course_dir, single_item=None):
             base_name = name.replace('_fixed', '').replace('_tagged', '')
             local = find_local_pdf(base_name, course_dir)
 
+        ext = os.path.splitext(name)[1].lower()
+        supported = ('.pdf', '.pptx', '.docx')
+
         if not local:
-            # Not found locally — will download from report if it's a PDF
-            if name.lower().endswith('.pdf'):
-                fixable.append({'name': name, 'score': target['score'], 'local': None})
+            # Not found locally — will download from report
+            if ext in supported:
+                fixable.append({'name': name, 'score': target['score'], 'local': None, 'ext': ext})
                 print(f"  {target['score']:>4s}  {name:50s}  WILL DOWNLOAD + FIX")
             else:
-                print(f"  {target['score']:>4s}  {name:50s}  SKIP (not PDF, not local)")
+                print(f"  {target['score']:>4s}  {name:50s}  SKIP ({ext} not supported)")
             continue
 
-        ok, reason = can_add_headings(local)
-        if ok:
-            fixable.append({'name': name, 'score': target['score'], 'local': local})
-            print(f"  {target['score']:>4s}  {name:50s}  FIXABLE ({reason})")
+        if ext == '.pdf':
+            ok, reason = can_add_headings(local)
+            if ok:
+                fixable.append({'name': name, 'score': target['score'], 'local': local, 'ext': ext})
+                print(f"  {target['score']:>4s}  {name:50s}  FIXABLE ({reason})")
+            else:
+                print(f"  {target['score']:>4s}  {name:50s}  SKIP ({reason})")
+        elif ext in ('.pptx', '.docx'):
+            fixable.append({'name': name, 'score': target['score'], 'local': local, 'ext': ext})
+            print(f"  {target['score']:>4s}  {name:50s}  FIXABLE ({ext})")
         else:
-            print(f"  {target['score']:>4s}  {name:50s}  SKIP ({reason})")
+            print(f"  {target['score']:>4s}  {name:50s}  SKIP ({ext} not supported)")
 
     return items, targets, fixable
 
@@ -397,19 +407,27 @@ if __name__ == '__main__':
                     continue
                 print(f"  Downloaded: {os.path.basename(local_path)} ({os.path.getsize(local_path):,} bytes)")
 
-            # Add headings
+            # Fix the file based on type
             title = os.path.splitext(item['name'])[0].replace('_fixed', '').replace('_tagged', '').replace('_', ' ')
-            fix_result = add_headings_to_pdf(local_path, title=title)
+            ext = item.get('ext', os.path.splitext(local_path)[1].lower())
+
+            if ext == '.pdf':
+                fix_result = add_headings_to_pdf(local_path, title=title)
+            elif ext in ('.pptx', '.docx'):
+                fix_result = fix_office(local_path, title=title)
+            else:
+                fix_result = {'status': f'unsupported: {ext}'}
+
             fixed_path = fix_result.get('output', '')
 
             if fix_result['status'] != 'fixed':
-                print(f"  Heading fix: {fix_result['status']}")
+                print(f"  Fix result: {fix_result['status']}")
                 results.append({'name': item['name'], 'status': fix_result['status']})
                 browser, p = close_feedback(browser, p)
                 items_frame, browser, p = load_report_content(browser, p, course_id)
                 continue
 
-            print(f"  Added {fix_result['headings_found']} headings")
+            print(f"  Fixed: {', '.join(fix_result.get('fixed', []))}")
 
             # Upload fixed version
             new_score, remaining = upload_to_feedback(fb_page, fb_frame, fixed_path)
