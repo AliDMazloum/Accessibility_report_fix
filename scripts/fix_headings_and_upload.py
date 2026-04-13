@@ -30,13 +30,28 @@ COURSES = {
 }
 
 
-def load_report_content(page, course_id):
-    """Navigate to report, click Content tab, return items_frame."""
+def load_report_content(browser, p, course_id):
+    """Navigate to report, click Content tab, return (items_frame, browser, p).
+    Uses disconnect/reconnect to avoid slowing Chrome."""
+    page = browser.contexts[0].pages[-1]
+
+    # Check if already on this course's report with Content loaded
+    for pg in browser.contexts[0].pages:
+        if course_id in pg.url:
+            for f in pg.frames:
+                try:
+                    count = f.evaluate('() => document.querySelectorAll("tr.ir-list-item").length')
+                    if count > 0:
+                        return f, browser, p
+                except:
+                    pass
+
+    # Navigate to report, click Content tab, then disconnect to let it load
     navigate_to_report(page, course_id)
-    time.sleep(10)
+    time.sleep(3)
     dismiss_popup(page)
 
-    # Click Content tab
+    # Find report frame and click Content tab
     for f in page.frames:
         try:
             if f.evaluate('() => document.body.innerText.includes("Course accessibility")'):
@@ -49,17 +64,25 @@ def load_report_content(page, course_id):
         except:
             pass
 
-    # Wait for items
-    for _ in range(12):
-        time.sleep(5)
-        for f in page.frames:
+    # Disconnect to let Chrome load freely
+    browser.close()
+    p.stop()
+    time.sleep(15)
+
+    # Reconnect and find items
+    p = sync_playwright().start()
+    browser = p.chromium.connect_over_cdp(CDP_URL)
+
+    for pg in browser.contexts[0].pages:
+        for f in pg.frames:
             try:
                 count = f.evaluate('() => document.querySelectorAll("tr.ir-list-item").length')
                 if count > 0:
-                    return f
+                    return f, browser, p
             except:
                 pass
-    return None
+
+    return None, browser, p
 
 
 def get_visible_items(items_frame):
@@ -81,10 +104,9 @@ def get_visible_items(items_frame):
     }""")
 
 
-def click_and_upload(items_frame, item_name, fixed_path, browser, p):
-    """Click item in report, disconnect, reconnect, upload fixed file.
-    Returns (new_score, remaining_issues, browser, p)."""
-
+def open_feedback(items_frame, item_name, browser, p):
+    """Click item in report, disconnect/reconnect, return feedback page.
+    Returns (fb_page, fb_frame, browser, p)."""
     # Close existing feedback windows
     for pg in list(browser.contexts[0].pages):
         if 'ally.ac' in pg.url:
@@ -95,7 +117,6 @@ def click_and_upload(items_frame, item_name, fixed_path, browser, p):
     try:
         items_frame.locator(f'text="{item_name}"').click(timeout=10000)
     except:
-        # Fallback: JS click
         items_frame.evaluate("""(name) => {
             const rows = document.querySelectorAll('tr.ir-list-item');
             for (const row of rows) {
@@ -125,7 +146,7 @@ def click_and_upload(items_frame, item_name, fixed_path, browser, p):
             break
 
     if not fb_page:
-        return None, [], browser, p
+        return None, None, browser, p
 
     # Get feedback frame
     fb_frame = None
@@ -138,10 +159,50 @@ def click_and_upload(items_frame, item_name, fixed_path, browser, p):
         except:
             pass
 
-    if not fb_frame:
-        return None, [], browser, p
+    return fb_page, fb_frame, browser, p
 
-    # Get current score
+
+def download_from_feedback(fb_page, fb_frame, download_dir):
+    """Download the original file from the feedback window. Returns filepath or None."""
+    os.makedirs(download_dir, exist_ok=True)
+
+    # Set download behavior
+    cdp = fb_page.context.new_cdp_session(fb_page)
+    cdp.send("Page.setDownloadBehavior", {
+        "behavior": "allow",
+        "downloadPath": os.path.abspath(download_dir).replace("/", os.sep),
+    })
+
+    files_before = set(os.listdir(download_dir)) if os.path.exists(download_dir) else set()
+
+    # Click "Download original" (icon text is get_app)
+    fb_frame.evaluate("""() => {
+        const els = document.querySelectorAll('a, button, span');
+        for (const el of els) {
+            const text = el.innerText.trim();
+            const label = el.getAttribute('aria-label') || '';
+            if (text === 'get_app' || text === 'Download original' ||
+                label.includes('Download original')) {
+                el.click(); return true;
+            }
+        }
+        return false;
+    }""")
+
+    # Wait for download
+    for _ in range(30):
+        time.sleep(1)
+        if os.path.exists(download_dir):
+            current = set(os.listdir(download_dir))
+            new_files = current - files_before
+            completed = [f for f in new_files if not f.endswith('.crdownload')]
+            if completed:
+                return os.path.join(download_dir, completed[0])
+    return None
+
+
+def upload_to_feedback(fb_page, fb_frame, fixed_path):
+    """Upload a fixed file and wait for new score. Returns (new_score, remaining)."""
     info_text = fb_frame.evaluate('() => document.body.innerText')
     current_score = '?'
     for line in info_text.split('\n'):
@@ -150,14 +211,14 @@ def click_and_upload(items_frame, item_name, fixed_path, browser, p):
             current_score = line
     print(f"  Current score: {current_score}")
 
-    # Upload fixed file
+    # Upload
     for f in fb_page.frames:
         inp = f.query_selector('input[type=file]')
         if inp:
             inp.set_input_files(os.path.abspath(fixed_path))
             break
     else:
-        return current_score, [], browser, p
+        return current_score, []
 
     # Wait for verification
     new_score = None
@@ -177,14 +238,17 @@ def click_and_upload(items_frame, item_name, fixed_path, browser, p):
         except:
             pass
 
-    # Close feedback - disconnect/reconnect
+    return new_score, remaining
+
+
+def close_feedback(browser, p):
+    """Close feedback window by disconnecting/reconnecting."""
     browser.close()
     p.stop()
     time.sleep(2)
     p = sync_playwright().start()
     browser = p.chromium.connect_over_cdp(CDP_URL)
-
-    return new_score, remaining, browser, p
+    return browser, p
 
 
 def find_local_pdf(name, course_dir):
@@ -243,7 +307,12 @@ def scan_and_fix_page(items_frame, course_dir, single_item=None):
             local = find_local_pdf(base_name, course_dir)
 
         if not local:
-            print(f"  {target['score']:>4s}  {name:50s}  NOT FOUND LOCALLY")
+            # Not found locally — will download from report if it's a PDF
+            if name.lower().endswith('.pdf'):
+                fixable.append({'name': name, 'score': target['score'], 'local': None})
+                print(f"  {target['score']:>4s}  {name:50s}  WILL DOWNLOAD + FIX")
+            else:
+                print(f"  {target['score']:>4s}  {name:50s}  SKIP (not PDF, not local)")
             continue
 
         ok, reason = can_add_headings(local)
@@ -275,10 +344,11 @@ if __name__ == '__main__':
     p, browser, page = connect()
     print(f"Connected. Loading report for {course_key}...")
 
-    items_frame = load_report_content(page, course_id)
+    items_frame, browser, p = load_report_content(browser, p, course_id)
     if not items_frame:
         print("ERROR: Could not load report items")
-        disconnect(p, browser)
+        browser.close()
+        p.stop()
         sys.exit(1)
 
     # Scan page 1
@@ -302,22 +372,47 @@ if __name__ == '__main__':
             item_counter += 1
             print(f"\n[{item_counter}] {item['name']} ({item['score']})")
 
+            # Open feedback window
+            fb_page, fb_frame, browser, p = open_feedback(
+                items_frame, item['name'], browser, p
+            )
+            if not fb_page or not fb_frame:
+                print(f"  Feedback not opened")
+                results.append({'name': item['name'], 'status': 'feedback not opened'})
+                # Refresh report for next item
+                items_frame, browser, p = load_report_content(browser, p, course_id)
+                continue
+
+            # Download original if not found locally
+            local_path = item.get('local')
+            if not local_path:
+                print(f"  Downloading from report...")
+                download_dir = os.path.join(COURSE_DIR, course_dir, '_downloads')
+                local_path = download_from_feedback(fb_page, fb_frame, download_dir)
+                if not local_path:
+                    print(f"  Download failed")
+                    results.append({'name': item['name'], 'status': 'download failed'})
+                    browser, p = close_feedback(browser, p)
+                    items_frame, browser, p = load_report_content(browser, p, course_id)
+                    continue
+                print(f"  Downloaded: {os.path.basename(local_path)} ({os.path.getsize(local_path):,} bytes)")
+
             # Add headings
             title = os.path.splitext(item['name'])[0].replace('_fixed', '').replace('_tagged', '').replace('_', ' ')
-            fix_result = add_headings_to_pdf(item['local'], title=title)
+            fix_result = add_headings_to_pdf(local_path, title=title)
             fixed_path = fix_result.get('output', '')
 
             if fix_result['status'] != 'fixed':
                 print(f"  Heading fix: {fix_result['status']}")
                 results.append({'name': item['name'], 'status': fix_result['status']})
+                browser, p = close_feedback(browser, p)
+                items_frame, browser, p = load_report_content(browser, p, course_id)
                 continue
 
             print(f"  Added {fix_result['headings_found']} headings")
 
-            # Upload (includes disconnect/reconnect)
-            new_score, remaining, browser, p = click_and_upload(
-                items_frame, item['name'], fixed_path, browser, p
-            )
+            # Upload fixed version
+            new_score, remaining = upload_to_feedback(fb_page, fb_frame, fixed_path)
 
             if new_score:
                 print(f"  NEW SCORE: {new_score}")
@@ -325,12 +420,12 @@ if __name__ == '__main__':
                     print(f"  Remaining: {remaining}")
                 results.append({'name': item['name'], 'old': item['score'], 'new': new_score, 'status': 'fixed'})
             else:
-                print(f"  Upload failed")
+                print(f"  Upload failed/timed out")
                 results.append({'name': item['name'], 'status': 'upload failed'})
 
-            # Refresh report after each upload (scores changed, items re-sort)
-            report_page = browser.contexts[0].pages[-1]
-            items_frame = load_report_content(report_page, course_id)
+            # Close feedback and refresh report
+            browser, p = close_feedback(browser, p)
+            items_frame, browser, p = load_report_content(browser, p, course_id)
             if not items_frame:
                 print("  ERROR: Lost report connection")
                 break
