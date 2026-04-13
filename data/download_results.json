@@ -1,0 +1,90 @@
+{
+  "CYBERINFRA": {
+    "downloaded": [
+      {
+        "file": "ITEC 760 - Cyberinfra and IA.doc",
+        "report_name": "ITEC 760 - Cyberinfra and IA.doc",
+        "score": 28,
+        "size": 190976
+      },
+      {
+        "file": "Midterm.docx",
+        "report_name": "Midterm.docx",
+        "score": 53,
+        "size": 20217
+      },
+      {
+        "file": "Final Review.pptx",
+        "report_name": "Final Review.pptx",
+        "score": 58,
+        "size": 9002114
+      },
+      {
+        "file": "Malware - Assignment.docx",
+        "report_name": "Malware - Assignment(1).docx",
+        "score": 53,
+        "size": 17360
+      },
+      {
+        "file": "Lec2.ppt",
+        "report_name": "Lec2.ppt",
+        "score": 53,
+        "size": 1577472
+      },
+      {
+        "file": "CWSS_Exercise.pdf",
+        "report_name": "CWSS_Exercise.pdf",
+        "score": 6,
+        "size": 104856
+      },
+      {
+        "file": "F24-DSci523-Lec6-2 (1).ppt",
+        "report_name": "F24-DSci523-Lec6-2 (1).ppt",
+        "score": 54,
+        "size": 3852800
+      },
+      {
+        "file": "Network Security.pptx",
+        "report_name": "Network Security.pptx",
+        "score": 56,
+        "size": 17422366
+      }
+    ],
+    "failed": [
+      {
+        "file": "F24-DSci523-Lec3.ppt",
+        "reason": "download failed"
+      },
+      {
+        "file": "F24-DSci523-Lec4.ppt",
+        "reason": "download failed"
+      },
+      {
+        "file": "F24-DSci523-Lec5.ppt",
+        "reason": "download failed"
+      },
+      {
+        "file": "F24-DSci523-Lec7.ppt",
+        "reason": "download failed"
+      },
+      {
+        "file": "Midterm Review.docx",
+        "reason": "download failed"
+      },
+      {
+        "file": "Midterm Review Answers.docx",
+        "reason": "download failed"
+      }
+    ],
+    "remaining": [
+      "F24-DSci523-Lec5(1).ppt",
+      "Midterm Review(1).docx",
+      "F24-DSci523-Lec1.ppt",
+      "F24-DSci523-Lec7(1).ppt",
+      "F24-DSci523-Lec4(1).ppt",
+      "Midterm Review Answers(1).docx",
+      "F24-DSci523-Lec3(1).ppt",
+      "Incident Response - Malware Analysis(1)(1).pptx"
+    ]
+  }
+}

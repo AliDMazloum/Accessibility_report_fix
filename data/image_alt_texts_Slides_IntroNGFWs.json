@@ -1,0 +1,71 @@
+{
+  "1": [
+    "Network diagram showing a perimeter security model with an administered internal network labeled trusted good guys on the left, separated by a firewall from the public Internet labeled untrusted bad guys on the right, illustrating the boundary between trusted and untrusted network zones."
+  ],
+  "2": [
+    "Photograph of the Microsoft Chicago data center showing rows of illuminated server racks with blue LED lighting in a long corridor.",
+    "Network topology diagram showing a hierarchical data center architecture with the Internet at the top connecting through a border router, access router, and load balancer, then branching down through Tier-1 switches, Tier-2 switches, and TOR switches to rows of server racks at the bottom."
+  ],
+  "3": [
+    "Network diagram showing a hierarchical data center topology with an internet cloud at the top connected to firewalls, which connect to routers and switches, branching down to multiple servers, workstations, and end-user devices representing a perimeter-based security architecture."
+  ],
+  "4": [
+    "Network diagram illustrating perimeter security architecture, showing the relationship between the Internet, a firewall, a DMZ zone containing servers, and an internal network with multiple connected computers and devices arranged in a hierarchical topology."
+  ],
+  "7": [
+    "Network architecture diagram titled Data Flows in an Open Network showing data flow paths between Branch Office, SaaS, Internet, and Mobile Endpoints through an Internet Perimeter Firewall, with internal East-West traffic flowing across LAN, DMZ, Campus Core, and Edge segments, and a Data Center Perimeter with VMs at the bottom."
+  ],
+  "8": [
+    "Network architecture diagram titled Data Flows in an Open Network showing data flow paths between SaaS, Internet, Branch Office, Internet Perimeter Firewall, Mobile Endpoints, and Data Center Perimeter, connected through LAN, DMZ, Campus Core, and Edge network segments."
+  ],
+  "11": [
+    "A matrix table titled Integrated Approach to Threat Prevention showing how Palo Alto Networks security features map across the cyber attack lifecycle stages, with each cell describing the specific blocking or prevention action taken at that stage."
+  ],
+  "17": [
+    "Diagram illustrating the seven stages of the Cyber Attack Lifecycle shown as sequential steps: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command and Control, and Act on Objective. A large prohibition symbol overlays the center emphasizing Stop the attack at any point."
+  ],
+  "18": [
+    "Diagram showing a Next-Generation Security Platform architecture with three interconnected components arranged in a triangle: a Next-Generation Firewall, a Threat Intelligence Cloud, and Advanced Endpoint Protection, with bidirectional arrows between them indicating data sharing and coordination."
+  ],
+  "20": [
+    "Architecture diagram of Palo Alto Networks single-pass processing system, showing a layered stack of components: Policy Engine at the top, followed by Content-ID, App-ID, User-ID, all sitting above an L2/L3 Networking, HA, Config Management, and Reporting layer."
+  ],
+  "21": [
+    "Architecture diagram of Palo Alto Networks firewall showing two main layers: a Control Plane containing Management with CPU, RAM, and SSD, and a Dataplane containing three processing layers: Signature Matching, Security Processing, and Network Processing, each connected to their respective hardware components."
+  ],
+  "22": [
+    "Diagram of Palo Alto Networks firewall architecture showing the control plane with Policy Engine, App-ID, User-ID, Content-ID, and Networking modules connected to Single Pass Software, and the data plane below with parallel processing hardware."
+  ],
+  "23": [
+    "Gartner Magic Quadrant chart for Enterprise Network Firewalls, showing a two-axis grid dividing vendors into four quadrants: Niche Players, Challengers, Visionaries, and Leaders, with Palo Alto Networks positioned in the Leaders quadrant."
+  ],
+  "25": [
+    "Icon depicting a hybrid cloud setup representing securely deploying applications in a data center or in the cloud.",
+    "Icon showing network segmentation with a firewall shield separating server blocks for compliance and security.",
+    "Icon illustrating an internet gateway monitoring traffic between the internet and cloud infrastructure.",
+    "Icon showing remote access with a cloud connected to a laptop and mobile device for consistent policy enforcement."
+  ],
+  "26": [
+    "Network architecture diagram showing on-premises data center firewalls connected via IPsec VPN to a VM-Series virtual firewall in the cloud, which segments traffic to Dev, QA, and Prod subnets."
+  ],
+  "27": [
+    "Network diagram showing internet-facing application architecture with users connecting through the internet to a firewall, which connects to Edge and Server subnets. A hacker icon represents external threats attempting access."
+  ],
+  "29": [
+    "A lineup of Palo Alto Networks Next-Generation Firewall physical appliances arranged by size, from PA-200 to the large PA-7000 Series rack-mount chassis.",
+    "Two Palo Alto Networks management and logging appliances: the M-100 and the M-500/WF-500 rack-mount servers."
+  ],
+  "30": [
+    "Five 3D box illustrations representing Palo Alto Networks VM-Series virtual firewall models shown in decreasing size from VM-700 to VM-50.",
+    "A comparison table listing performance and capacity specifications for the five VM-Series models including throughput, sessions, CPU cores, memory, and disk capacity."
+  ],
+  "31": [
+    "Diagram showing a physical firewall containing two virtual systems, each with their own TrustZone and UntrustZone segments connected to separate data interfaces, illustrating how multiple logical firewalls operate within a single physical appliance."
+  ],
+  "32": [
+    "Cisco ASA 5500-X series firewall appliance, a 1U rack-mounted network security device.",
+    "Cisco Firepower 2100 Series next-generation firewall appliance.",
+    "Cisco Firepower 4100 Series firewall for enterprise and data center use.",
+    "Cisco Firepower 9000 Series modular chassis for high-performance deployments."
+  ]
+}
