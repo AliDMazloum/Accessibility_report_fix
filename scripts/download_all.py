@@ -29,6 +29,8 @@ COURSES = {
                 "dir": "ITEC552-001-FALL-2025"},
     "CYBERINFRA": {"id": "_1308272_1", "report": "accessibility_report_CYBERINFRA.json",
                    "dir": "CYBERINFRA-FALL-2025"},
+    "ITEC445F": {"id": "_1308248_1", "report": "accessibility_report_ITEC445F.json",
+                 "dir": "ITEC445-001-FALL-2025"},
 }
 
 SKIP_TYPES = {'Folder', 'Open Folder', 'Learning Module'}
