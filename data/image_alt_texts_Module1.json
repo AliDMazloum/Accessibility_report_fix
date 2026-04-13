@@ -1,0 +1,44 @@
+{
+  "0": [
+    "University of South Carolina logo, featuring the universitys official seal with a tower and the text UNIVERSITY OF SOUTH CAROLINA."
+  ],
+  "2": [
+    "Table listing ten reasons for difficulties in defending against cyber attacks, with columns for Reason and Description, covering topics such as universally connected devices, increased speed of attacks, greater sophistication of attacks, availability of attack tools, faster detection of vulnerabilities, delays in security updating, weak security update distribution, distributed attacks, introduction of BYOD, and user confusion."
+  ],
+  "3": [
+    "Two side-by-side bar charts comparing the sophistication of attacker tools versus technical knowledge needed over time from 1985 to 2015, showing that attacker tool sophistication has increased while the technical knowledge needed to carry out attacks has decreased."
+  ],
+  "4": [
+    "Graph showing an inverse relationship between convenience and security, with a curve declining from high convenience/low security to low convenience/high security.",
+    "A balance scale weighing security against usability, with speech bubbles indicating the trade-off between keeping systems secure and keeping them easy to use."
+  ],
+  "7": [
+    "Concentric circle diagram showing security layers: the outer rings represent policies/procedures and people, while the inner rings contain products protecting confidentiality, integrity, and availability."
+  ],
+  "8": [
+    "Concentric circle diagram illustrating information security, with outer layers for policies/procedures and people, and inner layers showing products that protect confidentiality, integrity, and availability across hardware, software, and communications."
+  ],
+  "9": [
+    "Table listing five types of technology assets with columns for Element name, Description, and Example, showing how each asset type is classified."
+  ],
+  "10": [
+    "Table listing five types of technology assets with columns for Element name, Description, Example, and Critical asset indicator."
+  ],
+  "13": [
+    "Diagram illustrating threat vectors showing an external cloud-based threat and an internal compromised host directing attack arrows through a firewall toward internal network computers."
+  ],
+  "17": [
+    "Two side-by-side bar charts comparing attack sophistication versus technical knowledge required over time, showing that as sophistication of attacks increased, the technical knowledge needed decreased."
+  ],
+  "21": [
+    "Image of the Anonymous hacktivist mask displayed against a dark background with green falling matrix-style digital code, representing the hacktivist group Anonymous."
+  ],
+  "23": [
+    "Diagram of the cyber kill chain showing seven sequential steps: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command and Control, and Actions on Objectives.",
+    "Vertical numbered infographic illustrating the stages of a cyberattack with icons from identifying targets through executing objectives.",
+    "Illustration of a vintage scooter used as a visual metaphor alongside drawings of a castle gate and attacker representing exploit and payload concepts."
+  ],
+  "24": [
+    "Network architecture diagram showing layered defense with a firewall separating an untrusted external network from a DMZ and a trusted internal network, illustrating defense in depth."
+  ]
+}

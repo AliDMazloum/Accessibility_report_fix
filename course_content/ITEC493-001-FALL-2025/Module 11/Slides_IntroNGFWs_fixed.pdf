@@ -4,18 +4,18 @@
 << /Lang (en) /MarkInfo << /Marked true >> /Metadata 3 0 R /Outlines 4 0 R /Pages 5 0 R /StructTreeRoot 6 0 R /Type /Catalog /ViewerPreferences 7 0 R >>
 endobj
 2 0 obj
-<< /Author (Lane Scott) /CreationDate (D:20241118083352-05'00) /Creator (MicrosoftÆ PowerPointÆ for Microsoft 365) /ModDate (D:20241118083352-05'00) /Producer (pikepdf 10.5.1) /Title (Introduction to Next-Generation Firewalls) >>
+<< /Author (Lane Scott) /CreationDate (D:20241118083352-05'00) /Creator (MicrosoftÆ PowerPointÆ for Microsoft 365) /ModDate (D:20241118083352-05'00) /Producer (pikepdf 10.5.1) /Title (Slides IntroNGFWs) >>
 endobj
 3 0 obj
-<< /Subtype /XML /Type /Metadata /Length 3415 >>
+<< /Subtype /XML /Type /Metadata /Length 3391 >>
 stream
 <?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1-701">
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
-<pdf:Producer>pikepdf 10.5.1</pdf:Producer><dc:language xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Seq><rdf:li>en-US</rdf:li></rdf:Seq></dc:language><xmp:MetadataDate xmlns:xmp="http://ns.adobe.com/xap/1.0/">2026-04-13T00:22:24.346575+00:00</xmp:MetadataDate></rdf:Description>
+<pdf:Producer>pikepdf 10.5.1</pdf:Producer><dc:language xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Seq><rdf:li>en-US</rdf:li></rdf:Seq></dc:language><xmp:MetadataDate xmlns:xmp="http://ns.adobe.com/xap/1.0/">2026-04-13T01:23:20.103975+00:00</xmp:MetadataDate></rdf:Description>
 <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
-<dc:title><rdf:Alt><rdf:li xml:lang="x-default">Introduction to Next-Generation Firewalls</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Lane Scott</rdf:li></rdf:Seq></dc:creator></rdf:Description>
+<dc:title><rdf:Alt><rdf:li xml:lang="x-default">Slides IntroNGFWs</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Lane Scott</rdf:li></rdf:Seq></dc:creator></rdf:Description>
 <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
 <xmp:CreatorTool>Microsoft¬Æ PowerPoint¬Æ for Microsoft 365</xmp:CreatorTool><xmp:CreateDate>2024-11-18T08:33:52-05:00</xmp:CreateDate><xmp:ModifyDate>2024-11-18T08:33:52-05:00</xmp:ModifyDate></rdf:Description>
 <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
@@ -167,103 +167,103 @@ endobj
 << /K [ 238 0 R 239 0 R 240 0 R 241 0 R 242 0 R 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 248 0 R 249 0 R 250 0 R 251 0 R 252 0 R 253 0 R 254 0 R 255 0 R 256 0 R 257 0 R 258 0 R 259 0 R 260 0 R 261 0 R 262 0 R 263 0 R 264 0 R 265 0 R 266 0 R 267 0 R 268 0 R 269 0 R 270 0 R ] /P 6 0 R /S /Document /Type /StructElem >>
 endobj
 44 0 obj
-<< /K [ << /MCID 0 /Pg 10 0 R /Type /MCR >> ] /P 238 0 R /Pg 10 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1 /Pg 10 0 R /Type /MCR >> ] /P 238 0 R /Pg 10 0 R /S /P /Type /StructElem >>
 endobj
 45 0 obj
-<< /K [ << /MCID 100 /Pg 11 0 R /Type /MCR >> ] /P 239 0 R /Pg 11 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 101 /Pg 11 0 R /Type /MCR >> ] /P 239 0 R /Pg 11 0 R /S /P /Type /StructElem >>
 endobj
 46 0 obj
-<< /K [ << /MCID 200 /Pg 12 0 R /Type /MCR >> ] /P 240 0 R /Pg 12 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 201 /Pg 12 0 R /Type /MCR >> ] /P 240 0 R /Pg 12 0 R /S /P /Type /StructElem >>
 endobj
 47 0 obj
-<< /K [ << /MCID 300 /Pg 13 0 R /Type /MCR >> ] /P 241 0 R /Pg 13 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 301 /Pg 13 0 R /Type /MCR >> ] /P 241 0 R /Pg 13 0 R /S /P /Type /StructElem >>
 endobj
 48 0 obj
-<< /K [ << /MCID 400 /Pg 14 0 R /Type /MCR >> ] /P 242 0 R /Pg 14 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 401 /Pg 14 0 R /Type /MCR >> ] /P 242 0 R /Pg 14 0 R /S /P /Type /StructElem >>
 endobj
 49 0 obj
-<< /K [ << /MCID 500 /Pg 15 0 R /Type /MCR >> ] /P 243 0 R /Pg 15 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 501 /Pg 15 0 R /Type /MCR >> ] /P 243 0 R /Pg 15 0 R /S /P /Type /StructElem >>
 endobj
 50 0 obj
-<< /K [ << /MCID 600 /Pg 16 0 R /Type /MCR >> ] /P 244 0 R /Pg 16 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 601 /Pg 16 0 R /Type /MCR >> ] /P 244 0 R /Pg 16 0 R /S /P /Type /StructElem >>
 endobj
 51 0 obj
-<< /K [ << /MCID 700 /Pg 17 0 R /Type /MCR >> ] /P 245 0 R /Pg 17 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 701 /Pg 17 0 R /Type /MCR >> ] /P 245 0 R /Pg 17 0 R /S /P /Type /StructElem >>
 endobj
 52 0 obj
-<< /K [ << /MCID 800 /Pg 18 0 R /Type /MCR >> ] /P 246 0 R /Pg 18 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 801 /Pg 18 0 R /Type /MCR >> ] /P 246 0 R /Pg 18 0 R /S /P /Type /StructElem >>
 endobj
 53 0 obj
-<< /K [ << /MCID 900 /Pg 19 0 R /Type /MCR >> ] /P 247 0 R /Pg 19 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 901 /Pg 19 0 R /Type /MCR >> ] /P 247 0 R /Pg 19 0 R /S /P /Type /StructElem >>
 endobj
 54 0 obj
-<< /K [ << /MCID 1000 /Pg 20 0 R /Type /MCR >> ] /P 248 0 R /Pg 20 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1001 /Pg 20 0 R /Type /MCR >> ] /P 248 0 R /Pg 20 0 R /S /P /Type /StructElem >>
 endobj
 55 0 obj
-<< /K [ << /MCID 1100 /Pg 21 0 R /Type /MCR >> ] /P 249 0 R /Pg 21 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1102 /Pg 21 0 R /Type /MCR >> ] /P 249 0 R /Pg 21 0 R /S /P /Type /StructElem >>
 endobj
 56 0 obj
-<< /K [ << /MCID 1200 /Pg 22 0 R /Type /MCR >> ] /P 250 0 R /Pg 22 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1202 /Pg 22 0 R /Type /MCR >> ] /P 250 0 R /Pg 22 0 R /S /P /Type /StructElem >>
 endobj
 57 0 obj
-<< /K [ << /MCID 1300 /Pg 23 0 R /Type /MCR >> ] /P 251 0 R /Pg 23 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1301 /Pg 23 0 R /Type /MCR >> ] /P 251 0 R /Pg 23 0 R /S /P /Type /StructElem >>
 endobj
 58 0 obj
-<< /K [ << /MCID 1400 /Pg 24 0 R /Type /MCR >> ] /P 252 0 R /Pg 24 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1401 /Pg 24 0 R /Type /MCR >> ] /P 252 0 R /Pg 24 0 R /S /P /Type /StructElem >>
 endobj
 59 0 obj
-<< /K [ << /MCID 1500 /Pg 25 0 R /Type /MCR >> ] /P 253 0 R /Pg 25 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1501 /Pg 25 0 R /Type /MCR >> ] /P 253 0 R /Pg 25 0 R /S /P /Type /StructElem >>
 endobj
 60 0 obj
-<< /K [ << /MCID 1600 /Pg 26 0 R /Type /MCR >> ] /P 254 0 R /Pg 26 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1601 /Pg 26 0 R /Type /MCR >> ] /P 254 0 R /Pg 26 0 R /S /P /Type /StructElem >>
 endobj
 61 0 obj
-<< /K [ << /MCID 1700 /Pg 27 0 R /Type /MCR >> ] /P 255 0 R /Pg 27 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1701 /Pg 27 0 R /Type /MCR >> ] /P 255 0 R /Pg 27 0 R /S /P /Type /StructElem >>
 endobj
 62 0 obj
-<< /K [ << /MCID 1800 /Pg 28 0 R /Type /MCR >> ] /P 256 0 R /Pg 28 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1801 /Pg 28 0 R /Type /MCR >> ] /P 256 0 R /Pg 28 0 R /S /P /Type /StructElem >>
 endobj
 63 0 obj
-<< /K [ << /MCID 1900 /Pg 29 0 R /Type /MCR >> ] /P 257 0 R /Pg 29 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 1901 /Pg 29 0 R /Type /MCR >> ] /P 257 0 R /Pg 29 0 R /S /P /Type /StructElem >>
 endobj
 64 0 obj
-<< /K [ << /MCID 2000 /Pg 30 0 R /Type /MCR >> ] /P 258 0 R /Pg 30 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2001 /Pg 30 0 R /Type /MCR >> ] /P 258 0 R /Pg 30 0 R /S /P /Type /StructElem >>
 endobj
 65 0 obj
-<< /K [ << /MCID 2100 /Pg 31 0 R /Type /MCR >> ] /P 259 0 R /Pg 31 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2101 /Pg 31 0 R /Type /MCR >> ] /P 259 0 R /Pg 31 0 R /S /P /Type /StructElem >>
 endobj
 66 0 obj
-<< /K [ << /MCID 2200 /Pg 32 0 R /Type /MCR >> ] /P 260 0 R /Pg 32 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2201 /Pg 32 0 R /Type /MCR >> ] /P 260 0 R /Pg 32 0 R /S /P /Type /StructElem >>
 endobj
 67 0 obj
-<< /K [ << /MCID 2300 /Pg 33 0 R /Type /MCR >> ] /P 261 0 R /Pg 33 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2301 /Pg 33 0 R /Type /MCR >> ] /P 261 0 R /Pg 33 0 R /S /P /Type /StructElem >>
 endobj
 68 0 obj
-<< /K [ << /MCID 2400 /Pg 34 0 R /Type /MCR >> ] /P 262 0 R /Pg 34 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2401 /Pg 34 0 R /Type /MCR >> ] /P 262 0 R /Pg 34 0 R /S /P /Type /StructElem >>
 endobj
 69 0 obj
-<< /K [ << /MCID 2500 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2501 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /P /Type /StructElem >>
 endobj
 70 0 obj
-<< /K [ << /MCID 2600 /Pg 36 0 R /Type /MCR >> ] /P 264 0 R /Pg 36 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2601 /Pg 36 0 R /Type /MCR >> ] /P 264 0 R /Pg 36 0 R /S /P /Type /StructElem >>
 endobj
 71 0 obj
-<< /K [ << /MCID 2700 /Pg 37 0 R /Type /MCR >> ] /P 265 0 R /Pg 37 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2701 /Pg 37 0 R /Type /MCR >> ] /P 265 0 R /Pg 37 0 R /S /P /Type /StructElem >>
 endobj
 72 0 obj
-<< /K [ << /MCID 2800 /Pg 38 0 R /Type /MCR >> ] /P 266 0 R /Pg 38 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2801 /Pg 38 0 R /Type /MCR >> ] /P 266 0 R /Pg 38 0 R /S /P /Type /StructElem >>
 endobj
 73 0 obj
-<< /K [ << /MCID 2900 /Pg 39 0 R /Type /MCR >> ] /P 267 0 R /Pg 39 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 2901 /Pg 39 0 R /Type /MCR >> ] /P 267 0 R /Pg 39 0 R /S /P /Type /StructElem >>
 endobj
 74 0 obj
-<< /K [ << /MCID 3000 /Pg 40 0 R /Type /MCR >> ] /P 268 0 R /Pg 40 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 3001 /Pg 40 0 R /Type /MCR >> ] /P 268 0 R /Pg 40 0 R /S /P /Type /StructElem >>
 endobj
 75 0 obj
-<< /K [ << /MCID 3100 /Pg 41 0 R /Type /MCR >> ] /P 269 0 R /Pg 41 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 3101 /Pg 41 0 R /Type /MCR >> ] /P 269 0 R /Pg 41 0 R /S /P /Type /StructElem >>
 endobj
 76 0 obj
-<< /K [ << /MCID 3200 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /P /Type /StructElem >>
+<< /K [ << /MCID 3201 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /P /Type /StructElem >>
 endobj
 77 0 obj
 << /Dest [ 10 0 R /XYZ 0 405 0 ] /Next 271 0 R /Parent 8 0 R /Title (Slide 1: Traditional Network Security Models) >>
@@ -5859,127 +5859,127 @@ Mh◊®ÔØ‹a¯SG±∑UµË∂âØ$¥.◊Ä… û7u 1Ë*à≥Üˇ DE≠¬ñÖ Ô\„pìÉÏqÕvvZ\<ZdM!Ç(ºïf#v1èL
 endstream
 endobj
 238 0 obj
-<< /K [ 44 0 R ] /P 43 0 R /Pg 10 0 R /S /Part /Type /StructElem >>
+<< /K [ 392 0 R 44 0 R ] /P 43 0 R /Pg 10 0 R /S /Part /Type /StructElem >>
 endobj
 239 0 obj
-<< /K [ 45 0 R 392 0 R ] /P 43 0 R /Pg 11 0 R /S /Part /Type /StructElem >>
+<< /K [ 393 0 R 45 0 R ] /P 43 0 R /Pg 11 0 R /S /Part /Type /StructElem >>
 endobj
 240 0 obj
-<< /K [ 46 0 R 393 0 R 394 0 R ] /P 43 0 R /Pg 12 0 R /S /Part /Type /StructElem >>
+<< /K [ 394 0 R 46 0 R ] /P 43 0 R /Pg 12 0 R /S /Part /Type /StructElem >>
 endobj
 241 0 obj
-<< /K [ 47 0 R 395 0 R ] /P 43 0 R /Pg 13 0 R /S /Part /Type /StructElem >>
+<< /K [ 395 0 R 47 0 R ] /P 43 0 R /Pg 13 0 R /S /Part /Type /StructElem >>
 endobj
 242 0 obj
-<< /K [ 48 0 R 396 0 R ] /P 43 0 R /Pg 14 0 R /S /Part /Type /StructElem >>
+<< /K [ 396 0 R 48 0 R ] /P 43 0 R /Pg 14 0 R /S /Part /Type /StructElem >>
 endobj
 243 0 obj
-<< /K [ 49 0 R ] /P 43 0 R /Pg 15 0 R /S /Part /Type /StructElem >>
+<< /K [ 397 0 R 49 0 R ] /P 43 0 R /Pg 15 0 R /S /Part /Type /StructElem >>
 endobj
 244 0 obj
-<< /K [ 50 0 R ] /P 43 0 R /Pg 16 0 R /S /Part /Type /StructElem >>
+<< /K [ 398 0 R 50 0 R ] /P 43 0 R /Pg 16 0 R /S /Part /Type /StructElem >>
 endobj
 245 0 obj
-<< /K [ 51 0 R 397 0 R ] /P 43 0 R /Pg 17 0 R /S /Part /Type /StructElem >>
+<< /K [ 399 0 R 51 0 R ] /P 43 0 R /Pg 17 0 R /S /Part /Type /StructElem >>
 endobj
 246 0 obj
-<< /K [ 52 0 R 398 0 R ] /P 43 0 R /Pg 18 0 R /S /Part /Type /StructElem >>
+<< /K [ 400 0 R 52 0 R ] /P 43 0 R /Pg 18 0 R /S /Part /Type /StructElem >>
 endobj
 247 0 obj
-<< /K [ 53 0 R ] /P 43 0 R /Pg 19 0 R /S /Part /Type /StructElem >>
+<< /K [ 401 0 R 53 0 R ] /P 43 0 R /Pg 19 0 R /S /Part /Type /StructElem >>
 endobj
 248 0 obj
-<< /K [ 54 0 R ] /P 43 0 R /Pg 20 0 R /S /Part /Type /StructElem >>
+<< /K [ 402 0 R 54 0 R ] /P 43 0 R /Pg 20 0 R /S /Part /Type /StructElem >>
 endobj
 249 0 obj
-<< /K [ 55 0 R 399 0 R ] /P 43 0 R /Pg 21 0 R /S /Part /Type /StructElem >>
+<< /K [ 403 0 R 404 0 R 55 0 R ] /P 43 0 R /Pg 21 0 R /S /Part /Type /StructElem >>
 endobj
 250 0 obj
-<< /K [ 56 0 R ] /P 43 0 R /Pg 22 0 R /S /Part /Type /StructElem >>
+<< /K [ 405 0 R 406 0 R 56 0 R ] /P 43 0 R /Pg 22 0 R /S /Part /Type /StructElem >>
 endobj
 251 0 obj
-<< /K [ 57 0 R ] /P 43 0 R /Pg 23 0 R /S /Part /Type /StructElem >>
+<< /K [ 407 0 R 57 0 R ] /P 43 0 R /Pg 23 0 R /S /Part /Type /StructElem >>
 endobj
 252 0 obj
-<< /K [ 58 0 R ] /P 43 0 R /Pg 24 0 R /S /Part /Type /StructElem >>
+<< /K [ 408 0 R 58 0 R ] /P 43 0 R /Pg 24 0 R /S /Part /Type /StructElem >>
 endobj
 253 0 obj
-<< /K [ 59 0 R ] /P 43 0 R /Pg 25 0 R /S /Part /Type /StructElem >>
+<< /K [ 409 0 R 59 0 R ] /P 43 0 R /Pg 25 0 R /S /Part /Type /StructElem >>
 endobj
 254 0 obj
-<< /K [ 60 0 R ] /P 43 0 R /Pg 26 0 R /S /Part /Type /StructElem >>
+<< /K [ 410 0 R 60 0 R ] /P 43 0 R /Pg 26 0 R /S /Part /Type /StructElem >>
 endobj
 255 0 obj
-<< /K [ 61 0 R 400 0 R ] /P 43 0 R /Pg 27 0 R /S /Part /Type /StructElem >>
+<< /K [ 411 0 R 61 0 R ] /P 43 0 R /Pg 27 0 R /S /Part /Type /StructElem >>
 endobj
 256 0 obj
-<< /K [ 62 0 R 401 0 R ] /P 43 0 R /Pg 28 0 R /S /Part /Type /StructElem >>
+<< /K [ 412 0 R 62 0 R ] /P 43 0 R /Pg 28 0 R /S /Part /Type /StructElem >>
 endobj
 257 0 obj
-<< /K [ 63 0 R ] /P 43 0 R /Pg 29 0 R /S /Part /Type /StructElem >>
+<< /K [ 413 0 R 63 0 R ] /P 43 0 R /Pg 29 0 R /S /Part /Type /StructElem >>
 endobj
 258 0 obj
-<< /K [ 64 0 R 402 0 R ] /P 43 0 R /Pg 30 0 R /S /Part /Type /StructElem >>
+<< /K [ 414 0 R 64 0 R ] /P 43 0 R /Pg 30 0 R /S /Part /Type /StructElem >>
 endobj
 259 0 obj
-<< /K [ 65 0 R 403 0 R ] /P 43 0 R /Pg 31 0 R /S /Part /Type /StructElem >>
+<< /K [ 415 0 R 65 0 R ] /P 43 0 R /Pg 31 0 R /S /Part /Type /StructElem >>
 endobj
 260 0 obj
-<< /K [ 66 0 R 404 0 R ] /P 43 0 R /Pg 32 0 R /S /Part /Type /StructElem >>
+<< /K [ 416 0 R 66 0 R ] /P 43 0 R /Pg 32 0 R /S /Part /Type /StructElem >>
 endobj
 261 0 obj
-<< /K [ 67 0 R 405 0 R ] /P 43 0 R /Pg 33 0 R /S /Part /Type /StructElem >>
+<< /K [ 417 0 R 67 0 R ] /P 43 0 R /Pg 33 0 R /S /Part /Type /StructElem >>
 endobj
 262 0 obj
-<< /K [ 68 0 R ] /P 43 0 R /Pg 34 0 R /S /Part /Type /StructElem >>
+<< /K [ 418 0 R 68 0 R ] /P 43 0 R /Pg 34 0 R /S /Part /Type /StructElem >>
 endobj
 263 0 obj
-<< /K [ 69 0 R 406 0 R 407 0 R 408 0 R 409 0 R ] /P 43 0 R /Pg 35 0 R /S /Part /Type /StructElem >>
+<< /K [ 419 0 R 69 0 R ] /P 43 0 R /Pg 35 0 R /S /Part /Type /StructElem >>
 endobj
 264 0 obj
-<< /K [ 70 0 R 410 0 R ] /P 43 0 R /Pg 36 0 R /S /Part /Type /StructElem >>
+<< /K [ 420 0 R 70 0 R ] /P 43 0 R /Pg 36 0 R /S /Part /Type /StructElem >>
 endobj
 265 0 obj
-<< /K [ 71 0 R 411 0 R ] /P 43 0 R /Pg 37 0 R /S /Part /Type /StructElem >>
+<< /K [ 421 0 R 71 0 R ] /P 43 0 R /Pg 37 0 R /S /Part /Type /StructElem >>
 endobj
 266 0 obj
-<< /K [ 72 0 R ] /P 43 0 R /Pg 38 0 R /S /Part /Type /StructElem >>
+<< /K [ 422 0 R 72 0 R ] /P 43 0 R /Pg 38 0 R /S /Part /Type /StructElem >>
 endobj
 267 0 obj
-<< /K [ 73 0 R 412 0 R 413 0 R ] /P 43 0 R /Pg 39 0 R /S /Part /Type /StructElem >>
+<< /K [ 423 0 R 73 0 R ] /P 43 0 R /Pg 39 0 R /S /Part /Type /StructElem >>
 endobj
 268 0 obj
-<< /K [ 74 0 R 414 0 R 415 0 R ] /P 43 0 R /Pg 40 0 R /S /Part /Type /StructElem >>
+<< /K [ 424 0 R 74 0 R ] /P 43 0 R /Pg 40 0 R /S /Part /Type /StructElem >>
 endobj
 269 0 obj
-<< /K [ 75 0 R 416 0 R ] /P 43 0 R /Pg 41 0 R /S /Part /Type /StructElem >>
+<< /K [ 425 0 R 75 0 R ] /P 43 0 R /Pg 41 0 R /S /Part /Type /StructElem >>
 endobj
 270 0 obj
-<< /K [ 76 0 R 417 0 R 418 0 R 419 0 R 420 0 R ] /P 43 0 R /Pg 42 0 R /S /Part /Type /StructElem >>
+<< /K [ 426 0 R 76 0 R ] /P 43 0 R /Pg 42 0 R /S /Part /Type /StructElem >>
 endobj
 271 0 obj
-<< /Dest [ 11 0 R /XYZ 0 405 0 ] /Next 421 0 R /Parent 8 0 R /Prev 77 0 R /Title (Slide 2: Perimeter Security) >>
+<< /Dest [ 11 0 R /XYZ 0 405 0 ] /Next 427 0 R /Parent 8 0 R /Prev 77 0 R /Title (Slide 2: Perimeter Security) >>
 endobj
 272 0 obj
-<< /Dest [ 23 0 R /XYZ 0 405 0 ] /Next 78 0 R /Parent 8 0 R /Prev 422 0 R /Title (Slide 14: Topics) >>
+<< /Dest [ 23 0 R /XYZ 0 405 0 ] /Next 78 0 R /Parent 8 0 R /Prev 428 0 R /Title (Slide 14: Topics) >>
 endobj
 273 0 obj
-<< /Dest [ 25 0 R /XYZ 0 405 0 ] /Next 423 0 R /Parent 79 0 R /Title (Slide 16: Security Platform Overview) >>
+<< /Dest [ 25 0 R /XYZ 0 405 0 ] /Next 429 0 R /Parent 79 0 R /Title (Slide 16: Security Platform Overview) >>
 endobj
 274 0 obj
-<< /Dest [ 28 0 R /XYZ 0 405 0 ] /Parent 79 0 R /Prev 424 0 R /Title (Slide 19: Next-Generation Security Platform) >>
+<< /Dest [ 28 0 R /XYZ 0 405 0 ] /Parent 79 0 R /Prev 430 0 R /Title (Slide 19: Next-Generation Security Platform) >>
 endobj
 275 0 obj
-<< /Count -5 /Dest [ 29 0 R /XYZ 0 405 0 ] /First 425 0 R /Last 426 0 R /Next 277 0 R /Parent 4 0 R /Prev 79 0 R /Title (Next-Generation Firewall Architecture) >>
+<< /Count -5 /Dest [ 29 0 R /XYZ 0 405 0 ] /First 431 0 R /Last 432 0 R /Next 277 0 R /Parent 4 0 R /Prev 79 0 R /Title (Next-Generation Firewall Architecture) >>
 endobj
 276 0 obj
-<< /Dest [ 38 0 R /XYZ 0 405 0 ] /Next 427 0 R /Parent 80 0 R /Title (Slide 29: Firewall Equipment) >>
+<< /Dest [ 38 0 R /XYZ 0 405 0 ] /Next 433 0 R /Parent 80 0 R /Title (Slide 29: Firewall Equipment) >>
 endobj
 277 0 obj
-<< /Count -4 /Dest [ 34 0 R /XYZ 0 405 0 ] /First 428 0 R /Last 429 0 R /Next 80 0 R /Parent 4 0 R /Prev 275 0 R /Title (Public Cloud Security) >>
+<< /Count -4 /Dest [ 34 0 R /XYZ 0 405 0 ] /First 434 0 R /Last 435 0 R /Next 80 0 R /Parent 4 0 R /Prev 275 0 R /Title (Public Cloud Security) >>
 endobj
 278 0 obj
-<< /Dest [ 40 0 R /XYZ 0 405 0 ] /Next 81 0 R /Parent 80 0 R /Prev 427 0 R /Title <feff0053006c006900640065002000330031003a00200056004d002d0053006500720069006500730020004d006f00640065006c007300200061006e0064002000430061007000610063006900740069006500730020002800500041004e002d004f005300ae00200038002e00300029> >>
+<< /Dest [ 40 0 R /XYZ 0 405 0 ] /Next 81 0 R /Parent 80 0 R /Prev 433 0 R /Title <feff0053006c006900640065002000330031003a00200056004d002d0053006500720069006500730020004d006f00640065006c007300200061006e0064002000430061007000610063006900740069006500730020002800500041004e002d004f005300ae00200038002e00300029> >>
 endobj
 279 0 obj
 << /Ascent 905 /AvgWidth 441 /CapHeight 728 /Descent -210 /Flags 32 /FontBBox [ -665 -210 2000 728 ] /FontName /ArialMT /FontWeight 400 /ItalicAngle 0 /Leading 33 /MaxWidth 2665 /StemV 44 /Type /FontDescriptor /XHeight 250 >>
@@ -5988,7 +5988,7 @@ endobj
 [ 278 278 0 556 0 0 667 0 333 333 0 0 278 333 278 278 556 556 556 556 556 556 556 556 556 556 278 0 0 584 0 556 0 667 667 722 722 667 611 778 722 278 0 0 556 833 722 778 667 778 722 667 611 722 667 944 0 667 611 0 0 0 0 0 0 556 556 500 556 556 278 556 556 222 222 500 222 833 556 556 556 556 333 500 278 556 500 722 500 500 500 0 260 0 584 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 737 ]
 endobj
 281 0 obj
-[ 430 0 R ]
+[ 436 0 R ]
 endobj
 282 0 obj
 << /Filter /FlateDecode /Length 236 >>
@@ -5997,7 +5997,7 @@ xú]êMjƒ0Ö˜>Öñ”≈‡LJi¡êô∂êEh⁄8∂í€(Œ"∑ØÏ¶PÅΩO<Iû∫«ŒªÚùÇÈ1¡Ëº%\¬Ja¿…yq®¿:
 endstream
 endobj
 283 0 obj
-[ 431 0 R ]
+[ 437 0 R ]
 endobj
 284 0 obj
 << /Filter /FlateDecode /Length 399 >>
@@ -6165,7 +6165,7 @@ xúÌÿ€
 endstream
 endobj
 295 0 obj
-<< /Ascent 750 /AvgWidth 536 /CapHeight 750 /Descent -250 /Flags 32 /FontBBox [ -519 -250 1263 750 ] /FontFile2 432 0 R /FontName /BCDFEE+Calibri-Bold /FontWeight 700 /ItalicAngle 0 /MaxWidth 1781 /StemV 53 /Type /FontDescriptor /XHeight 250 >>
+<< /Ascent 750 /AvgWidth 536 /CapHeight 750 /Descent -250 /Flags 32 /FontBBox [ -519 -250 1263 750 ] /FontFile2 438 0 R /FontName /BCDFEE+Calibri-Bold /FontWeight 700 /ItalicAngle 0 /MaxWidth 1781 /StemV 53 /Type /FontDescriptor /XHeight 250 >>
 endobj
 296 0 obj
 [ 226 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 532 0 0 0 495 0 0 0 0 0 0 0 0 0 0 0 0 494 0 418 537 503 0 0 537 246 0 0 0 0 537 538 0 0 355 0 347 0 473 ]
@@ -6225,7 +6225,7 @@ endobj
 [ 278 0 0 0 0 0 0 0 0 0 0 0 0 333 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 556 0 0 0 556 278 556 0 222 0 0 222 0 556 556 0 0 333 0 278 0 0 722 500 ]
 endobj
 305 0 obj
-<< /Ascent 750 /AvgWidth 521 /CapHeight 750 /Descent -250 /Flags 32 /FontBBox [ -503 -250 1240 750 ] /FontFile2 433 0 R /FontName /BCDGEE+Calibri /FontWeight 400 /ItalicAngle 0 /MaxWidth 1743 /StemV 52 /Type /FontDescriptor /XHeight 250 >>
+<< /Ascent 750 /AvgWidth 521 /CapHeight 750 /Descent -250 /Flags 32 /FontBBox [ -503 -250 1240 750 ] /FontFile2 439 0 R /FontName /BCDGEE+Calibri /FontWeight 400 /ItalicAngle 0 /MaxWidth 1743 /StemV 52 /Type /FontDescriptor /XHeight 250 >>
 endobj
 306 0 obj
 [ 226 0 401 0 0 0 0 0 0 0 0 498 250 306 252 386 0 0 507 0 0 0 0 0 507 0 268 0 0 0 0 0 0 0 0 0 0 0 459 631 0 0 0 0 0 0 646 0 517 0 0 459 0 0 0 0 0 0 0 0 0 0 0 0 0 479 0 423 525 498 305 471 525 230 0 455 230 799 525 527 525 0 349 391 335 525 452 715 0 453 ]
@@ -7241,126 +7241,144 @@ xúÌ÷K
 endstream
 endobj
 392 0 obj
-<< /Alt (Network diagram showing a perimeter security model with an administered internal network labeled trusted good guys on the left, separated by a firewall from the public Internet labeled untrusted bad guys on the right, illustrating the boundary between trusted and untrusted network zones.) /K [ << /MCID 101 /Pg 11 0 R /Type /MCR >> ] /P 239 0 R /Pg 11 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 0 /Pg 10 0 R /Type /MCR >> ] /P 238 0 R /Pg 10 0 R /S /H2 /Type /StructElem >>
 endobj
 393 0 obj
-<< /Alt (Photograph of the Microsoft Chicago data center showing rows of illuminated server racks with blue LED lighting in a long corridor.) /K [ << /MCID 201 /Pg 12 0 R /Type /MCR >> ] /P 240 0 R /Pg 12 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 100 /Pg 11 0 R /Type /MCR >> ] /P 239 0 R /Pg 11 0 R /S /H2 /Type /StructElem >>
 endobj
 394 0 obj
-<< /Alt (Network topology diagram showing a hierarchical data center architecture with the Internet at the top connecting through a border router, access router, and load balancer, then branching down through Tier-1 switches, Tier-2 switches, and TOR switches to rows of server racks at the bottom.) /K [ << /MCID 202 /Pg 12 0 R /Type /MCR >> ] /P 240 0 R /Pg 12 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 200 /Pg 12 0 R /Type /MCR >> ] /P 240 0 R /Pg 12 0 R /S /H2 /Type /StructElem >>
 endobj
 395 0 obj
-<< /Alt (Network diagram showing a hierarchical data center topology with an internet cloud at the top connected to firewalls, which connect to routers and switches, branching down to multiple servers, workstations, and end-user devices representing a perimeter-based security architecture.) /K [ << /MCID 301 /Pg 13 0 R /Type /MCR >> ] /P 241 0 R /Pg 13 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 300 /Pg 13 0 R /Type /MCR >> ] /P 241 0 R /Pg 13 0 R /S /H2 /Type /StructElem >>
 endobj
 396 0 obj
-<< /Alt (Network diagram illustrating perimeter security architecture, showing the relationship between the Internet, a firewall, a DMZ zone containing servers, and an internal network with multiple connected computers and devices arranged in a hierarchical topology.) /K [ << /MCID 401 /Pg 14 0 R /Type /MCR >> ] /P 242 0 R /Pg 14 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 400 /Pg 14 0 R /Type /MCR >> ] /P 242 0 R /Pg 14 0 R /S /H2 /Type /StructElem >>
 endobj
 397 0 obj
-<< /Alt (Network architecture diagram titled Data Flows in an Open Network showing data flow paths between Branch Office, SaaS, Internet, and Mobile Endpoints through an Internet Perimeter Firewall, with internal East-West traffic flowing across LAN, DMZ, Campus Core, and Edge segments, and a Data Center Perimeter with VMs at the bottom.) /K [ << /MCID 701 /Pg 17 0 R /Type /MCR >> ] /P 245 0 R /Pg 17 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 500 /Pg 15 0 R /Type /MCR >> ] /P 243 0 R /Pg 15 0 R /S /H2 /Type /StructElem >>
 endobj
 398 0 obj
-<< /Alt (Network architecture diagram titled Data Flows in an Open Network showing data flow paths between SaaS, Internet, Branch Office, Internet Perimeter Firewall, Mobile Endpoints, and Data Center Perimeter, connected through LAN, DMZ, Campus Core, and Edge network segments.) /K [ << /MCID 801 /Pg 18 0 R /Type /MCR >> ] /P 246 0 R /Pg 18 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 600 /Pg 16 0 R /Type /MCR >> ] /P 244 0 R /Pg 16 0 R /S /H2 /Type /StructElem >>
 endobj
 399 0 obj
-<< /Alt (A matrix table titled Integrated Approach to Threat Prevention showing how Palo Alto Networks security features map across the cyber attack lifecycle stages, with each cell describing the specific blocking or prevention action taken at that stage.) /K [ << /MCID 1101 /Pg 21 0 R /Type /MCR >> ] /P 249 0 R /Pg 21 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 700 /Pg 17 0 R /Type /MCR >> ] /P 245 0 R /Pg 17 0 R /S /H2 /Type /StructElem >>
 endobj
 400 0 obj
-<< /Alt (Diagram illustrating the seven stages of the Cyber Attack Lifecycle shown as sequential steps: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command and Control, and Act on Objective. A large prohibition symbol overlays the center emphasizing Stop the attack at any point.) /K [ << /MCID 1701 /Pg 27 0 R /Type /MCR >> ] /P 255 0 R /Pg 27 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 800 /Pg 18 0 R /Type /MCR >> ] /P 246 0 R /Pg 18 0 R /S /H2 /Type /StructElem >>
 endobj
 401 0 obj
-<< /Alt (Diagram showing a Next-Generation Security Platform architecture with three interconnected components arranged in a triangle: a Next-Generation Firewall, a Threat Intelligence Cloud, and Advanced Endpoint Protection, with bidirectional arrows between them indicating data sharing and coordination.) /K [ << /MCID 1801 /Pg 28 0 R /Type /MCR >> ] /P 256 0 R /Pg 28 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 900 /Pg 19 0 R /Type /MCR >> ] /P 247 0 R /Pg 19 0 R /S /H2 /Type /StructElem >>
 endobj
 402 0 obj
-<< /Alt (Architecture diagram of Palo Alto Networks single-pass processing system, showing a layered stack of components: Policy Engine at the top, followed by Content-ID, App-ID, User-ID, all sitting above an L2/L3 Networking, HA, Config Management, and Reporting layer.) /K [ << /MCID 2001 /Pg 30 0 R /Type /MCR >> ] /P 258 0 R /Pg 30 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1000 /Pg 20 0 R /Type /MCR >> ] /P 248 0 R /Pg 20 0 R /S /H2 /Type /StructElem >>
 endobj
 403 0 obj
-<< /Alt (Architecture diagram of Palo Alto Networks firewall showing two main layers: a Control Plane containing Management with CPU, RAM, and SSD, and a Dataplane containing three processing layers: Signature Matching, Security Processing, and Network Processing, each connected to their respective hardware components.) /K [ << /MCID 2101 /Pg 31 0 R /Type /MCR >> ] /P 259 0 R /Pg 31 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1100 /Pg 21 0 R /Type /MCR >> ] /P 249 0 R /Pg 21 0 R /S /H2 /Type /StructElem >>
 endobj
 404 0 obj
-<< /Alt (Diagram of Palo Alto Networks firewall architecture showing the control plane with Policy Engine, App-ID, User-ID, Content-ID, and Networking modules connected to Single Pass Software, and the data plane below with parallel processing hardware.) /K [ << /MCID 2201 /Pg 32 0 R /Type /MCR >> ] /P 260 0 R /Pg 32 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1101 /Pg 21 0 R /Type /MCR >> ] /P 249 0 R /Pg 21 0 R /S /H2 /Type /StructElem >>
 endobj
 405 0 obj
-<< /Alt (Gartner Magic Quadrant chart for Enterprise Network Firewalls, showing a two-axis grid dividing vendors into four quadrants: Niche Players, Challengers, Visionaries, and Leaders, with Palo Alto Networks positioned in the Leaders quadrant.) /K [ << /MCID 2301 /Pg 33 0 R /Type /MCR >> ] /P 261 0 R /Pg 33 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1200 /Pg 22 0 R /Type /MCR >> ] /P 250 0 R /Pg 22 0 R /S /H1 /Type /StructElem >>
 endobj
 406 0 obj
-<< /Alt (Icon depicting a hybrid cloud setup representing securely deploying applications in a data center or in the cloud.) /K [ << /MCID 2501 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1201 /Pg 22 0 R /Type /MCR >> ] /P 250 0 R /Pg 22 0 R /S /H1 /Type /StructElem >>
 endobj
 407 0 obj
-<< /Alt (Icon showing network segmentation with a firewall shield separating server blocks for compliance and security.) /K [ << /MCID 2502 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1300 /Pg 23 0 R /Type /MCR >> ] /P 251 0 R /Pg 23 0 R /S /H2 /Type /StructElem >>
 endobj
 408 0 obj
-<< /Alt (Icon illustrating an internet gateway monitoring traffic between the internet and cloud infrastructure.) /K [ << /MCID 2503 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1400 /Pg 24 0 R /Type /MCR >> ] /P 252 0 R /Pg 24 0 R /S /H2 /Type /StructElem >>
 endobj
 409 0 obj
-<< /Alt (Icon showing remote access with a cloud connected to a laptop and mobile device for consistent policy enforcement.) /K [ << /MCID 2504 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1500 /Pg 25 0 R /Type /MCR >> ] /P 253 0 R /Pg 25 0 R /S /H2 /Type /StructElem >>
 endobj
 410 0 obj
-<< /Alt (Network architecture diagram showing on-premises data center firewalls connected via IPsec VPN to a VM-Series virtual firewall in the cloud, which segments traffic to Dev, QA, and Prod subnets.) /K [ << /MCID 2601 /Pg 36 0 R /Type /MCR >> ] /P 264 0 R /Pg 36 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1600 /Pg 26 0 R /Type /MCR >> ] /P 254 0 R /Pg 26 0 R /S /H2 /Type /StructElem >>
 endobj
 411 0 obj
-<< /Alt (Network diagram showing internet-facing application architecture with users connecting through the internet to a firewall, which connects to Edge and Server subnets. A hacker icon represents external threats attempting access.) /K [ << /MCID 2701 /Pg 37 0 R /Type /MCR >> ] /P 265 0 R /Pg 37 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1700 /Pg 27 0 R /Type /MCR >> ] /P 255 0 R /Pg 27 0 R /S /H2 /Type /StructElem >>
 endobj
 412 0 obj
-<< /Alt (A lineup of Palo Alto Networks Next-Generation Firewall physical appliances arranged by size, from PA-200 to the large PA-7000 Series rack-mount chassis.) /K [ << /MCID 2901 /Pg 39 0 R /Type /MCR >> ] /P 267 0 R /Pg 39 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1800 /Pg 28 0 R /Type /MCR >> ] /P 256 0 R /Pg 28 0 R /S /H2 /Type /StructElem >>
 endobj
 413 0 obj
-<< /Alt (Two Palo Alto Networks management and logging appliances: the M-100 and the M-500/WF-500 rack-mount servers.) /K [ << /MCID 2902 /Pg 39 0 R /Type /MCR >> ] /P 267 0 R /Pg 39 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 1900 /Pg 29 0 R /Type /MCR >> ] /P 257 0 R /Pg 29 0 R /S /H2 /Type /StructElem >>
 endobj
 414 0 obj
-<< /Alt (Five 3D box illustrations representing Palo Alto Networks VM-Series virtual firewall models shown in decreasing size from VM-700 to VM-50.) /K [ << /MCID 3001 /Pg 40 0 R /Type /MCR >> ] /P 268 0 R /Pg 40 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2000 /Pg 30 0 R /Type /MCR >> ] /P 258 0 R /Pg 30 0 R /S /H2 /Type /StructElem >>
 endobj
 415 0 obj
-<< /Alt (A comparison table listing performance and capacity specifications for the five VM-Series models including throughput, sessions, CPU cores, memory, and disk capacity.) /K [ << /MCID 3002 /Pg 40 0 R /Type /MCR >> ] /P 268 0 R /Pg 40 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2100 /Pg 31 0 R /Type /MCR >> ] /P 259 0 R /Pg 31 0 R /S /H2 /Type /StructElem >>
 endobj
 416 0 obj
-<< /Alt (Diagram showing a physical firewall containing two virtual systems, each with their own TrustZone and UntrustZone segments connected to separate data interfaces, illustrating how multiple logical firewalls operate within a single physical appliance.) /K [ << /MCID 3101 /Pg 41 0 R /Type /MCR >> ] /P 269 0 R /Pg 41 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2200 /Pg 32 0 R /Type /MCR >> ] /P 260 0 R /Pg 32 0 R /S /H2 /Type /StructElem >>
 endobj
 417 0 obj
-<< /Alt (Cisco ASA 5500-X series firewall appliance, a 1U rack-mounted network security device.) /K [ << /MCID 3201 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2300 /Pg 33 0 R /Type /MCR >> ] /P 261 0 R /Pg 33 0 R /S /H2 /Type /StructElem >>
 endobj
 418 0 obj
-<< /Alt (Cisco Firepower 2100 Series next-generation firewall appliance.) /K [ << /MCID 3202 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2400 /Pg 34 0 R /Type /MCR >> ] /P 262 0 R /Pg 34 0 R /S /H2 /Type /StructElem >>
 endobj
 419 0 obj
-<< /Alt (Cisco Firepower 4100 Series firewall for enterprise and data center use.) /K [ << /MCID 3203 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2500 /Pg 35 0 R /Type /MCR >> ] /P 263 0 R /Pg 35 0 R /S /H2 /Type /StructElem >>
 endobj
 420 0 obj
-<< /Alt (Cisco Firepower 9000 Series modular chassis for high-performance deployments.) /K [ << /MCID 3204 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /Figure /Type /StructElem >>
+<< /K [ << /MCID 2600 /Pg 36 0 R /Type /MCR >> ] /P 264 0 R /Pg 36 0 R /S /H2 /Type /StructElem >>
 endobj
 421 0 obj
-<< /Dest [ 12 0 R /XYZ 0 405 0 ] /Next 434 0 R /Parent 8 0 R /Prev 271 0 R /Title (Slide 3: Perimeter Security) >>
+<< /K [ << /MCID 2700 /Pg 37 0 R /Type /MCR >> ] /P 265 0 R /Pg 37 0 R /S /H3 /Type /StructElem >>
 endobj
 422 0 obj
-<< /Dest [ 22 0 R /XYZ 0 405 0 ] /Next 272 0 R /Parent 8 0 R /Prev 435 0 R /Title (Slide 13: Next-Generation Security  Platform and Architecture) >>
+<< /K [ << /MCID 2800 /Pg 38 0 R /Type /MCR >> ] /P 266 0 R /Pg 38 0 R /S /H2 /Type /StructElem >>
 endobj
 423 0 obj
-<< /Dest [ 26 0 R /XYZ 0 405 0 ] /Next 424 0 R /Parent 79 0 R /Prev 273 0 R /Title (Slide 17: Next-Generation Firewall \(NGFW\)) >>
+<< /K [ << /MCID 2900 /Pg 39 0 R /Type /MCR >> ] /P 267 0 R /Pg 39 0 R /S /H2 /Type /StructElem >>
 endobj
 424 0 obj
-<< /Dest [ 27 0 R /XYZ 0 405 0 ] /Next 274 0 R /Parent 79 0 R /Prev 423 0 R /Title (Slide 18: Cyber Attack Lifecycle) >>
+<< /K [ << /MCID 3000 /Pg 40 0 R /Type /MCR >> ] /P 268 0 R /Pg 40 0 R /S /H2 /Type /StructElem >>
 endobj
 425 0 obj
-<< /Dest [ 29 0 R /XYZ 0 405 0 ] /Next 436 0 R /Parent 275 0 R /Title (Slide 20: Next-Generation Firewall Architecture) >>
+<< /K [ << /MCID 3100 /Pg 41 0 R /Type /MCR >> ] /P 269 0 R /Pg 41 0 R /S /H2 /Type /StructElem >>
 endobj
 426 0 obj
-<< /Dest [ 33 0 R /XYZ 0 405 0 ] /Parent 275 0 R /Prev 437 0 R /Title (Slide 24: Use Case: Palo Alto Networks Architecture) >>
+<< /K [ << /MCID 3200 /Pg 42 0 R /Type /MCR >> ] /P 270 0 R /Pg 42 0 R /S /H2 /Type /StructElem >>
 endobj
 427 0 obj
-<< /Dest [ 39 0 R /XYZ 0 405 0 ] /Next 278 0 R /Parent 80 0 R /Prev 276 0 R /Title (Slide 30: Physical Platforms) >>
+<< /Dest [ 12 0 R /XYZ 0 405 0 ] /Next 440 0 R /Parent 8 0 R /Prev 271 0 R /Title (Slide 3: Perimeter Security) >>
 endobj
 428 0 obj
-<< /Dest [ 34 0 R /XYZ 0 405 0 ] /Next 438 0 R /Parent 277 0 R /Title (Slide 25: Public Cloud Security) >>
+<< /Dest [ 22 0 R /XYZ 0 405 0 ] /Next 272 0 R /Parent 8 0 R /Prev 441 0 R /Title (Slide 13: Next-Generation Security  Platform and Architecture) >>
 endobj
 429 0 obj
-<< /Dest [ 37 0 R /XYZ 0 405 0 ] /Parent 277 0 R /Prev 439 0 R /Title (Slide 28: Internet-Facing Applications: Leverage Perimeter Controls) >>
+<< /Dest [ 26 0 R /XYZ 0 405 0 ] /Next 430 0 R /Parent 79 0 R /Prev 273 0 R /Title (Slide 17: Next-Generation Firewall \(NGFW\)) >>
 endobj
 430 0 obj
-<< /BaseFont /BCDEEE+Wingdings-Regular /CIDSystemInfo 440 0 R /CIDToGIDMap /Identity /DW 1000 /FontDescriptor 441 0 R /Subtype /CIDFontType2 /Type /Font /W 442 0 R >>
+<< /Dest [ 27 0 R /XYZ 0 405 0 ] /Next 274 0 R /Parent 79 0 R /Prev 429 0 R /Title (Slide 18: Cyber Attack Lifecycle) >>
 endobj
 431 0 obj
-<< /BaseFont /ArialMT /CIDSystemInfo 443 0 R /CIDToGIDMap /Identity /DW 1000 /FontDescriptor 444 0 R /Subtype /CIDFontType2 /Type /Font /W 445 0 R >>
+<< /Dest [ 29 0 R /XYZ 0 405 0 ] /Next 442 0 R /Parent 275 0 R /Title (Slide 20: Next-Generation Firewall Architecture) >>
 endobj
 432 0 obj
+<< /Dest [ 33 0 R /XYZ 0 405 0 ] /Parent 275 0 R /Prev 443 0 R /Title (Slide 24: Use Case: Palo Alto Networks Architecture) >>
+endobj
+433 0 obj
+<< /Dest [ 39 0 R /XYZ 0 405 0 ] /Next 278 0 R /Parent 80 0 R /Prev 276 0 R /Title (Slide 30: Physical Platforms) >>
+endobj
+434 0 obj
+<< /Dest [ 34 0 R /XYZ 0 405 0 ] /Next 444 0 R /Parent 277 0 R /Title (Slide 25: Public Cloud Security) >>
+endobj
+435 0 obj
+<< /Dest [ 37 0 R /XYZ 0 405 0 ] /Parent 277 0 R /Prev 445 0 R /Title (Slide 28: Internet-Facing Applications: Leverage Perimeter Controls) >>
+endobj
+436 0 obj
+<< /BaseFont /BCDEEE+Wingdings-Regular /CIDSystemInfo 446 0 R /CIDToGIDMap /Identity /DW 1000 /FontDescriptor 447 0 R /Subtype /CIDFontType2 /Type /Font /W 448 0 R >>
+endobj
+437 0 obj
+<< /BaseFont /ArialMT /CIDSystemInfo 449 0 R /CIDToGIDMap /Identity /DW 1000 /FontDescriptor 450 0 R /Subtype /CIDFontType2 /Type /Font /W 451 0 R >>
+endobj
+438 0 obj
 << /Filter /FlateDecode /Length1 89464 /Length 24884 >>
 stream
 xúÏù\T’ˆ¯◊>gﬁò·5¿0Ã0√Ú~#‡ÉQDEôÃ √ 45À§óeˆ~?ÏuÎf]áë
@@ -7458,7 +7476,7 @@ oâíÏπF<áìéz'õ∂‚'èAZrÍ&oú¸Xt§@⁄å—Vd2Nè†Os‘…'⁄~fS∑≤î¶íÕY≠,lùπ°ú‹˝Z¡µ\Kù∏
 °™/']lùèãé‰ ¬+¡¶ã7Oåw√«6[hòf’–òE⁄¸duIªÿ`õ™‹◊œxêrª◊€§r·ıÚ(rä´7H0´=Õt®Êá⁄∂]DONŸø‚:c<ˆ§Œ.≤J…‹AÚz-«!å¯q[„˚ä≈Ä+ñYX˘ËÕÍË-ôû;¬∆çë	÷œ!çvaëƒq4‹_‰éà3å≤øÙéh<mÛ_S·Bó
 endstream
 endobj
-433 0 obj
+439 0 obj
 << /Filter /FlateDecode /Length1 122188 /Length 42096 >>
 stream
 xúÏ}xT’÷ˆ⁄ÁLÀ$ìL$¬L2$ÄB' íÅöî@ìPLH!hÄÑ¶@çbπÏ`/†N–ÿΩÿ{oW≈kπzª^Ø˘ﬁ}÷Ïê`Pøˇ˙¸˛˜f%ÔºÔ^{Ôuv?;>ëê "'>LT^0&ø8=Í¨7H‹ äZ[0Êƒ<˚ÇÖΩH‹VKd7ezˆ¿k…9@$ŒF≠Ú ı#[æÈKTóOdôPπl©Áﬁ˙7Ü›ÿÇÚ‘‘œ[∞Ê]}—‚âYÛÍV÷L˙§èüËˆ•D[f‘VWT˛˘éW/
@@ -7632,52 +7650,52 @@ _˚C[πŒ ©YúNuø¡¬ºπüπ©>æãsO<±™•1≥eÚ'ˇ©gÍÓàkœX18æß¿ÌV6˝åi`d£Dmüsÿ„˝‚mñnŒ\ˇI_º
 |°àı∂I¿Q·î2Ûâì	SÌë{jiﬂ˝;y:
 endstream
 endobj
-434 0 obj
-<< /Dest [ 13 0 R /XYZ 0 405 0 ] /Next 446 0 R /Parent 8 0 R /Prev 421 0 R /Title (Slide 4: Perimeter Security) >>
-endobj
-435 0 obj
-<< /Dest [ 21 0 R /XYZ 0 405 0 ] /Next 422 0 R /Parent 8 0 R /Prev 447 0 R /Title (Slide 12: Integrated Approach to Threat Prevention) >>
-endobj
-436 0 obj
-<< /Dest [ 30 0 R /XYZ 0 405 0 ] /Next 448 0 R /Parent 275 0 R /Prev 425 0 R /Title (Slide 21: Use Case: Palo Alto Networks Architecture) >>
-endobj
-437 0 obj
-<< /Dest [ 32 0 R /XYZ 0 405 0 ] /Next 426 0 R /Parent 275 0 R /Prev 448 0 R /Title (Slide 23: Use Case: Palo Alto Networks Architecture) >>
-endobj
-438 0 obj
-<< /Dest [ 35 0 R /XYZ 0 405 0 ] /Next 439 0 R /Parent 277 0 R /Prev 428 0 R /Title (Slide 26: Public Cloud Security Overview) >>
-endobj
-439 0 obj
-<< /Dest [ 36 0 R /XYZ 0 405 0 ] /Next 429 0 R /Parent 277 0 R /Prev 438 0 R /Title (Slide 27: Application Segmentation: Expands upon Hybrid ) >>
-endobj
 440 0 obj
-<< /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
+<< /Dest [ 13 0 R /XYZ 0 405 0 ] /Next 452 0 R /Parent 8 0 R /Prev 427 0 R /Title (Slide 4: Perimeter Security) >>
 endobj
 441 0 obj
-<< /Ascent 899 /AvgWidth 890 /CapHeight 771 /Descent 205 /Flags 32 /FontBBox [ 0 205 1359 771 ] /FontFile2 449 0 R /FontName /BCDEEE+Wingdings-Regular /FontWeight 400 /ItalicAngle 0 /MaxWidth 1359 /StemV 89 /Type /FontDescriptor /XHeight 250 >>
+<< /Dest [ 21 0 R /XYZ 0 405 0 ] /Next 428 0 R /Parent 8 0 R /Prev 453 0 R /Title (Slide 12: Integrated Approach to Threat Prevention) >>
 endobj
 442 0 obj
-[ 0 [ 500 ] 131 [ 458 ] 190 [ 794 ] ]
+<< /Dest [ 30 0 R /XYZ 0 405 0 ] /Next 454 0 R /Parent 275 0 R /Prev 431 0 R /Title (Slide 21: Use Case: Palo Alto Networks Architecture) >>
 endobj
 443 0 obj
-<< /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
+<< /Dest [ 32 0 R /XYZ 0 405 0 ] /Next 432 0 R /Parent 275 0 R /Prev 454 0 R /Title (Slide 23: Use Case: Palo Alto Networks Architecture) >>
 endobj
 444 0 obj
-<< /Ascent 905 /AvgWidth 441 /CapHeight 728 /Descent -210 /Flags 32 /FontBBox [ -665 -210 2000 728 ] /FontFile2 450 0 R /FontName /ArialMT /FontWeight 400 /ItalicAngle 0 /Leading 33 /MaxWidth 2665 /StemV 44 /Type /FontDescriptor /XHeight 250 >>
+<< /Dest [ 35 0 R /XYZ 0 405 0 ] /Next 445 0 R /Parent 277 0 R /Prev 434 0 R /Title (Slide 26: Public Cloud Security Overview) >>
 endobj
 445 0 obj
-[ 0 [ 750 ] 3 [ 278 278 ] 6 [ 556 ] 9 [ 667 ] 11 [ 333 333 ] 15 [ 278 333 278 278 556 556 556 556 556 556 556 556 556 556 278 278 ] 32 [ 584 ] 34 [ 556 ] 36 [ 667 667 722 722 667 611 778 722 278 ] 47 [ 556 833 722 778 667 778 722 667 611 722 667 944 ] 60 [ 667 611 ] 68 [ 556 556 500 556 556 278 556 556 222 222 500 222 833 556 556 556 556 333 500 278 556 500 722 500 500 500 ] 95 [ 260 ] 97 [ 584 ] 135 [ 350 ] 138 [ 737 ] 177 [ 556 ] 179 [ 333 333 222 222 ] ]
+<< /Dest [ 36 0 R /XYZ 0 405 0 ] /Next 435 0 R /Parent 277 0 R /Prev 444 0 R /Title (Slide 27: Application Segmentation: Expands upon Hybrid ) >>
 endobj
 446 0 obj
-<< /Dest [ 14 0 R /XYZ 0 405 0 ] /Next 451 0 R /Parent 8 0 R /Prev 434 0 R /Title (Slide 5: Perimeter Security) >>
+<< /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
 endobj
 447 0 obj
-<< /Dest [ 20 0 R /XYZ 0 405 0 ] /Next 435 0 R /Parent 8 0 R /Prev 452 0 R /Title (Slide 11: Unified Threat Management? ) >>
+<< /Ascent 899 /AvgWidth 890 /CapHeight 771 /Descent 205 /Flags 32 /FontBBox [ 0 205 1359 771 ] /FontFile2 455 0 R /FontName /BCDEEE+Wingdings-Regular /FontWeight 400 /ItalicAngle 0 /MaxWidth 1359 /StemV 89 /Type /FontDescriptor /XHeight 250 >>
 endobj
 448 0 obj
-<< /Dest [ 31 0 R /XYZ 0 405 0 ] /Next 437 0 R /Parent 275 0 R /Prev 436 0 R /Title (Slide 22: Use Case: Palo Alto Networks Architecture) >>
+[ 0 [ 500 ] 131 [ 458 ] 190 [ 794 ] ]
 endobj
 449 0 obj
+<< /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
+endobj
+450 0 obj
+<< /Ascent 905 /AvgWidth 441 /CapHeight 728 /Descent -210 /Flags 32 /FontBBox [ -665 -210 2000 728 ] /FontFile2 456 0 R /FontName /ArialMT /FontWeight 400 /ItalicAngle 0 /Leading 33 /MaxWidth 2665 /StemV 44 /Type /FontDescriptor /XHeight 250 >>
+endobj
+451 0 obj
+[ 0 [ 750 ] 3 [ 278 278 ] 6 [ 556 ] 9 [ 667 ] 11 [ 333 333 ] 15 [ 278 333 278 278 556 556 556 556 556 556 556 556 556 556 278 278 ] 32 [ 584 ] 34 [ 556 ] 36 [ 667 667 722 722 667 611 778 722 278 ] 47 [ 556 833 722 778 667 778 722 667 611 722 667 944 ] 60 [ 667 611 ] 68 [ 556 556 500 556 556 278 556 556 222 222 500 222 833 556 556 556 556 333 500 278 556 500 722 500 500 500 ] 95 [ 260 ] 97 [ 584 ] 135 [ 350 ] 138 [ 737 ] 177 [ 556 ] 179 [ 333 333 222 222 ] ]
+endobj
+452 0 obj
+<< /Dest [ 14 0 R /XYZ 0 405 0 ] /Next 457 0 R /Parent 8 0 R /Prev 440 0 R /Title (Slide 5: Perimeter Security) >>
+endobj
+453 0 obj
+<< /Dest [ 20 0 R /XYZ 0 405 0 ] /Next 441 0 R /Parent 8 0 R /Prev 458 0 R /Title (Slide 11: Unified Threat Management? ) >>
+endobj
+454 0 obj
+<< /Dest [ 31 0 R /XYZ 0 405 0 ] /Next 443 0 R /Parent 275 0 R /Prev 442 0 R /Title (Slide 22: Use Case: Palo Alto Networks Architecture) >>
+endobj
+455 0 obj
 << /Filter /FlateDecode /Length1 14448 /Length 7059 >>
 stream
 xú›;	t≈ïU}LèNÎñê∞›„±dŸitXí%_cÎ!≤ÂC‚ÍôiiÕL=#KÇÑgnG6¡	Nv!·7∆6$2Ñ8Œfó$oì]Ç	πú¿&àÁºÂ»íˆWU˜Ã»ñyI^¬Ó€.W◊Ø™_ø˛]’£gÑBŸPÌE=Ó˙∫WO˘¬›È)ë˛◊~π!QÄ1ØowL~¬˝»#∞‡|kàÜ^|oe!‡ó«
@@ -7715,7 +7733,7 @@ xÿ†F∆à[™!≈Y`&•;0˜YBTMl≤≤äJÛuån †”|˙pÑ$*Míÿ>—©_åb±H´€=22R≤¶k F›1cTQ
 Ê√tÖBO?"ø“ÏèÄ3+»ˇ´õÛ¡f[I˛*ËÜMXà2ÿE‡ã£c!RˇUát›
 endstream
 endobj
-450 0 obj
+456 0 obj
 << /Filter /FlateDecode /Length1 113016 /Length 52568 >>
 stream
 xúÏ}y|T’ı¯π˜-≥$ôº…23…L2o2dXÜHÄ¨êó!B»`	!ÏH †Çà°»6.XøähU–Z´∏≤Ä√“BãJ]"V≠mq´mei?÷ùôﬂπo&¨˛æ˝£øÚ˚˛~sﬁú{Œ=˜‹{œ=˜‹ÂI  &Lx∏sÚ¥Ïú§Òj»î6µ,mn3Õ∂†ÏM nNÀu+Âßüº`ñ@ºv^€¸•˘?≥x™Úb‘˘KVœ{`O¡&Äπ[ ﬁw,hmû˚˜’s˛Åm}ä8z
@@ -7924,294 +7942,294 @@ I‚bÖ◊Qπ˝nÄ76]ô‚ŸÏä
 `åò$âo [Í…`‚Z˚aÉ€çr5ï¨„çÌç+⁄3ª5I∂Z–ÈE®Û∫£€ù9œH’»∫Eñè≠Øh¸ µV©Hû:™]ïGf	y¡«xõÛé ∏`∆˛–ƒ∏ñ¶~vY˛YJíyŒÕØå9Ü*H≠H–äóV3Œw„fQØ≤‚[·)≈√Ì◊¬]œœ˜qUälÂ¸&‡Úp≤Y–¬ˇPXºÈ™Ñ©√<Œäs¯ìóﬁôÃ: ¢√8o§W`CTÜÔU•∫≈RO_„n… À1—d§mõ( J5◊π÷‡E›á&¯@R¯¿πvÚÓÃ«Bc?Ì á„l˝ﬁÁ˘ì˚FïË¯8ñ√èrPÛˇ“z” 7çá˜?˙Ç°
 endstream
 endobj
-451 0 obj
-<< /Dest [ 15 0 R /XYZ 0 405 0 ] /Next 453 0 R /Parent 8 0 R /Prev 446 0 R /Title (Slide 6: Zero Trust Model) >>
+457 0 obj
+<< /Dest [ 15 0 R /XYZ 0 405 0 ] /Next 459 0 R /Parent 8 0 R /Prev 452 0 R /Title (Slide 6: Zero Trust Model) >>
 endobj
-452 0 obj
-<< /Dest [ 19 0 R /XYZ 0 405 0 ] /Next 447 0 R /Parent 8 0 R /Prev 454 0 R /Title (Slide 10: Zero Trust Model) >>
+458 0 obj
+<< /Dest [ 19 0 R /XYZ 0 405 0 ] /Next 453 0 R /Parent 8 0 R /Prev 460 0 R /Title (Slide 10: Zero Trust Model) >>
 endobj
-453 0 obj
-<< /Dest [ 16 0 R /XYZ 0 405 0 ] /Next 455 0 R /Parent 8 0 R /Prev 451 0 R /Title (Slide 7: Zero Trust Model) >>
+459 0 obj
+<< /Dest [ 16 0 R /XYZ 0 405 0 ] /Next 461 0 R /Parent 8 0 R /Prev 457 0 R /Title (Slide 7: Zero Trust Model) >>
 endobj
-454 0 obj
-<< /Dest [ 18 0 R /XYZ 0 405 0 ] /Next 452 0 R /Parent 8 0 R /Prev 455 0 R /Title (Slide 9: Data Flows in an Open Network) >>
+460 0 obj
+<< /Dest [ 18 0 R /XYZ 0 405 0 ] /Next 458 0 R /Parent 8 0 R /Prev 461 0 R /Title (Slide 9: Data Flows in an Open Network) >>
 endobj
-455 0 obj
-<< /Dest [ 17 0 R /XYZ 0 405 0 ] /Next 454 0 R /Parent 8 0 R /Prev 453 0 R /Title (Slide 8: Data Flows in an Open Network) >>
+461 0 obj
+<< /Dest [ 17 0 R /XYZ 0 405 0 ] /Next 460 0 R /Parent 8 0 R /Prev 459 0 R /Title (Slide 8: Data Flows in an Open Network) >>
 endobj
 xref
-0 456
+0 462
 0000000000 65535 f 
 0000000015 00000 n 
 0000000183 00000 n 
-0000000428 00000 n 
-0000003925 00000 n 
-0000003987 00000 n 
-0000004272 00000 n 
-0000004809 00000 n 
-0000004852 00000 n 
-0000004993 00000 n 
-0000005102 00000 n 
-0000005406 00000 n 
-0000005779 00000 n 
-0000006168 00000 n 
-0000006541 00000 n 
-0000006914 00000 n 
-0000007218 00000 n 
-0000007564 00000 n 
-0000007945 00000 n 
-0000008299 00000 n 
-0000008647 00000 n 
-0000009007 00000 n 
-0000009453 00000 n 
-0000009759 00000 n 
-0000010076 00000 n 
-0000010393 00000 n 
-0000010699 00000 n 
-0000011089 00000 n 
-0000011569 00000 n 
-0000011948 00000 n 
-0000012254 00000 n 
-0000012633 00000 n 
-0000012983 00000 n 
-0000013373 00000 n 
-0000013773 00000 n 
-0000014079 00000 n 
-0000014864 00000 n 
-0000015507 00000 n 
-0000016063 00000 n 
-0000016369 00000 n 
-0000016953 00000 n 
-0000017591 00000 n 
-0000017941 00000 n 
-0000018309 00000 n 
-0000018642 00000 n 
-0000018753 00000 n 
-0000018866 00000 n 
-0000018979 00000 n 
-0000019092 00000 n 
-0000019205 00000 n 
-0000019318 00000 n 
-0000019431 00000 n 
-0000019544 00000 n 
-0000019657 00000 n 
-0000019770 00000 n 
-0000019884 00000 n 
-0000019998 00000 n 
-0000020112 00000 n 
-0000020226 00000 n 
-0000020340 00000 n 
-0000020454 00000 n 
-0000020568 00000 n 
-0000020682 00000 n 
-0000020796 00000 n 
-0000020910 00000 n 
-0000021024 00000 n 
-0000021138 00000 n 
-0000021252 00000 n 
-0000021366 00000 n 
-0000021480 00000 n 
-0000021594 00000 n 
-0000021708 00000 n 
-0000021822 00000 n 
-0000021936 00000 n 
-0000022050 00000 n 
-0000022164 00000 n 
-0000022278 00000 n 
-0000022392 00000 n 
-0000022526 00000 n 
-0000022636 00000 n 
-0000022803 00000 n 
-0000022948 00000 n 
-0000023076 00000 n 
-0000023401 00000 n 
-0000023458 00000 n 
-0000023515 00000 n 
-0000023692 00000 n 
-0000024919 00000 n 
-0000025071 00000 n 
-0000025206 00000 n 
-0000025443 00000 n 
-0000107543 00000 n 
-0000108568 00000 n 
-0000168692 00000 n 
-0000221246 00000 n 
-0000222706 00000 n 
-0000224369 00000 n 
-0000224669 00000 n 
-0000225852 00000 n 
-0000226604 00000 n 
-0000226786 00000 n 
-0000301830 00000 n 
-0000379877 00000 n 
-0000380122 00000 n 
-0000380563 00000 n 
-0000546454 00000 n 
-0000546700 00000 n 
-0000548773 00000 n 
-0000549010 00000 n 
-0000550367 00000 n 
-0000550610 00000 n 
-0000553531 00000 n 
-0000553721 00000 n 
-0000554032 00000 n 
-0000554344 00000 n 
-0000554655 00000 n 
-0000554971 00000 n 
-0000555283 00000 n 
-0000555536 00000 n 
-0000555906 00000 n 
-0000556524 00000 n 
-0000557175 00000 n 
-0000557487 00000 n 
-0000560335 00000 n 
-0000560520 00000 n 
-0000560705 00000 n 
-0000560949 00000 n 
-0000561196 00000 n 
-0000589046 00000 n 
-0000589452 00000 n 
-0000589858 00000 n 
-0000590264 00000 n 
-0000590670 00000 n 
-0000590903 00000 n 
-0000591136 00000 n 
-0000591375 00000 n 
-0000591781 00000 n 
-0000593503 00000 n 
-0000595192 00000 n 
-0000633639 00000 n 
-0000633885 00000 n 
-0000634241 00000 n 
-0000635426 00000 n 
-0000710980 00000 n 
-0000711232 00000 n 
-0000715887 00000 n 
-0000716139 00000 n 
-0000717531 00000 n 
-0000736448 00000 n 
-0000736692 00000 n 
-0000737965 00000 n 
-0000781979 00000 n 
-0000782285 00000 n 
-0000785574 00000 n 
-0000785807 00000 n 
-0000791420 00000 n 
-0000791646 00000 n 
-0000791872 00000 n 
-0000792772 00000 n 
-0000793974 00000 n 
-0000798773 00000 n 
-0000807597 00000 n 
-0000808341 00000 n 
-0000808573 00000 n 
-0000808807 00000 n 
-0000809040 00000 n 
-0000809273 00000 n 
-0000810124 00000 n 
-0000811815 00000 n 
-0000812050 00000 n 
-0000822055 00000 n 
-0000823746 00000 n 
-0000825051 00000 n 
-0000826778 00000 n 
-0000827005 00000 n 
-0000827232 00000 n 
-0000827463 00000 n 
-0000829990 00000 n 
-0000830054 00000 n 
-0000830118 00000 n 
-0000830353 00000 n 
-0000833096 00000 n 
-0000837507 00000 n 
-0000837745 00000 n 
-0000837977 00000 n 
-0000840280 00000 n 
-0000840830 00000 n 
-0000843083 00000 n 
-0000848714 00000 n 
-0000858304 00000 n 
-0000862032 00000 n 
-0000864305 00000 n 
-0000864560 00000 n 
-0000866307 00000 n 
-0000866371 00000 n 
-0000871355 00000 n 
-0000871590 00000 n 
-0000871825 00000 n 
-0000874309 00000 n 
-0000878043 00000 n 
-0000878300 00000 n 
-0000878598 00000 n 
-0000880007 00000 n 
-0000898302 00000 n 
-0000912562 00000 n 
-0000912810 00000 n 
-0000915133 00000 n 
-0000915400 00000 n 
-0000918499 00000 n 
-0000927266 00000 n 
-0000927515 00000 n 
-0000932894 00000 n 
-0000980370 00000 n 
-0000996054 00000 n 
-0001002496 00000 n 
-0001016335 00000 n 
-0001016573 00000 n 
-0001019316 00000 n 
-0001020254 00000 n 
-0001021750 00000 n 
-0001030862 00000 n 
-0001033707 00000 n 
-0001041268 00000 n 
-0001042225 00000 n 
-0001043679 00000 n 
-0001052795 00000 n 
-0001055860 00000 n 
-0001063454 00000 n 
-0001064419 00000 n 
-0001065949 00000 n 
-0001075065 00000 n 
-0001078134 00000 n 
-0001081033 00000 n 
-0001082986 00000 n 
-0001083242 00000 n 
-0001084478 00000 n 
-0001084714 00000 n 
-0001085303 00000 n 
-0001228278 00000 n 
-0001228363 00000 n 
-0001228456 00000 n 
-0001228557 00000 n 
-0001228650 00000 n 
-0001228743 00000 n 
-0001228828 00000 n 
-0001228913 00000 n 
-0001229006 00000 n 
-0001229099 00000 n 
-0001229184 00000 n 
-0001229269 00000 n 
-0001229362 00000 n 
-0001229447 00000 n 
-0001229532 00000 n 
-0001229617 00000 n 
-0001229702 00000 n 
-0001229787 00000 n 
-0001229880 00000 n 
-0001229973 00000 n 
-0001230058 00000 n 
-0001230151 00000 n 
-0001230244 00000 n 
-0001230337 00000 n 
-0001230430 00000 n 
-0001230515 00000 n 
-0001230632 00000 n 
-0001230725 00000 n 
-0001230818 00000 n 
-0001230903 00000 n 
-0001231004 00000 n 
-0001231105 00000 n 
-0001231198 00000 n 
+0000000404 00000 n 
+0000003877 00000 n 
+0000003939 00000 n 
+0000004224 00000 n 
+0000004761 00000 n 
+0000004804 00000 n 
+0000004945 00000 n 
+0000005054 00000 n 
+0000005358 00000 n 
+0000005731 00000 n 
+0000006120 00000 n 
+0000006493 00000 n 
+0000006866 00000 n 
+0000007170 00000 n 
+0000007516 00000 n 
+0000007897 00000 n 
+0000008251 00000 n 
+0000008599 00000 n 
+0000008959 00000 n 
+0000009405 00000 n 
+0000009711 00000 n 
+0000010028 00000 n 
+0000010345 00000 n 
+0000010651 00000 n 
+0000011041 00000 n 
+0000011521 00000 n 
+0000011900 00000 n 
+0000012206 00000 n 
+0000012585 00000 n 
+0000012935 00000 n 
+0000013325 00000 n 
+0000013725 00000 n 
+0000014031 00000 n 
+0000014816 00000 n 
+0000015459 00000 n 
+0000016015 00000 n 
+0000016321 00000 n 
+0000016905 00000 n 
+0000017543 00000 n 
+0000017893 00000 n 
+0000018261 00000 n 
+0000018594 00000 n 
+0000018705 00000 n 
+0000018818 00000 n 
+0000018931 00000 n 
+0000019044 00000 n 
+0000019157 00000 n 
+0000019270 00000 n 
+0000019383 00000 n 
+0000019496 00000 n 
+0000019609 00000 n 
+0000019722 00000 n 
+0000019836 00000 n 
+0000019950 00000 n 
+0000020064 00000 n 
+0000020178 00000 n 
+0000020292 00000 n 
+0000020406 00000 n 
+0000020520 00000 n 
+0000020634 00000 n 
+0000020748 00000 n 
+0000020862 00000 n 
+0000020976 00000 n 
+0000021090 00000 n 
+0000021204 00000 n 
+0000021318 00000 n 
+0000021432 00000 n 
+0000021546 00000 n 
+0000021660 00000 n 
+0000021774 00000 n 
+0000021888 00000 n 
+0000022002 00000 n 
+0000022116 00000 n 
+0000022230 00000 n 
+0000022344 00000 n 
+0000022478 00000 n 
+0000022588 00000 n 
+0000022755 00000 n 
+0000022900 00000 n 
+0000023028 00000 n 
+0000023353 00000 n 
+0000023410 00000 n 
+0000023467 00000 n 
+0000023644 00000 n 
+0000024871 00000 n 
+0000025023 00000 n 
+0000025158 00000 n 
+0000025395 00000 n 
+0000107495 00000 n 
+0000108520 00000 n 
+0000168644 00000 n 
+0000221198 00000 n 
+0000222658 00000 n 
+0000224321 00000 n 
+0000224621 00000 n 
+0000225804 00000 n 
+0000226556 00000 n 
+0000226738 00000 n 
+0000301782 00000 n 
+0000379829 00000 n 
+0000380074 00000 n 
+0000380515 00000 n 
+0000546406 00000 n 
+0000546652 00000 n 
+0000548725 00000 n 
+0000548962 00000 n 
+0000550319 00000 n 
+0000550562 00000 n 
+0000553483 00000 n 
+0000553673 00000 n 
+0000553984 00000 n 
+0000554296 00000 n 
+0000554607 00000 n 
+0000554923 00000 n 
+0000555235 00000 n 
+0000555488 00000 n 
+0000555858 00000 n 
+0000556476 00000 n 
+0000557127 00000 n 
+0000557439 00000 n 
+0000560287 00000 n 
+0000560472 00000 n 
+0000560657 00000 n 
+0000560901 00000 n 
+0000561148 00000 n 
+0000588998 00000 n 
+0000589404 00000 n 
+0000589810 00000 n 
+0000590216 00000 n 
+0000590622 00000 n 
+0000590855 00000 n 
+0000591088 00000 n 
+0000591327 00000 n 
+0000591733 00000 n 
+0000593455 00000 n 
+0000595144 00000 n 
+0000633591 00000 n 
+0000633837 00000 n 
+0000634193 00000 n 
+0000635378 00000 n 
+0000710932 00000 n 
+0000711184 00000 n 
+0000715839 00000 n 
+0000716091 00000 n 
+0000717483 00000 n 
+0000736400 00000 n 
+0000736644 00000 n 
+0000737917 00000 n 
+0000781931 00000 n 
+0000782237 00000 n 
+0000785526 00000 n 
+0000785759 00000 n 
+0000791372 00000 n 
+0000791598 00000 n 
+0000791824 00000 n 
+0000792724 00000 n 
+0000793926 00000 n 
+0000798725 00000 n 
+0000807549 00000 n 
+0000808293 00000 n 
+0000808525 00000 n 
+0000808759 00000 n 
+0000808992 00000 n 
+0000809225 00000 n 
+0000810076 00000 n 
+0000811767 00000 n 
+0000812002 00000 n 
+0000822007 00000 n 
+0000823698 00000 n 
+0000825003 00000 n 
+0000826730 00000 n 
+0000826957 00000 n 
+0000827184 00000 n 
+0000827415 00000 n 
+0000829942 00000 n 
+0000830006 00000 n 
+0000830070 00000 n 
+0000830305 00000 n 
+0000833048 00000 n 
+0000837459 00000 n 
+0000837697 00000 n 
+0000837929 00000 n 
+0000840232 00000 n 
+0000840782 00000 n 
+0000843035 00000 n 
+0000848666 00000 n 
+0000858256 00000 n 
+0000861984 00000 n 
+0000864257 00000 n 
+0000864512 00000 n 
+0000866259 00000 n 
+0000866323 00000 n 
+0000871307 00000 n 
+0000871542 00000 n 
+0000871777 00000 n 
+0000874261 00000 n 
+0000877995 00000 n 
+0000878252 00000 n 
+0000878550 00000 n 
+0000879959 00000 n 
+0000898254 00000 n 
+0000912514 00000 n 
+0000912762 00000 n 
+0000915085 00000 n 
+0000915352 00000 n 
+0000918451 00000 n 
+0000927218 00000 n 
+0000927467 00000 n 
+0000932846 00000 n 
+0000980322 00000 n 
+0000996006 00000 n 
+0001002448 00000 n 
+0001016287 00000 n 
+0001016525 00000 n 
+0001019268 00000 n 
+0001020206 00000 n 
+0001021702 00000 n 
+0001030814 00000 n 
+0001033659 00000 n 
+0001041220 00000 n 
+0001042177 00000 n 
+0001043631 00000 n 
+0001052747 00000 n 
+0001055812 00000 n 
+0001063406 00000 n 
+0001064371 00000 n 
+0001065901 00000 n 
+0001075017 00000 n 
+0001078086 00000 n 
+0001080985 00000 n 
+0001082938 00000 n 
+0001083194 00000 n 
+0001084430 00000 n 
+0001084666 00000 n 
+0001085255 00000 n 
+0001228230 00000 n 
+0001228323 00000 n 
+0001228416 00000 n 
+0001228509 00000 n 
+0001228602 00000 n 
+0001228695 00000 n 
+0001228788 00000 n 
+0001228881 00000 n 
+0001228974 00000 n 
+0001229067 00000 n 
+0001229160 00000 n 
+0001229253 00000 n 
+0001229354 00000 n 
+0001229455 00000 n 
+0001229548 00000 n 
+0001229641 00000 n 
+0001229734 00000 n 
+0001229827 00000 n 
+0001229920 00000 n 
+0001230013 00000 n 
+0001230106 00000 n 
+0001230199 00000 n 
+0001230292 00000 n 
+0001230385 00000 n 
+0001230478 00000 n 
+0001230571 00000 n 
+0001230664 00000 n 
+0001230757 00000 n 
+0001230850 00000 n 
+0001230943 00000 n 
+0001231036 00000 n 
+0001231129 00000 n 
+0001231222 00000 n 
 0001231315 00000 n 
 0001231446 00000 n 
 0001231566 00000 n 
@@ -8334,70 +8352,76 @@ xref
 0001388017 00000 n 
 0001388365 00000 n 
 0001388701 00000 n 
-0001389116 00000 n 
-0001389374 00000 n 
-0001389790 00000 n 
-0001390198 00000 n 
-0001390583 00000 n 
-0001391040 00000 n 
-0001391437 00000 n 
-0001391812 00000 n 
-0001392235 00000 n 
-0001392660 00000 n 
-0001393050 00000 n 
-0001393489 00000 n 
-0001393861 00000 n 
-0001394227 00000 n 
-0001394469 00000 n 
-0001394707 00000 n 
-0001394938 00000 n 
-0001395180 00000 n 
-0001395501 00000 n 
-0001395855 00000 n 
-0001396136 00000 n 
-0001396372 00000 n 
-0001396638 00000 n 
-0001396932 00000 n 
-0001397309 00000 n 
-0001397523 00000 n 
-0001397714 00000 n 
-0001397914 00000 n 
-0001398119 00000 n 
-0001398251 00000 n 
-0001398417 00000 n 
-0001398566 00000 n 
-0001398704 00000 n 
-0001398844 00000 n 
-0001398988 00000 n 
-0001399122 00000 n 
-0001399246 00000 n 
-0001399406 00000 n 
-0001399590 00000 n 
-0001399757 00000 n 
-0001424732 00000 n 
-0001466920 00000 n 
-0001467052 00000 n 
-0001467207 00000 n 
-0001467365 00000 n 
-0001467523 00000 n 
-0001467670 00000 n 
-0001467833 00000 n 
-0001467909 00000 n 
-0001468171 00000 n 
-0001468226 00000 n 
-0001468302 00000 n 
-0001468564 00000 n 
-0001469043 00000 n 
-0001469175 00000 n 
-0001469317 00000 n 
-0001469475 00000 n 
-0001476624 00000 n 
-0001529284 00000 n 
-0001529414 00000 n 
-0001529545 00000 n 
-0001529675 00000 n 
-0001529818 00000 n 
-trailer << /Info 2 0 R /Root 1 0 R /Size 456 /ID [<ed4e65738909494e94117aff4e7b068b><fc7d8e64525dbedd0f2c6cbc366787dd>] >>
+0001388814 00000 n 
+0001388929 00000 n 
+0001389044 00000 n 
+0001389159 00000 n 
+0001389274 00000 n 
+0001389389 00000 n 
+0001389504 00000 n 
+0001389619 00000 n 
+0001389734 00000 n 
+0001389849 00000 n 
+0001389965 00000 n 
+0001390081 00000 n 
+0001390197 00000 n 
+0001390313 00000 n 
+0001390429 00000 n 
+0001390545 00000 n 
+0001390661 00000 n 
+0001390777 00000 n 
+0001390893 00000 n 
+0001391009 00000 n 
+0001391125 00000 n 
+0001391241 00000 n 
+0001391357 00000 n 
+0001391473 00000 n 
+0001391589 00000 n 
+0001391705 00000 n 
+0001391821 00000 n 
+0001391937 00000 n 
+0001392053 00000 n 
+0001392169 00000 n 
+0001392285 00000 n 
+0001392401 00000 n 
+0001392517 00000 n 
+0001392633 00000 n 
+0001392749 00000 n 
+0001392881 00000 n 
+0001393047 00000 n 
+0001393196 00000 n 
+0001393334 00000 n 
+0001393474 00000 n 
+0001393618 00000 n 
+0001393752 00000 n 
+0001393876 00000 n 
+0001394036 00000 n 
+0001394220 00000 n 
+0001394387 00000 n 
+0001419362 00000 n 
+0001461550 00000 n 
+0001461682 00000 n 
+0001461837 00000 n 
+0001461995 00000 n 
+0001462153 00000 n 
+0001462300 00000 n 
+0001462463 00000 n 
+0001462539 00000 n 
+0001462801 00000 n 
+0001462856 00000 n 
+0001462932 00000 n 
+0001463194 00000 n 
+0001463673 00000 n 
+0001463805 00000 n 
+0001463947 00000 n 
+0001464105 00000 n 
+0001471254 00000 n 
+0001523914 00000 n 
+0001524044 00000 n 
+0001524175 00000 n 
+0001524305 00000 n 
+0001524448 00000 n 
+trailer << /Info 2 0 R /Root 1 0 R /Size 462 /ID [<ed4e65738909494e94117aff4e7b068b><d0b8cb993478d7b327a2c84bf2f82152>] >>
 startxref
-1529961
+1524591
 %%EOF

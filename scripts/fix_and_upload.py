@@ -14,10 +14,11 @@ Usage:
     python fix_and_upload.py ITEC493 --item "chapter1.pdf"  # Process single item
     python fix_and_upload.py ITEC493 --dry-run    # Just list items, don't fix
 """
-import sys, os, time, json, argparse
+import sys, os, time, argparse
 sys.path.insert(0, os.path.dirname(__file__))
+from playwright.sync_api import sync_playwright
 from bb_utils import (connect, disconnect, dismiss_popup, navigate_to_report,
-                      save_json, DATA_DIR, COURSE_DIR)
+                      COURSE_DIR, CDP_URL)
 from fix_pdf import fix_pdf
 
 SCORE_THRESHOLD = 85
@@ -32,8 +33,42 @@ COURSES = {
 }
 
 
+def find_items_frame(page):
+    """Check if report Content tab is already loaded. Returns items_frame or None."""
+    for f in page.frames:
+        try:
+            count = f.evaluate('() => document.querySelectorAll("tr.ir-list-item").length')
+            if count > 0:
+                return f
+        except:
+            pass
+    return None
+
+
+def find_items_frame_all(browser):
+    """Search all pages in the browser for the report items frame."""
+    for pg in browser.contexts[0].pages:
+        frame = find_items_frame(pg)
+        if frame:
+            return frame
+    return None
+
+
 def open_report_content(page, course_id):
-    """Navigate to report and click Content tab. Returns items_frame or None."""
+    """Navigate to report and click Content tab. Returns items_frame or None.
+    Reuses already-loaded report if available."""
+    # Check if report is already loaded
+    items_frame = find_items_frame(page)
+    if items_frame:
+        return items_frame
+
+    # Also check other pages in the browser context
+    for pg in page.context.pages:
+        items_frame = find_items_frame(pg)
+        if items_frame:
+            return items_frame
+
+    # Not loaded — navigate fresh
     navigate_to_report(page, course_id)
     time.sleep(10)
     dismiss_popup(page)
@@ -53,13 +88,9 @@ def open_report_content(page, course_id):
     # Wait for Content tab items to load (can be slow)
     for attempt in range(12):
         time.sleep(5)
-        for f in page.frames:
-            try:
-                count = f.evaluate('() => document.querySelectorAll("tr.ir-list-item").length')
-                if count > 0:
-                    return f
-            except:
-                pass
+        items_frame = find_items_frame(page)
+        if items_frame:
+            return items_frame
     return None
 
 
@@ -86,21 +117,19 @@ def get_visible_items(items_frame):
     }""")
 
 
-def click_item_by_name(items_frame, name, browser):
-    """Click a report item by name. Returns the feedback page or None."""
+def click_item_by_name(items_frame, name, browser, p):
+    """Click a report item by name. Returns the feedback page or None.
+    Disconnects after clicking to free Chrome, then reconnects to find the popup."""
     # Close any existing feedback windows first
     for pg in list(browser.contexts[0].pages):
         if 'ally.ac' in pg.url and 'launchinstructorfeedback' in pg.url:
             pg.close()
             time.sleep(0.5)
 
-    pages_before = len(browser.contexts[0].pages)
-
-    # Use Playwright's native click on the item name text
+    # Click the item
     try:
         items_frame.click(f'text="{name}"', timeout=5000)
     except:
-        # Fallback to JS click
         items_frame.evaluate("""(targetName) => {
             const rows = document.querySelectorAll('tr.ir-list-item');
             for (const row of rows) {
@@ -113,18 +142,23 @@ def click_item_by_name(items_frame, name, browser):
             }
         }""", name)
 
-    # Wait for new window — skip if it takes more than 90 seconds
-    for _ in range(90):
-        time.sleep(1)
-        if len(browser.contexts[0].pages) > pages_before:
-            break
-    time.sleep(5)
+    # Disconnect to free Chrome so it can open the popup fast
+    browser.close()
+    p.stop()
+
+    # Wait for Chrome to open the popup
+    time.sleep(10)
+
+    # Reconnect
+    from bb_utils import CDP_URL
+    p_new = sync_playwright().start()
+    browser_new = p_new.chromium.connect_over_cdp(CDP_URL)
 
     # Find the feedback page
-    for pg in browser.contexts[0].pages:
+    for pg in browser_new.contexts[0].pages:
         if 'ally.ac' in pg.url and 'launchinstructorfeedback' in pg.url:
-            return pg
-    return None
+            return pg, browser_new, p_new
+    return None, browser_new, p_new
 
 
 def get_feedback_frame(fb_page):
@@ -241,22 +275,23 @@ def upload_fixed(fb_page, fixed_path):
     return None
 
 
-def process_item(name, file_type, items_frame, browser, download_dir):
-    """Process a single report item: download, fix, upload. Returns result dict."""
+def process_item(name, file_type, items_frame, browser, p, download_dir):
+    """Process a single report item: download, fix, upload.
+    Returns (result, browser, p) — browser/p may change due to reconnection."""
     result = {'name': name, 'type': file_type}
 
-    # Click item to open feedback
-    fb_page = click_item_by_name(items_frame, name, browser)
+    # Click item to open feedback (disconnects and reconnects)
+    fb_page, browser, p = click_item_by_name(items_frame, name, browser, p)
     if not fb_page:
         result['status'] = 'feedback not opened'
-        return result
+        return result, browser, p, browser, p
 
     fb_frame = get_feedback_frame(fb_page)
     if not fb_frame:
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'no feedback frame'
-        return result
+        return result, browser, p
 
     # Get current info
     info = get_feedback_info(fb_frame)
@@ -270,7 +305,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'skipped (not PDF)'
-        return result
+        return result, browser, p
 
     # Click "Show all issues" to get the full list from the report
     try:
@@ -293,7 +328,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'no fixable issues'
-        return result
+        return result, browser, p
 
     # Download original
     print(f"  Downloading original...")
@@ -303,7 +338,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'download failed'
-        return result
+        return result, browser, p
     file_size = os.path.getsize(orig_path)
     print(f"  Downloaded: {os.path.basename(orig_path)} ({file_size:,} bytes)")
 
@@ -313,7 +348,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'skipped (too large)'
-        return result
+        return result, browser, p
 
     # Check page count
     try:
@@ -325,7 +360,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
             fb_page.close()
             time.sleep(0.5)
             result['status'] = f'skipped ({page_count} pages)'
-            return result
+            return result, browser, p
     except:
         pass
 
@@ -337,7 +372,7 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         fb_page.close()
         time.sleep(0.5)
         result['status'] = 'nothing to fix'
-        return result
+        return result, browser, p
 
     fixed_path = fix_result['output']
     print(f"  Fixed: {', '.join(fix_result['fixed'])}")
@@ -356,11 +391,14 @@ def process_item(name, file_type, items_frame, browser, download_dir):
         result['status'] = 'upload timeout'
         print(f"  Upload verification timed out")
 
-    # Close feedback window
-    fb_page.close()
-    time.sleep(0.5)
+    # Close feedback window — disconnect/reconnect to free Chrome
+    browser.close()
+    p.stop()
+    time.sleep(2)
+    p = sync_playwright().start()
+    browser = p.chromium.connect_over_cdp(CDP_URL)
 
-    return result
+    return result, browser, p
 
 
 if __name__ == '__main__':
@@ -422,13 +460,20 @@ if __name__ == '__main__':
             disconnect(p, browser)
             sys.exit(1)
         print(f"[1/1] {target['name']} ({target['score']})")
-        result = process_item(target['name'], target['type'], items_frame, browser, download_dir)
+        result, browser, p = process_item(target['name'], target['type'], items_frame, browser, p, download_dir)
         results.append(result)
     else:
         # Process all targets
         for i, target in enumerate(targets):
             print(f"\n[{i+1}/{len(targets)}] {target['name']} ({target['score']})")
-            result = process_item(target['name'], target['type'], items_frame, browser, download_dir)
+            # Re-find items_frame after reconnection
+            items_frame = find_items_frame_all(browser)
+            if not items_frame:
+                items_frame = open_report_content(browser.contexts[0].pages[-1], course_id)
+            if not items_frame:
+                print("  ERROR: Lost report, stopping")
+                break
+            result, browser, p = process_item(target['name'], target['type'], items_frame, browser, p, download_dir)
             results.append(result)
 
     # Summary
