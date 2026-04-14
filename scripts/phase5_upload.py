@@ -333,14 +333,22 @@ def upload_all(course_key):
     print(f"Phase 5: Uploading for {course_key}", flush=True)
     print(f"Fixed files available: {len(fixed_index)}", flush=True)
 
-    # Check if report is already loaded, otherwise navigate
+    # Check if report is already loaded with items, otherwise navigate/reload
     p, browser, page = connect()
     report_page = get_report_page(browser)
-    items_frame = find_items_frame(report_page) if report_page else None
+    items = []
+    if report_page:
+        items_frame = find_items_frame(report_page)
+        if items_frame:
+            items = get_page_items(items_frame)
     disconnect(p, browser)
 
-    if items_frame:
-        print("Report already loaded.", flush=True)
+    if items:
+        print(f"Report already loaded with {len(items)} items.", flush=True)
+    elif report_page:
+        print("Report page exists but items empty, reloading...", flush=True)
+        reload_report_content(reload_wait=10, tab_wait=5)
+        print("Report reloaded.", flush=True)
     else:
         print("Navigating to report...", flush=True)
         navigate_to_report_content(course_id, nav_wait=10, tab_wait=5)
@@ -364,8 +372,17 @@ def upload_all(course_key):
         disconnect(p, browser)
 
         if not items:
-            print("  No items found on page")
-            break
+            print("  No items on page — reloading report...", flush=True)
+            reload_report_content(reload_wait=10, tab_wait=5)
+            # Re-check
+            p, browser, page = connect()
+            report_page = get_report_page(browser)
+            items_frame = find_items_frame(report_page) if report_page else None
+            items = get_page_items(items_frame) if items_frame else []
+            disconnect(p, browser)
+            if not items:
+                print("  Still no items after reload — stopping", flush=True)
+                break
 
         # Find first item below 85% that we haven't permanently skipped
         target = None
