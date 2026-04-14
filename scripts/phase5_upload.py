@@ -419,10 +419,12 @@ def upload_all(course_key):
             close_feedback_windows()
             fixed_path = download_and_fix_from_feedback(name, course_key)
             if not fixed_path:
-                print(f"    -> download/fix failed, skipping")
+                print(f"    -> download/fix failed, skipping", flush=True)
                 skipped.add(name)
                 results.append({'report_name': name, 'status': 'download failed'})
-                reload_report_content(reload_wait=5, tab_wait=5)
+                # Close any feedback window and reload report
+                close_feedback_windows()
+                reload_report_content(reload_wait=10, tab_wait=5)
                 continue
             # Add to index for future
             fixed_index[name] = fixed_path
