@@ -76,45 +76,49 @@ def fix_single_file(fpath, download_entry):
         ext = os.path.splitext(working_path)[1].lower()
         stem = os.path.splitext(os.path.basename(working_path))[0]
 
-    fixed_path = os.path.join(directory, stem + '_fixed' + ext)
+    # Naming: rename original to backup_*, fix writes to original name
+    backup_path = os.path.join(directory, 'backup_' + os.path.basename(working_path))
+    fixed_path = os.path.join(directory, os.path.basename(working_path))
+
+    # Create backup if not already backed up
+    if not os.path.exists(backup_path):
+        import shutil
+        shutil.copy2(working_path, backup_path)
     fixes = []
     images_needing_alt = []
 
     try:
         if ext == '.pdf':
-            result = fix_pdf(working_path, fixed_path)
+            result = fix_pdf(backup_path, fixed_path)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
-            source = fixed_path if os.path.exists(fixed_path) else working_path
             try:
-                result2 = add_headings_to_pdf(source, fixed_path)
+                result2 = add_headings_to_pdf(fixed_path, fixed_path)
                 if result2.get('status') == 'fixed':
                     fixes.append(f"{result2.get('headings_found', 0)} headings")
             except Exception as e:
                 fixes.append(f'headings error: {e}')
 
         elif ext == '.docx':
-            result = fix_docx(working_path, fixed_path)
+            result = fix_docx(backup_path, fixed_path)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
             # Extract images needing alt text
             imgs_dir = os.path.join(directory, '_imgs_' + stem)
-            images = extract_docx_images(
-                fixed_path if os.path.exists(fixed_path) else working_path, imgs_dir)
+            images = extract_docx_images(fixed_path, imgs_dir)
             if images:
                 images_needing_alt = images
 
         elif ext == '.pptx':
-            result = fix_pptx(working_path, fixed_path)
+            result = fix_pptx(backup_path, fixed_path)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
             # Extract images needing alt text
             imgs_dir = os.path.join(directory, '_imgs_' + stem)
-            source = fixed_path if os.path.exists(fixed_path) else working_path
-            images = extract_pptx_images(source, imgs_dir)
+            images = extract_pptx_images(fixed_path, imgs_dir)
             if images:
                 images_needing_alt = images
 

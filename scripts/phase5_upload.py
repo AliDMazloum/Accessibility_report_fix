@@ -25,47 +25,45 @@ from bb_utils import (get_course, connect, disconnect, load_json, save_json,
 
 def build_fixed_index(course_key):
     """Build an index mapping report names to fixed file paths.
-    Deduplicates by keeping the first match."""
+
+    Looks for files that have a corresponding backup_* file — meaning they've been fixed.
+    Also supports legacy _fixed.* naming from previous runs.
+    """
     course = get_course(course_key)
     course_dir = os.path.join(COURSE_DIR, course['dir'])
 
     index = {}  # report_name -> fixed_path
     for root, dirs, files in os.walk(course_dir):
         for fname in files:
-            if '_fixed.' not in fname:
-                continue
             fpath = os.path.join(root, fname)
 
-            # Map back to possible report names
-            # e.g. "IOS-review_fixed.pptx" -> "IOS-review.ppt" or "IOS-review.pptx"
-            base = fname.replace('_fixed.', '.')
-            stem = os.path.splitext(base)[0]
-            fixed_ext = os.path.splitext(fname)[1]
+            # New naming: file has a backup_* counterpart
+            if not fname.startswith('backup_') and ('backup_' + fname) in files:
+                # This file has been fixed (backup exists)
+                if fname not in index:
+                    index[fname] = fpath
+                # Also map .ppt/.doc names for converted files
+                stem = os.path.splitext(fname)[0]
+                ext = os.path.splitext(fname)[1].lower()
+                if ext == '.pptx':
+                    index[stem + '.ppt'] = fpath
+                elif ext == '.docx':
+                    index[stem + '.doc'] = fpath
 
-            # Try exact match (report name without _fixed)
-            if base not in index:
-                index[base] = fpath
+            # Legacy naming: _fixed.* files from previous runs
+            elif '_fixed.' in fname:
+                base = fname.replace('_fixed.', '.')
+                stem = os.path.splitext(base)[0]
+                ext = os.path.splitext(fname)[1].lower()
 
-            # Map the _fixed name itself (report may show _fixed after previous upload)
-            if fname not in index:
-                index[fname] = fpath
-
-            # Try with original extension (.ppt for .pptx, .doc for .docx)
-            if fixed_ext == '.pptx':
-                orig = stem + '.ppt'
-                if orig not in index:
-                    index[orig] = fpath
-                # Also map _fixed.pptx name with .ppt extension
-                fixed_ppt = stem + '_fixed.ppt'
-                if fixed_ppt not in index:
-                    index[fixed_ppt] = fpath
-            elif fixed_ext == '.docx':
-                orig = stem + '.doc'
-                if orig not in index:
-                    index[orig] = fpath
-                fixed_doc = stem + '_fixed.doc'
-                if fixed_doc not in index:
-                    index[fixed_doc] = fpath
+                if base not in index:
+                    index[base] = fpath
+                if fname not in index:
+                    index[fname] = fpath
+                if ext == '.pptx' and (stem + '.ppt') not in index:
+                    index[stem + '.ppt'] = fpath
+                elif ext == '.docx' and (stem + '.doc') not in index:
+                    index[stem + '.doc'] = fpath
 
     return index
 
@@ -247,6 +245,13 @@ def download_and_fix_from_feedback(item_name, course_key):
     if not downloaded_path:
         return None
 
+    # Check file size — skip if too large
+    size_mb = os.path.getsize(downloaded_path) / (1024 * 1024)
+    max_size = 20 if os.path.splitext(downloaded_path)[1].lower() in ('.pptx', '.ppt', '.docx', '.doc') else 5
+    if size_mb > max_size:
+        print(f"    Skipping: too large ({size_mb:.1f} MB)", flush=True)
+        return None
+
     # Step 3: Fix the file
     ext = os.path.splitext(downloaded_path)[1].lower()
     stem = os.path.splitext(os.path.basename(downloaded_path))[0]
@@ -268,24 +273,28 @@ def download_and_fix_from_feedback(item_name, course_key):
             ext = new_ext
             stem = os.path.splitext(os.path.basename(working_path))[0]
 
-    fixed_path = os.path.join(download_dir, stem + '_fixed' + ext)
+    # Backup original, fix writes to original name
+    import shutil
+    backup_path = os.path.join(download_dir, 'backup_' + os.path.basename(working_path))
+    if not os.path.exists(backup_path):
+        shutil.copy2(working_path, backup_path)
+    fixed_path = working_path  # Fixed file keeps the original name
 
     try:
         if ext == '.pdf':
             from fix_pdf import fix_pdf
             from add_headings import add_headings_to_pdf
-            fix_pdf(working_path, fixed_path)
-            source = fixed_path if os.path.exists(fixed_path) else working_path
+            fix_pdf(backup_path, fixed_path)
             try:
-                add_headings_to_pdf(source, fixed_path)
+                add_headings_to_pdf(fixed_path, fixed_path)
             except:
                 pass
         elif ext == '.docx':
             from fix_office import fix_docx
-            fix_docx(working_path, fixed_path)
+            fix_docx(backup_path, fixed_path)
         elif ext == '.pptx':
             from fix_office import fix_pptx
-            fix_pptx(working_path, fixed_path)
+            fix_pptx(backup_path, fixed_path)
     except Exception as e:
         print(f"    Fix error: {e}")
 
@@ -304,10 +313,18 @@ def upload_all(course_key):
     print(f"Phase 5: Uploading for {course_key}", flush=True)
     print(f"Fixed files available: {len(fixed_index)}", flush=True)
 
-    # Navigate to report content tab
-    print("Navigating to report...", flush=True)
-    navigate_to_report_content(course_id, nav_wait=10, tab_wait=5)
-    print("Report loaded.", flush=True)
+    # Check if report is already loaded, otherwise navigate
+    p, browser, page = connect()
+    report_page = get_report_page(browser)
+    items_frame = find_items_frame(report_page) if report_page else None
+    disconnect(p, browser)
+
+    if items_frame:
+        print("Report already loaded.", flush=True)
+    else:
+        print("Navigating to report...", flush=True)
+        navigate_to_report_content(course_id, nav_wait=10, tab_wait=5)
+        print("Report loaded.", flush=True)
 
     results = []
     uploaded = 0
