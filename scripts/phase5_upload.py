@@ -231,15 +231,27 @@ def download_and_fix_from_feedback(item_name, course_key):
     disconnect(p, browser)
     time.sleep(15)
 
-    # Find the downloaded file
+    # Find the downloaded file — check target dir first, then default Downloads folder
     downloaded_path = None
-    for f in os.listdir(download_dir):
-        if f.endswith('.crdownload') or f.endswith('.tmp'):
+    search_dirs = [download_dir, os.path.expanduser('~/Downloads')]
+    for search_dir in search_dirs:
+        if not os.path.exists(search_dir):
             continue
-        fpath = os.path.join(download_dir, f)
-        # Check if it's a new file (modified in last 30 seconds)
-        if os.path.getmtime(fpath) > time.time() - 30:
-            downloaded_path = fpath
+        for f in os.listdir(search_dir):
+            if f.endswith('.crdownload') or f.endswith('.tmp'):
+                continue
+            fpath = os.path.join(search_dir, f)
+            # Check if it's a new file (modified in last 30 seconds)
+            if os.path.getmtime(fpath) > time.time() - 30:
+                # Move to target dir if it's in default Downloads
+                if search_dir != download_dir:
+                    import shutil
+                    target = os.path.join(download_dir, f)
+                    shutil.move(fpath, target)
+                    fpath = target
+                downloaded_path = fpath
+                break
+        if downloaded_path:
             break
 
     if not downloaded_path:

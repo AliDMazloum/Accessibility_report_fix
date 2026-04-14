@@ -80,10 +80,21 @@ def fix_single_file(fpath, download_entry):
     backup_path = os.path.join(directory, 'backup_' + os.path.basename(working_path))
     fixed_path = os.path.join(directory, os.path.basename(working_path))
 
+    # Skip if working file is empty or doesn't exist
+    if not os.path.exists(working_path) or os.path.getsize(working_path) == 0:
+        return {'report_name': report_name, 'fixed_path': None,
+                'fixes': [], 'images_need_alt': 0,
+                'skipped_reason': 'file empty or missing'}
+
     # Create backup if not already backed up
     if not os.path.exists(backup_path):
         import shutil
-        shutil.copy2(working_path, backup_path)
+        try:
+            shutil.copy2(working_path, backup_path)
+        except Exception as e:
+            return {'report_name': report_name, 'fixed_path': None,
+                    'fixes': [], 'images_need_alt': 0,
+                    'skipped_reason': f'backup failed: {e}'}
     fixes = []
     images_needing_alt = []
 
