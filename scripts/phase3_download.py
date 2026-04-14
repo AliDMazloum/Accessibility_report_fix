@@ -251,29 +251,6 @@ def visit_and_download(page, browser, course_id, item_id, section_dir, targets, 
 
     all_files = get_all_files_from_more_options(page)
 
-    # Try 2: If nothing found, try alternative URL patterns
-    if not iframe_file and not all_files:
-        alt_urls = [
-            f"https://blackboard.sc.edu/ultra/courses/{course_id}/outline/assessment/test/{item_id}?courseId={course_id}&gradeitemView=details",
-        ]
-        for alt_url in alt_urls:
-            try:
-                page.goto(alt_url, wait_until="domcontentloaded", timeout=15000)
-            except:
-                continue
-            time.sleep(3)
-            dismiss_popup(page)
-            click_inner_content_link(page)
-            time.sleep(3)
-            iframe_file = get_file_from_iframe(page)
-            if iframe_file:
-                result = _try_download_file(page, browser, section_dir,
-                                             iframe_file, target_names, norm_lookup, method='viewer')
-                results.append(result)
-            all_files = get_all_files_from_more_options(page)
-            if iframe_file or all_files:
-                break  # Found files with this URL pattern
-
     for file_name in all_files:
         # Skip if already handled by iframe method
         if iframe_file and file_name == iframe_file:
