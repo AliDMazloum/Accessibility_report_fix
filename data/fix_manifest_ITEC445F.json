@@ -1,0 +1,1238 @@
+{
+  "course": "ITEC445F",
+  "fixed_count": 109,
+  "skipped_count": 27,
+  "total_images_needing_alt": 894,
+  "fixed": [
+    {
+      "report_name": "wlan.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/wlan.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/wlan_fixed.pptx",
+      "fixes": [
+        "title",
+        "language"
+      ],
+      "images_need_alt": 26,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "advance_topics.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/advance_topics.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/advance_topics_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 14,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Network Security.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/Network Security.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Top Level/Network Security_fixed.pptx",
+      "fixes": [
+        "language",
+        "3 slide titles"
+      ],
+      "images_need_alt": 20,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Cyberinfrastructure_Training_User_Guide.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Resources/Cyberinfrastructure_Training_User_Guide.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Resources/Cyberinfrastructure_Training_User_Guide_fixed.pdf",
+      "fixes": [
+        "5 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Cyberinfrastructure_Training_User_Guide.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Resources/Cyberinfrastructure_Training_User_Guide.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Resources/Cyberinfrastructure_Training_User_Guide_fixed.pdf",
+      "fixes": [
+        "5 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Introduction to Networks.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Introduction to Networks.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Introduction to Networks_fixed.pdf",
+      "fixes": [
+        "28 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Introduction to Networks.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Introduction to Networks.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Introduction to Networks_fixed.pdf",
+      "fixes": [
+        "28 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IOS-review.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review.ppt",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review_fixed.pptx",
+      "fixes": [
+        "1 table headers"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "review_IP_Addressing.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing_fixed.pdf",
+      "fixes": [
+        "71 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IOS-review.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review.ppt",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review_fixed.pptx",
+      "fixes": [
+        "1 table headers"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "review_IP_Addressing.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing_fixed.pdf",
+      "fixes": [
+        "71 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 1 - basic device configuration I.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Module 1 - basic device configuration I.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Module 1 - basic device configuration I_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 9,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 1 - basic device configuration I.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Module 1 - basic device configuration I.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/Module 1 - basic device configuration I_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 9,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IntroductionNetworks.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IntroductionNetworks.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IntroductionNetworks_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 9,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IOS-review.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review.ppt",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review_fixed.pptx",
+      "fixes": [
+        "1 table headers"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "review_IP_Addressing.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 51,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IntroductionNetworks.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IntroductionNetworks.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IntroductionNetworks_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 9,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "IOS-review.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review.ppt",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/IOS-review_fixed.pptx",
+      "fixes": [
+        "1 table headers"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "review_IP_Addressing.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration/review_IP_Addressing.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 51,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts 2 - Collision Domain.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 2 - Collision Domain.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 2 - Collision Domain_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts 2 - Collision Domain.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 2 - Collision Domain.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 2 - Collision Domain_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts 3 - Broacast Domains.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 3 - Broacast Domains.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 3 - Broacast Domains_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts 3 - Broacast Domains.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 3 - Broacast Domains.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts 3 - Broacast Domains_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts Complete.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts Complete.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts Complete_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 21,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module 2 - Switching Concepts Complete.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts Complete.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 2 - Switching Concepts/Module 2 - Switching Concepts Complete_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 21,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "vlans.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/vlans.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/vlans_fixed.pdf",
+      "fixes": [
+        "34 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "vlans.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/vlans.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/vlans_fixed.pdf",
+      "fixes": [
+        "34 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - vlans fundamentals 1.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 1 - vlans fundamentals 1.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 4,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - vlans fundamentals 1.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 1 - vlans fundamentals 1.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 4,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - vlans - trunks and 802-1Q.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 2 - vlans - trunks and 802-1Q.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 7,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - vlans - trunks and 802-1Q.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 2 - vlans - trunks and 802-1Q.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 7,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - VLAN configuration.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 3 - VLAN configuration.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 14,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - VLAN configuration.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 3 - Virtual Local Area Networks/Lecture 3 - VLAN configuration.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 14,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Intro to InterVLAN and Legacy InterVLAN.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 1 - Intro to InterVLAN and Legacy InterVLAN.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 1 - Intro to InterVLAN and Legacy InterVLAN_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Intro to InterVLAN and Legacy InterVLAN.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 1 - Intro to InterVLAN and Legacy InterVLAN.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 1 - Intro to InterVLAN and Legacy InterVLAN_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - InterVLAN routing - routing on a stick.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 2 - InterVLAN routing - routing on a stick.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 2 - InterVLAN routing - routing on a stick_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 4,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - InterVLAN routing - routing on a stick.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 2 - InterVLAN routing - routing on a stick.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 2 - InterVLAN routing - routing on a stick_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 4,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - L3 switches and Inter-VLAN.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 3 - L3 switches and Inter-VLAN.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 3 - L3 switches and Inter-VLAN_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 3,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - L3 switches and Inter-VLAN.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 3 - L3 switches and Inter-VLAN.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Lecture 3 - L3 switches and Inter-VLAN_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 3,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module4-InterVLAN.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-InterVLAN.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-InterVLAN_fixed.pdf",
+      "fixes": [
+        "17 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module4-InterVLAN.pdf",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-InterVLAN.pdf",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-InterVLAN_fixed.pdf",
+      "fixes": [
+        "17 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module4-interVLAN.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-interVLAN.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 16,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Module4-interVLAN.ppt",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 4 - InterVLAN Routing/Module4-interVLAN.ppt",
+      "fixed_path": null,
+      "fixes": [],
+      "images_need_alt": 16,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Building the Spanning Tree.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 5 - Spanning Tree Protocol/Lecture 2 - Building the Spanning Tree.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 5 - Spanning Tree Protocol/Lecture 2 - Building the Spanning Tree_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 11,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Building the Spanning Tree.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 5 - Spanning Tree Protocol/Lecture 2 - Building the Spanning Tree.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 5 - Spanning Tree Protocol/Lecture 2 - Building the Spanning Tree_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 11,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "email updates Module 6.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 6 - EtherChannel/email updates Module 6.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 6 - EtherChannel/email updates Module 6_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "6 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "email updates Module 6.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 6 - EtherChannel/email updates Module 6.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 6 - EtherChannel/email updates Module 6_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "6 headings"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Introduction to DHCP.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 7 - DHCPv4/Introduction to DHCP.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 7 - DHCPv4/Introduction to DHCP_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 22,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Introduction to DHCP.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 7 - DHCPv4/Introduction to DHCP.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 7 - DHCPv4/Introduction to DHCP_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 22,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 IPv6 Global Unicast Address Assignment.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 1 IPv6 Global Unicast Address Assignment.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 1 IPv6 Global Unicast Address Assignment_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 18,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 IPv6 Global Unicast Address Assignment.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 1 IPv6 Global Unicast Address Assignment.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 1 IPv6 Global Unicast Address Assignment_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 18,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 DHCPv6.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 2 DHCPv6.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 2 DHCPv6_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 DHCPv6.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 2 DHCPv6.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6/Lecture 2 DHCPv6_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "switch fundamentals.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/switch fundamentals.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/switch fundamentals_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "switch fundamentals.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/switch fundamentals.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/switch fundamentals_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.3.12 Packet Tracer - VLAN Configuration_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.3.12 Packet Tracer - VLAN Configuration_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "3.4.5 Packet Tracer - Configure Trunks.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.4.5 Packet Tracer - Configure Trunks.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.4.5 Packet Tracer - Configure Trunks_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "3.4.5 Packet Tracer - Configure Trunks.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.4.5 Packet Tracer - Configure Trunks.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/3.4.5 Packet Tracer - Configure Trunks_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/6.2.4 Packet Tracer - Configure EtherChannel_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/6.2.4 Packet Tracer - Configure EtherChannel_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "7.2.10 Packet Tracer - Configure DHCPv4.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/7.2.10 Packet Tracer - Configure DHCPv4.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/7.2.10 Packet Tracer - Configure DHCPv4_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "7.2.10 Packet Tracer - Configure DHCPv4.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/7.2.10 Packet Tracer - Configure DHCPv4.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/7.2.10 Packet Tracer - Configure DHCPv4_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "In-class Example - ITEC 445 - InterVLAN Communications.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example - ITEC 445 - InterVLAN Communications.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example - ITEC 445 - InterVLAN Communications_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "In-class Example - ITEC 445 - InterVLAN Communications.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example - ITEC 445 - InterVLAN Communications.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example - ITEC 445 - InterVLAN Communications_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "In-class Example 2 - ITEC 445 - InterVLAN Communications.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example 2 - ITEC 445 - InterVLAN Communications.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example 2 - ITEC 445 - InterVLAN Communications_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "In-class Example 2 - ITEC 445 - InterVLAN Communications.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example 2 - ITEC 445 - InterVLAN Communications.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/In-class Example 2 - ITEC 445 - InterVLAN Communications_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 1 - 1.4.7 Packet Tracer - Configure Router Interfaces_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/Lab 5 - 6.2.4 Packet Tracer - Configure EtherChannel_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "HW 2 - 3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/HW 2 - 3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/HW 2 - 3.3.12 Packet Tracer - VLAN Configuration_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "HW 2 - 3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/HW 2 - 3.3.12 Packet Tracer - VLAN Configuration.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review/HW 2 - 3.3.12 Packet Tracer - VLAN Configuration_fixed.docx",
+      "fixes": [
+        "language",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - HSRP Demo.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)/Lecture 3 - HSRP Demo.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)/Lecture 3 - HSRP Demo_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - HSRP Demo.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)/Lecture 3 - HSRP Demo.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)/Lecture 3 - HSRP Demo_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 LAN Security Concepts.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 1 LAN Security Concepts.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 1 LAN Security Concepts_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 22,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 LAN Security Concepts.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 1 LAN Security Concepts.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 1 LAN Security Concepts_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 22,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 LAN Security Threats.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 2 LAN Security Threats.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 2 LAN Security Threats_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 LAN Security Threats.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 2 LAN Security Threats.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 2 LAN Security Threats_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 Attack Examples.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 3 Attack Examples.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 3 Attack Examples_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 21,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 Attack Examples.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 3 Attack Examples.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 10 - LAN Security Concepts/Lecture 3 Attack Examples_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 21,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 Port Security.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security/Lecture 1 Port Security.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security/Lecture 1 Port Security_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 Port Security.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security/Lecture 1 Port Security.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security/Lecture 1 Port Security_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Introduction to Routing and LPM.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 1 - Introduction to Routing and LPM.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 1 - Introduction to Routing and LPM_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Introduction to Routing and LPM.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 1 - Introduction to Routing and LPM.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 1 - Introduction to Routing and LPM_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Packet Forwarding.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 2 - Packet Forwarding.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 2 - Packet Forwarding_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 7,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Packet Forwarding.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 2 - Packet Forwarding.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 2 - Packet Forwarding_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 7,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - Basic Router Configuration.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 3 - Basic Router Configuration.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 3 - Basic Router Configuration_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 3 - Basic Router Configuration.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 3 - Basic Router Configuration.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 3 - Basic Router Configuration_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 4 - Understanding the Routing Table.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 4 - Understanding the Routing Table.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 4 - Understanding the Routing Table_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 17,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 4 - Understanding the Routing Table.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 4 - Understanding the Routing Table.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 4 - Understanding the Routing Table_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 17,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 5 - Routing Table Structure and AD.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 5 - Routing Table Structure and AD.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 5 - Routing Table Structure and AD_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 5 - Routing Table Structure and AD.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 5 - Routing Table Structure and AD.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 12 - Routing Concepts/Lecture 5 - Routing Table Structure and AD_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 5,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Static Routing.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 1 - Static Routing.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 1 - Static Routing_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 39,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 - Static Routing.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 1 - Static Routing.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 1 - Static Routing_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 39,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Default Route.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 2 - Default Route.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 2 - Default Route_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 - Default Route.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 2 - Default Route.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 2 - Default Route_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 15,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 4 - Static Host Routes.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 4 - Static Host Routes.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 4 - Static Host Routes_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 14,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 4 - Static Host Routes.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 4 - Static Host Routes.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing/Lecture 4 - Static Host Routes_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 14,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 Troubleshooting Tools.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 1 Troubleshooting Tools.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 1 Troubleshooting Tools_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 10,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 1 Troubleshooting Tools.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 1 Troubleshooting Tools.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 1 Troubleshooting Tools_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 10,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 Packet Processing.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 2 Packet Processing.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 2 Packet Processing_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Lecture 2 Packet Processing.pptx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 2 Packet Processing.pptx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 14 - Troubleshooting Static Routes/Lecture 2 Packet Processing_fixed.pptx",
+      "fixes": [
+        "language"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Basic IPv4 Routing.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Basic IPv4 Routing.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Basic IPv4 Routing_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Basic IPv4 Routing.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Basic IPv4 Routing.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Basic IPv4 Routing_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "3 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 1,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Static Routing.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Static Routing.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Static Routing_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "1 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    },
+    {
+      "report_name": "Static Routing.docx",
+      "original_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Static Routing.docx",
+      "fixed_path": "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Final Exam Review/Static Routing_fixed.docx",
+      "fixes": [
+        "title",
+        "language",
+        "1 headings",
+        "1 table headers"
+      ],
+      "images_need_alt": 0,
+      "skipped_reason": null
+    }
+  ],
+  "skipped": [
+    {
+      "report_name": "cybersecurity-survival-guide-5E.pdf",
+      "reason": "too large (6.2 MB > 5 MB)"
+    },
+    {
+      "report_name": "cybersecurity-survival-guide-5E.pdf",
+      "reason": "too large (6.2 MB > 5 MB)"
+    },
+    {
+      "report_name": "Module 1 - basic device configuration - routers.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration\\\\_imgs_Module 1 - basic device configuration - routers\\\\slide3_shape3.png'"
+    },
+    {
+      "report_name": "Module 1 - basic device configuration - routers.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 1 - Basic device configuration\\\\_imgs_Module 1 - basic device configuration - routers\\\\slide3_shape3.png'"
+    },
+    {
+      "report_name": "vlans(1).ppt",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "vlans(1).ppt",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "STP Concepts(1).pptx",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "STP Concepts(1).pptx",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "Lecture 1 - Introduction to EtherChannel (2).pptx",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "Lecture 1 - Introduction to EtherChannel (2).pptx",
+      "reason": "file not found"
+    },
+    {
+      "report_name": "Lecture 4 Configuring Stateless and Stateful DHCP Server.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6\\\\_imgs_Lecture 4 Configuring Stateless and Stateful DHCP Server\\\\slide11_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 4 Configuring Stateless and Stateful DHCP Server.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 8 - SLAAC and DHCPv6\\\\_imgs_Lecture 4 Configuring Stateless and Stateful DHCP Server\\\\slide11_shape4.png'"
+    },
+    {
+      "report_name": "Lab 3 - 4.3.8 Packet Tracer - Configure Layer 3 Switching and Inter-VLAN Routing.docx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Pre-Midterm Review\\\\Lab 3 - 4.3.8 Packet Tracer - Configure Layer 3 Switching and Inter-VLAN Routing_fixed.docx'"
+    },
+    {
+      "report_name": "Lecture 1 - First Hop Redundancy Protocols.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)\\\\_imgs_Lecture 1 - First Hop Redundancy Protocols\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 1 - First Hop Redundancy Protocols.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)\\\\_imgs_Lecture 1 - First Hop Redundancy Protocols\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 2 - Hot Standby Router Protocol.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)\\\\_imgs_Lecture 2 - Hot Standby Router Protocol\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 2 - Hot Standby Router Protocol.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 9 - First Hop Redundancy Protocol (FHRP)\\\\_imgs_Lecture 2 - Hot Standby Router Protocol\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 2 Mitigate VLAN Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 2 Mitigate VLAN Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 2 Mitigate VLAN Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 2 Mitigate VLAN Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 3 Mitigate DHCP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 3 Mitigate DHCP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 3 Mitigate DHCP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 3 Mitigate DHCP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 4 Mitigate ARP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 4 Mitigate ARP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 4 Mitigate ARP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 4 Mitigate ARP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 5 Mitigate STP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 5 Mitigate STP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 5 Mitigate STP Attacks.pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 11 - Mitigating Cyber-attacks with Switch Security\\\\_imgs_Lecture 5 Mitigate STP Attacks\\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 3 - Floating Static Routes .pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing\\\\_imgs_Lecture 3 - Floating Static Routes \\\\slide3_shape4.png'"
+    },
+    {
+      "report_name": "Lecture 3 - Floating Static Routes .pptx",
+      "reason": "error: [Errno 2] No such file or directory: 'C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report/course_content/ITEC445-001-FALL-2025/Module 13 - Static Routing\\\\_imgs_Lecture 3 - Floating Static Routes \\\\slide3_shape4.png'"
+    }
+  ]
+}

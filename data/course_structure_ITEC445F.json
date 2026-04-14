@@ -1,0 +1,534 @@
+{
+  "_course_name": "ITEC445-001-FALL-2025",
+  "_top_level": [
+    {
+      "id": "_25378142_1",
+      "type": "Text Document",
+      "title": "Course Participation Confirmation - Title IV Federal Student Aid Compliance and Early Intervention",
+      "parentId": "root"
+    },
+    {
+      "id": "_25378143_1",
+      "type": "Custom Item",
+      "title": "Course Participation Confirmation Quiz",
+      "parentId": "root"
+    },
+    {
+      "id": "_26505612_1",
+      "type": "Text Document",
+      "title": "Syllabus",
+      "parentId": "root"
+    }
+  ],
+  "Resources": [
+    {
+      "id": "_26673971_1",
+      "title": "Cybersecurity Survival Guide",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26673972_1",
+      "title": "URL to Cisco Network Academy",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26673973_1",
+      "title": "Access to NETLAB",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26673974_1",
+      "title": "CCNA Information",
+      "type": "Text Document"
+    }
+  ],
+  "Assignments": [
+    {
+      "id": "_26563173_1",
+      "title": "Extra Credit Assignments",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26563174_1",
+      "title": "Labs",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26563175_1",
+      "title": "Homeworks",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26563176_1",
+      "title": "Online Cisco Exams",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26563177_1",
+      "title": "Midterm",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26949838_1",
+      "title": "In-class assignment",
+      "type": "Folder",
+      "children": []
+    },
+    {
+      "id": "_26563178_1",
+      "title": "Final Exam",
+      "type": "Folder",
+      "children": []
+    }
+  ],
+  "Module 1: Basic device configuration": [
+    {
+      "id": "_26563167_1",
+      "title": "Lecture 1 - Welcome to ITEC 445",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563171_1",
+      "title": "Review IP Address and IOS",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563168_1",
+      "title": "Lecture 2 - Basic Device Configuration Part 1",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563169_1",
+      "title": "Lecture 3 - Basic Device Configuration Part 2",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563170_1",
+      "title": "Lecture 4 - Basic Device Configuration Part 3",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563172_1",
+      "title": "Instructor Slides",
+      "type": "Text Document"
+    }
+  ],
+  "Module 2: Switching Concepts": [
+    {
+      "id": "_26563179_1",
+      "title": "Lecture 1: Switch Fundamentals",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563180_1",
+      "title": "Lecture 2: Collision Domains",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563181_1",
+      "title": "Lecture 3: Broadcast Domains",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563182_1",
+      "title": "Slides Instructor",
+      "type": "Text Document"
+    }
+  ],
+  "Module 3: Virtual Local Area Networks": [
+    {
+      "id": "_26563183_1",
+      "title": "Lecture VLANs",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563184_1",
+      "title": "Slides - Instructor",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563185_1",
+      "title": "Lecture 1: VLANs Fundamentals",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563186_1",
+      "title": "Lecture 2: Trunks and 802.1Q",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563187_1",
+      "title": "Lecture 3 - VLAN Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563188_1",
+      "title": "Lecture 4: Configuring a Network with VLANs",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563189_1",
+      "title": "Lecture 5: Native VLANs",
+      "type": "Text Document"
+    }
+  ],
+  "Module 4: InterVLAN Routing": [
+    {
+      "id": "_26563190_1",
+      "title": "Lecture 1: Intro to InterVLAN Routing and Legacy InterVLAN",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563191_1",
+      "title": "Lecture 2: InterVLAN Routing using Router-on-a-Stick",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563192_1",
+      "title": "Lecture 3 - InterVLAN Routing using L3 Switches",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563193_1",
+      "title": "Lecture: Inter-VLAN Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563194_1",
+      "title": "Slides Instructor",
+      "type": "Text Document"
+    }
+  ],
+  "Module 5: Spanning Tree Protocol": [
+    {
+      "id": "_26563195_1",
+      "title": "Lecture 1: Introduction to the Spanning Tree Protocol",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563196_1",
+      "title": "Lecture 2: Building the Spanning Tree",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563197_1",
+      "title": "Lecture 3: Hands-on Example STP",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563198_1",
+      "title": "Instructor Slides",
+      "type": "Text Document"
+    }
+  ],
+  "Module 6: EtherChannel": [
+    {
+      "id": "_26563199_1",
+      "title": "Lecture 1: Introduction to EtherChannel",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563200_1",
+      "title": "Lecture 2: Configuring EtherChannel",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563201_1",
+      "title": "Lecture 3 - EtherChannel Implementation Example",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563202_1",
+      "title": "Slides Instructor",
+      "type": "Text Document"
+    }
+  ],
+  "Module 7: DHCPv4": [
+    {
+      "id": "_26563228_1",
+      "title": "Lecture 1: Introduction to DHCPv4",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563229_1",
+      "title": "Lecture 2: Example - Using DHCPv4",
+      "type": "Text Document"
+    }
+  ],
+  "Module 8: SLAAC and DHCPv6": [
+    {
+      "id": "_26563230_1",
+      "title": "Lecture 1: IPv6 Address Assignment and SLAAC",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563231_1",
+      "title": "Lecture 2: DHCPv6",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563232_1",
+      "title": "Lecture 3: Implementation Example with SLAAC",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563233_1",
+      "title": "Lecture 4: Configuring Stateless and Stateful DHCPv6 Servers",
+      "type": "Text Document"
+    }
+  ],
+  "Pre-Midterm Review": [
+    {
+      "id": "_26563203_1",
+      "title": "Solution Homework 1 - Basic Switch Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563204_1",
+      "title": "Solution Homework 2 - Switch Fundamentals",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563205_1",
+      "title": "Solution Homework 3 - Inter-VLAN Routing using a Router-on-a-Stick",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563206_1",
+      "title": "Solution Homework 4 - InterVLAN using a L3-switch",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563207_1",
+      "title": "Solution Homework 5 - DHCPv4",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563208_1",
+      "title": "Solution Lab 1 - Configure Router Interfaces",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563209_1",
+      "title": "Solution Lab 2 - VLAN Fundamentals",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563210_1",
+      "title": "Solution Lab 3 - VLAN Trunks",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563211_1",
+      "title": "Solution Lab 4 - Investigate STP Loop Prevention",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563212_1",
+      "title": "Solution Lab 5 - EtherChannel",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563213_1",
+      "title": "Solution Lab 6 - DHCPv4",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563214_1",
+      "title": "In-class Example 1 - InterVLAN Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563215_1",
+      "title": "In-class Example 2 - Inter-VLAN Communication and DHCP",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563216_1",
+      "title": "In-class Example 3 - Basic Device Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563217_1",
+      "title": "Lab 1 - Basic Router Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563218_1",
+      "title": "Lab 2: Configure Router-on-a-Stick Inter-VLAN Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563219_1",
+      "title": "Lab 3: Configure a L3 Switch and Inter-VLAN Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563220_1",
+      "title": "Lab 4 - Investigate STP Loop Prevention",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563221_1",
+      "title": "Lab 5: EtherChannel",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563222_1",
+      "title": "Homework 2: VLAN Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563223_1",
+      "title": "Homework 3: InterVLAN Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563224_1",
+      "title": "Homework 5: InterVLAN Challenge II",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563225_1",
+      "title": "Recordings - Review Sessions",
+      "type": "Text Document"
+    },
+    {
+      "id": "_27045926_1",
+      "title": "Spanning tree example",
+      "type": "Text Document"
+    }
+  ],
+  "Post-Midterm Review": [
+    {
+      "id": "_26563226_1",
+      "title": "Lecture 1: Midterm Exercise 1 Solution",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563227_1",
+      "title": "Lecture 2: Midterm Exercise 2 Solution",
+      "type": "Text Document"
+    }
+  ],
+  "Module 9: First Hop Redundancy Protocol (FHRP)": [
+    {
+      "id": "_26563234_1",
+      "title": "Lecture 1: Introduction to FHRP",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563235_1",
+      "title": "Lecture 2: Hot Standby Router Protocol",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563236_1",
+      "title": "Lecture 3: HSRP Demo",
+      "type": "Text Document"
+    }
+  ],
+  "Module 10: LAN Security Concepts": [
+    {
+      "id": "_26563249_1",
+      "title": "Lecture 1: LAN Security Concepts",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563250_1",
+      "title": "Lecture 2: LAN Security Threats",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563251_1",
+      "title": "Lecture 3: Attack Examples",
+      "type": "Text Document"
+    }
+  ],
+  "Module 11: Mitigating Cyber-attacks with Switch Security": [
+    {
+      "id": "_26563259_1",
+      "title": "Lecture 1: Switch Port Security",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563260_1",
+      "title": "Lecture 2: Mitigate VLAN Attacks",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563261_1",
+      "title": "Lecture 3: Mitigate DHCP Attacks",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563262_1",
+      "title": "Lecture 4: Mitigate ARP Attacks",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563263_1",
+      "title": "Lecture 5: Mitigate STP Attacks",
+      "type": "Text Document"
+    }
+  ],
+  "Module 12: Routing Concepts": [
+    {
+      "id": "_26563237_1",
+      "title": "Lecture 1: Introduction to Routing Concepts and Longest Prefix Match",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563238_1",
+      "title": "Lecture 2 - Packet Forwarding",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563239_1",
+      "title": "Lecture 3: Basic Router Configuration",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563240_1",
+      "title": "Lecture 4: Understanding the Routing Table",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563241_1",
+      "title": "Lecture 5: Routing Table Structure and Administrative Distance",
+      "type": "Text Document"
+    }
+  ],
+  "Module 13: Static Routing": [
+    {
+      "id": "_26563242_1",
+      "title": "Lecture 1: Introduction to Static Routing",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563243_1",
+      "title": "Lecture 2: Default Routes",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563244_1",
+      "title": "Lecture 3: Floating Static Routes",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563245_1",
+      "title": "Lecture 4: Static Host Routes",
+      "type": "Text Document"
+    },
+    {
+      "id": "_26563246_1",
+      "title": "Lecture 5: Example How to Configure Static and Default Routes",
+      "type": "Text Document"
+    }
+  ]
+}
