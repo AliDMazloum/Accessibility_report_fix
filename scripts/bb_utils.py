@@ -312,15 +312,17 @@ def click_item_by_name(frame, item_name):
 
 
 def get_page_items(frame):
-    """Get all items on the current report page with name and score."""
+    """Get all items on the current report page with name, type, and score."""
     return frame.evaluate("""() => {
         const rows = document.querySelectorAll('tr.ir-list-item');
         const data = [];
         rows.forEach(row => {
             const nameEl = row.querySelector('.ir-content-list-item-name-text-name');
+            const typeEl = row.querySelector('.ir-content-list-item-name-text-type');
             const scoreEl = row.querySelector('.feedback-score-indicator span');
             if (nameEl) data.push({
                 name: nameEl.innerText.trim(),
+                type: typeEl ? typeEl.innerText.trim() : '',
                 score: scoreEl ? scoreEl.innerText.trim() : '?'
             });
         });

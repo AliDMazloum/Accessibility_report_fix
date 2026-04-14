@@ -42,19 +42,30 @@ def build_fixed_index(course_key):
             stem = os.path.splitext(base)[0]
             fixed_ext = os.path.splitext(fname)[1]
 
-            # Try exact match
+            # Try exact match (report name without _fixed)
             if base not in index:
                 index[base] = fpath
+
+            # Map the _fixed name itself (report may show _fixed after previous upload)
+            if fname not in index:
+                index[fname] = fpath
 
             # Try with original extension (.ppt for .pptx, .doc for .docx)
             if fixed_ext == '.pptx':
                 orig = stem + '.ppt'
                 if orig not in index:
                     index[orig] = fpath
+                # Also map _fixed.pptx name with .ppt extension
+                fixed_ppt = stem + '_fixed.ppt'
+                if fixed_ppt not in index:
+                    index[fixed_ppt] = fpath
             elif fixed_ext == '.docx':
                 orig = stem + '.doc'
                 if orig not in index:
                     index[orig] = fpath
+                fixed_doc = stem + '_fixed.doc'
+                if fixed_doc not in index:
+                    index[fixed_doc] = fpath
 
     return index
 
@@ -89,20 +100,46 @@ def upload_item(item_name, fixed_path):
         return 'not found'
 
     # Disconnect — let Chrome open the feedback window freely
+    # Wait proportional to file size
+    file_size = os.path.getsize(fixed_path) if fixed_path and os.path.exists(fixed_path) else 500_000
+    if file_size < 500_000:
+        wait = 10
+    elif file_size < 2_000_000:
+        wait = 15
+    else:
+        wait = 20
     disconnect(p, browser)
-    time.sleep(5)
+    time.sleep(wait)
 
     # Step 2: Reconnect, find feedback, upload file
     p, browser, page = connect()
     fb_page = find_feedback_page(browser)
     if not fb_page:
+        # Try waiting longer — feedback may still be loading
+        disconnect(p, browser)
+        time.sleep(5)
+        p, browser, page = connect()
+        fb_page = find_feedback_page(browser)
+
+    if not fb_page:
         disconnect(p, browser)
         return 'error: feedback window not found'
+
+    # Wait for feedback content to fully load
+    time.sleep(3)
 
     fb_frame = find_feedback_frame(fb_page)
     file_input = fb_frame.query_selector('input[type="file"]')
     if not file_input:
         file_input = fb_page.query_selector('input[type="file"]')
+    if not file_input:
+        # Try waiting and checking again
+        time.sleep(3)
+        fb_frame = find_feedback_frame(fb_page)
+        file_input = fb_frame.query_selector('input[type="file"]')
+        if not file_input:
+            file_input = fb_page.query_selector('input[type="file"]')
+
     if not file_input:
         fb_page.close()
         disconnect(p, browser)
@@ -134,6 +171,129 @@ def upload_item(item_name, fixed_path):
     return 'uploaded'
 
 
+def download_and_fix_from_feedback(item_name, course_key):
+    """Click item, download from feedback, fix locally. Returns fixed_path or None."""
+    import subprocess
+
+    course = get_course(course_key)
+    download_dir = os.path.join(COURSE_DIR, course['dir'], '_downloads')
+    os.makedirs(download_dir, exist_ok=True)
+
+    LIBREOFFICE = "C:/Program Files/LibreOffice/program/soffice.exe"
+
+    # Step 1: Click item to open feedback
+    p, browser, page = connect()
+    report_page = get_report_page(browser)
+    items_frame = find_items_frame(report_page)
+    if not items_frame:
+        disconnect(p, browser)
+        return None
+
+    clicked = click_item_by_name(items_frame, item_name)
+    if not clicked:
+        disconnect(p, browser)
+        return None
+
+    disconnect(p, browser)
+    time.sleep(5)
+
+    # Step 2: Download from feedback
+    p, browser, page = connect()
+    fb_page = find_feedback_page(browser)
+    if not fb_page:
+        disconnect(p, browser)
+        return None
+
+    # Set download dir
+    try:
+        cdp_session = fb_page.context.new_cdp_session(fb_page)
+        cdp_session.send('Browser.setDownloadBehavior', {
+            'behavior': 'allow',
+            'downloadPath': os.path.abspath(download_dir).replace('/', os.sep)
+        })
+    except:
+        pass
+
+    # Click download button
+    fb_frame = find_feedback_frame(fb_page)
+    try:
+        fb_frame.evaluate("""() => {
+            const links = document.querySelectorAll('a, button');
+            for (const el of links) {
+                const text = el.innerText.trim().toLowerCase();
+                if (text.includes('download original')) { el.click(); return true; }
+            }
+            return false;
+        }""")
+    except:
+        pass
+
+    # Close feedback and disconnect — let Chrome download freely
+    fb_page.close()
+    disconnect(p, browser)
+    time.sleep(15)
+
+    # Find the downloaded file
+    downloaded_path = None
+    for f in os.listdir(download_dir):
+        if f.endswith('.crdownload') or f.endswith('.tmp'):
+            continue
+        fpath = os.path.join(download_dir, f)
+        # Check if it's a new file (modified in last 30 seconds)
+        if os.path.getmtime(fpath) > time.time() - 30:
+            downloaded_path = fpath
+            break
+
+    if not downloaded_path:
+        return None
+
+    # Step 3: Fix the file
+    ext = os.path.splitext(downloaded_path)[1].lower()
+    stem = os.path.splitext(os.path.basename(downloaded_path))[0]
+
+    # Convert old formats
+    working_path = downloaded_path
+    if ext in ('.doc', '.ppt'):
+        new_ext = '.docx' if ext == '.doc' else '.pptx'
+        converted = os.path.join(download_dir, stem + new_ext)
+        if not os.path.exists(converted):
+            try:
+                subprocess.run([LIBREOFFICE, '--headless', '--convert-to', new_ext[1:],
+                               '--outdir', download_dir, downloaded_path],
+                              capture_output=True, timeout=60)
+            except:
+                pass
+        if os.path.exists(converted):
+            working_path = converted
+            ext = new_ext
+            stem = os.path.splitext(os.path.basename(working_path))[0]
+
+    fixed_path = os.path.join(download_dir, stem + '_fixed' + ext)
+
+    try:
+        if ext == '.pdf':
+            from fix_pdf import fix_pdf
+            from add_headings import add_headings_to_pdf
+            fix_pdf(working_path, fixed_path)
+            source = fixed_path if os.path.exists(fixed_path) else working_path
+            try:
+                add_headings_to_pdf(source, fixed_path)
+            except:
+                pass
+        elif ext == '.docx':
+            from fix_office import fix_docx
+            fix_docx(working_path, fixed_path)
+        elif ext == '.pptx':
+            from fix_office import fix_pptx
+            fix_pptx(working_path, fixed_path)
+    except Exception as e:
+        print(f"    Fix error: {e}")
+
+    if os.path.exists(fixed_path):
+        return fixed_path
+    return None
+
+
 def upload_all(course_key):
     """Upload all fixed files by iterating through report items."""
     course = get_course(course_key)
@@ -141,12 +301,13 @@ def upload_all(course_key):
 
     # Build index of fixed files
     fixed_index = build_fixed_index(course_key)
-    print(f"Phase 5: Uploading for {course_key}")
-    print(f"Fixed files available: {len(fixed_index)}")
+    print(f"Phase 5: Uploading for {course_key}", flush=True)
+    print(f"Fixed files available: {len(fixed_index)}", flush=True)
 
     # Navigate to report content tab
-    print("Navigating to report...")
-    navigate_to_report_content(course_id)
+    print("Navigating to report...", flush=True)
+    navigate_to_report_content(course_id, nav_wait=10, tab_wait=5)
+    print("Report loaded.", flush=True)
 
     results = []
     uploaded = 0
@@ -169,7 +330,7 @@ def upload_all(course_key):
             print("  No items found on page")
             break
 
-        # Find first item below 85% that we have a fix for and haven't skipped
+        # Find first item below 85% that we haven't permanently skipped
         target = None
         for item in items:
             score_str = item['score'].replace('%', '')
@@ -178,8 +339,15 @@ def upload_all(course_key):
             if item['name'] in skipped:
                 continue
 
-            # Check if we have a fixed file
             name = item['name']
+            ext = os.path.splitext(name)[1].lower()
+
+            # Skip Ultra documents (can't fix)
+            if item.get('type', '') == 'Ultra document' or not ext:
+                skipped.add(name)
+                continue
+
+            # Check if we have a fixed file
             fixed_path = fixed_index.get(name)
 
             # Try without (N) suffix
@@ -191,10 +359,11 @@ def upload_all(course_key):
                 target = (name, item['score'], fixed_path)
                 break
             else:
-                skipped.add(name)
+                # No fix available — try to download from feedback
+                target = (name, item['score'], None)
+                break
 
         if not target:
-            # Check if all items are >= 85% or skipped
             below = [i for i in items
                      if i['score'].replace('%', '').isdigit()
                      and int(i['score'].replace('%', '')) < 85
@@ -206,6 +375,22 @@ def upload_all(course_key):
             break
 
         name, score, fixed_path = target
+
+        # If no fixed file, try download-fix-upload from feedback
+        if not fixed_path:
+            print(f"\n  {name} ({score}) — no fix, attempting download from feedback...")
+            close_feedback_windows()
+            fixed_path = download_and_fix_from_feedback(name, course_key)
+            if not fixed_path:
+                print(f"    -> download/fix failed, skipping")
+                skipped.add(name)
+                results.append({'report_name': name, 'status': 'download failed'})
+                reload_report_content(reload_wait=5, tab_wait=5)
+                continue
+            # Add to index for future
+            fixed_index[name] = fixed_path
+            print(f"    -> fixed: {os.path.basename(fixed_path)}")
+
         size = os.path.getsize(fixed_path)
         print(f"\n  {name} ({score}) -> {os.path.basename(fixed_path)} ({size:,} bytes)")
 
