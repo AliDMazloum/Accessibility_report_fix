@@ -292,6 +292,7 @@ def download_and_fix_from_feedback(item_name, course_key):
         shutil.copy2(working_path, backup_path)
     fixed_path = working_path  # Fixed file keeps the original name
 
+    images_needing_alt = []
     try:
         if ext == '.pdf':
             from fix_pdf import fix_pdf
@@ -302,15 +303,22 @@ def download_and_fix_from_feedback(item_name, course_key):
             except:
                 pass
         elif ext == '.docx':
-            from fix_office import fix_docx
+            from fix_office import fix_docx, extract_docx_images
             fix_docx(backup_path, fixed_path)
+            imgs_dir = os.path.join(download_dir, '_imgs_' + os.path.splitext(os.path.basename(fixed_path))[0])
+            images_needing_alt = extract_docx_images(fixed_path, imgs_dir)
         elif ext == '.pptx':
-            from fix_office import fix_pptx
+            from fix_office import fix_pptx, extract_pptx_images
             fix_pptx(backup_path, fixed_path)
+            imgs_dir = os.path.join(download_dir, '_imgs_' + os.path.splitext(os.path.basename(fixed_path))[0])
+            images_needing_alt = extract_pptx_images(fixed_path, imgs_dir)
     except Exception as e:
-        print(f"    Fix error: {e}")
+        print(f"    Fix error: {e}", flush=True)
 
     if os.path.exists(fixed_path):
+        # Report if images need alt text (caller can launch subagent)
+        if images_needing_alt:
+            print(f"    NOTE: {len(images_needing_alt)} images need alt text (extracted to _imgs_*)", flush=True)
         return fixed_path
     return None
 
