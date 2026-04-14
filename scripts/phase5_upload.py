@@ -1,12 +1,10 @@
 """Phase 5: Upload all fixed files back to Blackboard via accessibility report.
 
-Reads the fix manifest, navigates to the report Content tab, and for each item:
-1. Searches pages for the item by name
-2. Clicks item to open feedback window (disconnect/reconnect)
-3. Uploads the fixed file
-4. Navigates back to report from scratch (full reload)
+Strategy: Navigate to report Content tab, read items on page 1, for each item
+below 85% check if we have a fixed file, upload it. After upload, reload report
+(items re-sort). Repeat until all items on page 1 are >= 85% or no more fixes.
 
-No download-on-the-fly fallback — only uploads what Phase 4 already fixed.
+Uses the report as source of truth — no duplicate issues.
 
 Requires: data/fix_manifest_{COURSE}.json from Phase 4.
 Produces: data/upload_results_{COURSE}.json
@@ -15,56 +13,86 @@ Usage:
     python scripts/phase5_upload.py <course_key>
     python scripts/phase5_upload.py CYBERINFRA
 """
-import sys, os, time
+import sys, os, time, re
 sys.path.insert(0, os.path.dirname(__file__))
 
 from bb_utils import (get_course, connect, disconnect, load_json, save_json,
-                      navigate_to_report_content, find_items_frame,
-                      find_feedback_page, find_feedback_frame,
-                      close_feedback_windows, get_page_items, click_item_by_name,
-                      click_next_page, fix_manifest_filename)
+                      navigate_to_report_content, reload_report_content,
+                      find_items_frame, find_feedback_page, find_feedback_frame,
+                      close_feedback_windows, click_item_by_name,
+                      get_page_items, fix_manifest_filename, COURSE_DIR)
 
 
-def find_and_click_item(item_name, max_pages=5):
-    """Search across report pages for an item and click it.
-    Returns True if found and clicked."""
+def build_fixed_index(course_key):
+    """Build an index mapping report names to fixed file paths.
+    Deduplicates by keeping the first match."""
+    course = get_course(course_key)
+    course_dir = os.path.join(COURSE_DIR, course['dir'])
+
+    index = {}  # report_name -> fixed_path
+    for root, dirs, files in os.walk(course_dir):
+        for fname in files:
+            if '_fixed.' not in fname:
+                continue
+            fpath = os.path.join(root, fname)
+
+            # Map back to possible report names
+            # e.g. "IOS-review_fixed.pptx" -> "IOS-review.ppt" or "IOS-review.pptx"
+            base = fname.replace('_fixed.', '.')
+            stem = os.path.splitext(base)[0]
+            fixed_ext = os.path.splitext(fname)[1]
+
+            # Try exact match
+            if base not in index:
+                index[base] = fpath
+
+            # Try with original extension (.ppt for .pptx, .doc for .docx)
+            if fixed_ext == '.pptx':
+                orig = stem + '.ppt'
+                if orig not in index:
+                    index[orig] = fpath
+            elif fixed_ext == '.docx':
+                orig = stem + '.doc'
+                if orig not in index:
+                    index[orig] = fpath
+
+    return index
+
+
+def get_report_page(browser):
+    """Find the report page (the one with the LTI launch URL)."""
+    for pg in browser.contexts[0].pages:
+        if 'launchFrame' in pg.url or 'lti' in pg.url.lower():
+            return pg
+    # Fallback: first non-ally page
+    for pg in browser.contexts[0].pages:
+        if 'ally' not in pg.url:
+            return pg
+    return browser.contexts[0].pages[0]
+
+
+def upload_item(item_name, fixed_path):
+    """Click item, open feedback, upload file. Uses disconnect/reconnect.
+    Returns 'uploaded', 'not found', 'error: ...'."""
+
+    # Step 1: Connect, find report page, click item
     p, browser, page = connect()
-    items_frame = find_items_frame(page)
+    report_page = get_report_page(browser)
+    items_frame = find_items_frame(report_page)
     if not items_frame:
         disconnect(p, browser)
-        return False
+        return 'error: items frame not found'
 
-    # Check current page
-    if click_item_by_name(items_frame, item_name):
+    clicked = click_item_by_name(items_frame, item_name)
+    if not clicked:
         disconnect(p, browser)
-        return True
-
-    # Check subsequent pages
-    for _ in range(max_pages - 1):
-        if not click_next_page(items_frame):
-            break
-        if click_item_by_name(items_frame, item_name):
-            disconnect(p, browser)
-            return True
-
-    disconnect(p, browser)
-    return False
-
-
-def upload_single_item(course_id, item_name, fixed_path):
-    """Upload a single fixed file for a report item.
-    Returns 'uploaded', 'not found', or 'error: ...'."""
-
-    close_feedback_windows()
-
-    # Find and click the item
-    if not find_and_click_item(item_name):
         return 'not found'
 
-    # Disconnect to let feedback window load
-    time.sleep(15)
+    # Disconnect — let Chrome open the feedback window freely
+    disconnect(p, browser)
+    time.sleep(5)
 
-    # Find feedback window and upload
+    # Step 2: Reconnect, find feedback, upload file
     p, browser, page = connect()
     fb_page = find_feedback_page(browser)
     if not fb_page:
@@ -81,70 +109,129 @@ def upload_single_item(course_id, item_name, fixed_path):
         return 'error: no file input found'
 
     file_input.set_input_files(os.path.abspath(fixed_path))
-    time.sleep(10)  # Wait for upload to register
 
-    fb_page.close()
+    # Disconnect completely — let Chrome upload without any interference
     disconnect(p, browser)
+
+    # Wait for upload to complete — no reconnection during this time
+    # Use generous fixed wait based on file size
+    file_size = os.path.getsize(fixed_path)
+    if file_size < 500_000:
+        wait = 15
+    elif file_size < 2_000_000:
+        wait = 25
+    else:
+        wait = 40
+    time.sleep(wait)
+
+    # Reconnect only to close feedback window
+    p, browser, page = connect()
+    fb_page = find_feedback_page(browser)
+    if fb_page:
+        fb_page.close()
+    disconnect(p, browser)
+
     return 'uploaded'
 
 
 def upload_all(course_key):
-    """Upload all fixed files for a course."""
+    """Upload all fixed files by iterating through report items."""
     course = get_course(course_key)
     course_id = course['id']
 
-    manifest = load_json(fix_manifest_filename(course_key))
-    fixed_items = [f for f in manifest['fixed'] if f.get('fixed_path')]
-
-    print(f"Phase 5: Uploading {len(fixed_items)} files for {course_key}")
+    # Build index of fixed files
+    fixed_index = build_fixed_index(course_key)
+    print(f"Phase 5: Uploading for {course_key}")
+    print(f"Fixed files available: {len(fixed_index)}")
 
     # Navigate to report content tab
+    print("Navigating to report...")
     navigate_to_report_content(course_id)
 
     results = []
     uploaded = 0
-    not_found = 0
-    errors = 0
+    skipped = set()
 
-    for i, item in enumerate(fixed_items):
-        report_name = item['report_name']
-        fixed_path = item['fixed_path']
+    while True:
+        # Read items on current page (use report page, not last tab)
+        p, browser, page = connect()
+        report_page = get_report_page(browser)
+        items_frame = find_items_frame(report_page)
+        if not items_frame:
+            print("  ERROR: Could not find items frame")
+            disconnect(p, browser)
+            break
 
-        if not os.path.exists(fixed_path):
-            fixed_path = fixed_path.replace('/', '\\')
-        if not os.path.exists(fixed_path):
-            print(f"  [{i+1}/{len(fixed_items)}] SKIP: File missing: {fixed_path}")
-            results.append({'report_name': report_name, 'status': 'file missing'})
-            errors += 1
-            continue
+        items = get_page_items(items_frame)
+        disconnect(p, browser)
 
+        if not items:
+            print("  No items found on page")
+            break
+
+        # Find first item below 85% that we have a fix for and haven't skipped
+        target = None
+        for item in items:
+            score_str = item['score'].replace('%', '')
+            if score_str.isdigit() and int(score_str) >= 85:
+                continue
+            if item['name'] in skipped:
+                continue
+
+            # Check if we have a fixed file
+            name = item['name']
+            fixed_path = fixed_index.get(name)
+
+            # Try without (N) suffix
+            if not fixed_path:
+                clean = re.sub(r'\(\d+\)(?=\.\w+$)', '', name).strip()
+                fixed_path = fixed_index.get(clean)
+
+            if fixed_path and os.path.exists(fixed_path):
+                target = (name, item['score'], fixed_path)
+                break
+            else:
+                skipped.add(name)
+
+        if not target:
+            # Check if all items are >= 85% or skipped
+            below = [i for i in items
+                     if i['score'].replace('%', '').isdigit()
+                     and int(i['score'].replace('%', '')) < 85
+                     and i['name'] not in skipped]
+            if not below:
+                print("\nAll items on page are >= 85% or skipped — done!")
+            else:
+                print(f"\n{len(below)} items below 85% but no fixes available")
+            break
+
+        name, score, fixed_path = target
         size = os.path.getsize(fixed_path)
-        print(f"  [{i+1}/{len(fixed_items)}] {report_name} ({size:,} bytes)")
+        print(f"\n  {name} ({score}) -> {os.path.basename(fixed_path)} ({size:,} bytes)")
 
-        status = upload_single_item(course_id, report_name, fixed_path)
-
-        if status == 'uploaded':
-            print(f"    -> Uploaded")
-            uploaded += 1
-        elif status == 'not found':
-            print(f"    -> Not found in report")
-            not_found += 1
-        else:
-            print(f"    -> {status}")
-            errors += 1
-
-        results.append({'report_name': report_name, 'status': status})
-
-        # Navigate back to report from scratch (not just reload)
+        # Close any leftover feedback windows and upload
         close_feedback_windows()
-        navigate_to_report_content(course_id, nav_wait=5, tab_wait=5)
+        status = upload_item(name, fixed_path)
+        print(f"    -> {status}")
+
+        if 'uploaded' in status:
+            uploaded += 1
+            results.append({'report_name': name, 'status': status})
+        elif status == 'not found':
+            skipped.add(name)
+            results.append({'report_name': name, 'status': 'not found'})
+        else:
+            skipped.add(name)
+            results.append({'report_name': name, 'status': status})
+
+        # Reload report
+        close_feedback_windows()
+        reload_report_content(reload_wait=5, tab_wait=5)
 
     return {
         'course': course_key,
-        'total': len(fixed_items),
         'uploaded': uploaded,
-        'not_found': not_found,
-        'errors': errors,
+        'skipped': sorted(skipped),
         'results': results,
     }
 
@@ -159,30 +246,20 @@ def main():
     course_key = sys.argv[1].upper()
     results = upload_all(course_key)
 
-    # Save results
     filename = f"upload_results_{course_key}.json"
     save_json(results, filename)
-    print(f"\nSaved results to data/{filename}")
+    print(f"\nSaved to data/{filename}")
 
-    # Summary
     print(f"\n{'='*60}")
     print(f"  Phase 5 Results: {course_key}")
     print(f"{'='*60}")
-    print(f"  Uploaded:  {results['uploaded']}/{results['total']}")
-    print(f"  Not found: {results['not_found']}")
-    print(f"  Errors:    {results['errors']}")
+    print(f"  Uploaded: {results['uploaded']}")
+    print(f"  Skipped:  {len(results['skipped'])}")
 
-    if results['not_found'] > 0 or results['errors'] > 0:
-        print(f"\n  Issues:")
-        for r in results['results']:
-            if r['status'] != 'uploaded':
-                print(f"    - {r['report_name']}: {r['status']}")
-
-    success_rate = results['uploaded'] / results['total'] * 100 if results['total'] > 0 else 0
-    if success_rate == 100:
-        print(f"\n  SUCCESS: All {results['total']} files uploaded (100%)")
-    else:
-        print(f"\n  WARNING: {success_rate:.0f}% uploaded — review issues above")
+    if results['skipped']:
+        print(f"\n  Skipped items (no fix available):")
+        for s in results['skipped'][:20]:
+            print(f"    - {s}")
 
 
 if __name__ == '__main__':
