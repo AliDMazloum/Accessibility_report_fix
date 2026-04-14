@@ -9,7 +9,7 @@ Usage:
     python scripts/phase1_scrape.py <course_key>
     python scripts/phase1_scrape.py CYBERINFRA
 """
-import sys, os, time
+import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 
 from bb_utils import (get_course, connect, disconnect, navigate_to_report_content,
@@ -46,8 +46,15 @@ def scrape_report(course_key):
     all_items.extend(items)
     print(f"  Page {page_num}: {len(items)} items")
 
-    # Paginate through remaining pages
-    while True:
+    # Check if last item on page is already >= 85% (items sorted by score)
+    def last_item_above_threshold(page_items):
+        if not page_items:
+            return False
+        last_score = page_items[-1].get('score', '').replace('%', '')
+        return last_score.isdigit() and int(last_score) >= 85
+
+    # Paginate — stop once we reach a page where the last item is >= 85%
+    while not last_item_above_threshold(items):
         if not click_next_page(items_frame):
             break
         page_num += 1
