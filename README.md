@@ -10,7 +10,24 @@ Blackboard Ally flags many course documents as low accessibility (under 85%). Fi
 
 ## How it works
 
-The pipeline runs in five phases. Each phase has a standalone script and produces a JSON manifest the next phase reads. Phases can be re run independently.
+Two workflows are available. The v2 report-driven workflow is the preferred path; the v1 five-phase pipeline remains as a fallback when v2 cannot serve a course.
+
+### v2 workflow (recommended)
+
+Drives the entire process from the accessibility report itself: download every flagged item directly through the Ally feedback window, fix locally, then upload. No course-outline navigation needed.
+
+| Step | Script | Purpose |
+|-------|--------|---------|
+| 1 + 2 | `scripts/v2_collect.py` | Iterate the report Content tab and download every item below 85% via Playwright `expect_download`. Uses a sticky page pointer so progress through the report is monotonic. |
+| 3 | `scripts/v2_fix.py` | Apply deterministic fixes (title, language, headings, table headers) to every downloaded file and extract images that need alt text. |
+| (alt text) | parallel agents | One Claude Haiku subagent per document writes alt text into a JSON file. |
+| (apply) | `scripts/phase4b_apply_alts.py` | Apply the alt text JSON to the fixed files. |
+| 4 | `scripts/v2_upload.py` | Re-upload every fixed file through the report. Sticky page pointer only advances when the current page has no remaining candidates. Cleans up extracted image directories when done. |
+| | `scripts/v2_run.py` | Orchestrator: runs collect, fix, and (if no alt text needed) upload in one command. |
+
+### v1 five-phase pipeline (fallback)
+
+The original outline-driven pipeline. Each phase has a standalone script and produces a JSON manifest the next phase reads.
 
 | Phase | Script | Purpose |
 |-------|--------|---------|
@@ -21,7 +38,7 @@ The pipeline runs in five phases. Each phase has a standalone script and produce
 | 4b | `scripts/phase4b_apply_alts.py` | Apply AI generated alt text JSON to PPTX / DOCX files. |
 | 5 | `scripts/phase5_upload.py` | Re upload fixed files through the Ally feedback window using Playwright `expect_download` for safe download interception. |
 
-Image alt text generation in phase 4b is performed by parallel agents, one per document, capped at a configurable number of images per file.
+Image alt text generation is performed by parallel Claude Haiku agents, one per document.
 
 ## Tech
 
@@ -53,7 +70,21 @@ Image alt text generation in phase 4b is performed by parallel agents, one per d
    ```
 3. Log in to Blackboard manually in the launched Chrome window.
 
-### Run the pipeline
+### Run the v2 workflow (recommended)
+
+Navigate Chrome to the accessibility report's Content tab, then:
+
+```
+python scripts/v2_run.py MY_COURSE
+# v2_run executes collect + fix. If documents have images that need alt text,
+# it pauses with next-step instructions: launch Claude Code subagents on
+# data/v2_images_needing_alt_MY_COURSE.json, then:
+python scripts/phase4b_apply_alts.py MY_COURSE data/v2_alt_texts_MY_COURSE.json
+python scripts/v2_upload.py MY_COURSE
+# (If no alt text is needed, v2_run auto-runs v2_upload.)
+```
+
+### Run the v1 pipeline (fallback)
 
 ```
 python scripts/phase1_scrape.py MY_COURSE
@@ -73,12 +104,16 @@ scripts/
   bb_utils.py              Shared Playwright + Blackboard utilities
   courses.json             Course id and folder mapping
   launch_chrome.py         Launches Chrome with CDP and project profile
-  phase1_scrape.py         Phase 1: scrape report
-  phase2_targets.py        Phase 2: filter targets
-  phase3_download.py       Phase 3: download files from course outline
-  phase4_fix.py            Phase 4: apply deterministic fixes
-  phase4b_apply_alts.py    Phase 4b: apply alt text JSON
-  phase5_upload.py         Phase 5: upload fixed files via Ally
+  v2_collect.py            v2 step 1+2: download every below-85% item from the report (default)
+  v2_fix.py                v2 step 3: apply deterministic fixes to downloaded files
+  v2_upload.py             v2 step 4: upload fixed files; auto-cleans image staging dirs
+  v2_run.py                v2 orchestrator (default entry point)
+  phase1_scrape.py         v1 fallback: scrape report
+  phase2_targets.py        v1 fallback: filter targets
+  phase3_download.py       v1 fallback: download via course outline
+  phase4_fix.py            v1 fallback: apply deterministic fixes
+  phase4b_apply_alts.py    apply alt text JSON (used by both v1 and v2)
+  phase5_upload.py         v1 fallback: upload fixed files via Ally
   fix_pdf.py               PDF tags, language, title
   add_headings.py          PDF heading detection by font size
   fix_office.py            PPTX / DOCX fixes and image extraction
@@ -92,7 +127,8 @@ _downloads/                (gitignored) Chrome download landing dir
 
 * `course_content/`, `data/`, and `chrome-profile/` are gitignored to keep student materials and personal data out of the repository.
 * Phase 5 uses Playwright's `expect_download()` to bind each download to its triggering click. This avoids race conditions where a manual Save As dialog from one item leaks into the next download.
-* Files larger than 5 MB (PDF) or 20 MB (Office) are skipped automatically.
+* Files larger than 20 MB (any format) or PDFs longer than 150 pages are skipped automatically.
+* The v2 workflow is the default. The v1 five-phase pipeline is kept for cases where v2 cannot reach a course (for example, when downloads through Ally fail and the course outline must be walked instead).
 
 ## License
 
