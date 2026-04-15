@@ -131,7 +131,10 @@ def reload_report_content(reload_wait=5, tab_wait=5):
     Used between uploads to refresh the report after score changes.
     """
     p, browser, page = connect()
-    page.reload()
+    try:
+        page.reload(wait_until="commit", timeout=15000)
+    except Exception:
+        pass  # OK — we disconnect and wait below
     disconnect(p, browser)
     time.sleep(reload_wait)
 

@@ -20,7 +20,12 @@ from bb_utils import (get_course, connect, disconnect, load_json, save_json,
                       navigate_to_report_content, reload_report_content,
                       find_items_frame, find_feedback_page, find_feedback_frame,
                       close_feedback_windows, click_item_by_name,
-                      get_page_items, fix_manifest_filename, COURSE_DIR)
+                      get_page_items, fix_manifest_filename, COURSE_DIR, BASE_DIR)
+
+# Project-wide download landing dir — must match Chrome's configured default
+# (set by scripts/launch_chrome.py). We move files out of here into the course
+# folder after download completes.
+CHROME_DOWNLOAD_DIR = os.path.join(BASE_DIR, "_downloads")
 
 
 def build_fixed_index(course_key):
@@ -69,15 +74,20 @@ def build_fixed_index(course_key):
 
 
 def get_report_page(browser):
-    """Find the report page (the one with the LTI launch URL)."""
+    """Find the report page (the one with the LTI launch URL).
+    Returns None if no LTI/report tab is open — caller must then navigate."""
     for pg in browser.contexts[0].pages:
         if 'launchFrame' in pg.url or 'lti' in pg.url.lower():
             return pg
-    # Fallback: first non-ally page
+    # Also accept a page that actually has the report items frame
     for pg in browser.contexts[0].pages:
-        if 'ally' not in pg.url:
-            return pg
-    return browser.contexts[0].pages[0]
+        try:
+            for f in pg.frames:
+                if f.evaluate('() => document.querySelectorAll("tr.ir-list-item").length') > 0:
+                    return pg
+        except:
+            pass
+    return None
 
 
 def upload_item(item_name, fixed_path):
@@ -174,88 +184,136 @@ def download_and_fix_from_feedback(item_name, course_key):
     import subprocess
 
     course = get_course(course_key)
-    download_dir = os.path.join(COURSE_DIR, course['dir'], '_downloads')
-    os.makedirs(download_dir, exist_ok=True)
+    course_download_dir = os.path.join(COURSE_DIR, course['dir'], '_downloads')
+    os.makedirs(course_download_dir, exist_ok=True)
+    os.makedirs(CHROME_DOWNLOAD_DIR, exist_ok=True)
 
     LIBREOFFICE = "C:/Program Files/LibreOffice/program/soffice.exe"
 
-    # Step 1: Click item to open feedback
+    # Step 1: Click item to open feedback window (disconnect/reconnect — clicking while
+    # connected can be slow).
+    print(f"    [dl] Clicking item...", flush=True)
     p, browser, page = connect()
     report_page = get_report_page(browser)
     items_frame = find_items_frame(report_page)
     if not items_frame:
+        print(f"    [dl] FAIL: items frame not found", flush=True)
         disconnect(p, browser)
         return None
 
     clicked = click_item_by_name(items_frame, item_name)
     if not clicked:
+        print(f"    [dl] FAIL: item '{item_name}' not clickable", flush=True)
         disconnect(p, browser)
         return None
 
     disconnect(p, browser)
     time.sleep(5)
 
-    # Step 2: Download from feedback
+    # Step 2: Reconnect, find feedback window, and use expect_download() — this binds
+    # the download event to OUR specific click, so stray files from other downloads or
+    # manual Save-As dialogs can't contaminate our result.
+    print(f"    [dl] Finding feedback window...", flush=True)
     p, browser, page = connect()
     fb_page = find_feedback_page(browser)
     if not fb_page:
+        print(f"    [dl] FAIL: feedback window not found after 5s", flush=True)
         disconnect(p, browser)
         return None
 
-    # Set download dir
+    download = None
     try:
-        cdp_session = fb_page.context.new_cdp_session(fb_page)
-        cdp_session.send('Browser.setDownloadBehavior', {
-            'behavior': 'allow',
-            'downloadPath': os.path.abspath(download_dir).replace('/', os.sep)
-        })
-    except:
-        pass
-
-    # Click download button
-    fb_frame = find_feedback_frame(fb_page)
-    try:
-        fb_frame.evaluate("""() => {
-            const links = document.querySelectorAll('a, button');
-            for (const el of links) {
-                const text = el.innerText.trim().toLowerCase();
-                if (text.includes('download original')) { el.click(); return true; }
-            }
-            return false;
-        }""")
-    except:
-        pass
-
-    # Close feedback and disconnect — let Chrome download freely
-    fb_page.close()
-    disconnect(p, browser)
-    time.sleep(15)
-
-    # Find the downloaded file — check target dir first, then default Downloads folder
-    downloaded_path = None
-    search_dirs = [download_dir, os.path.expanduser('~/Downloads')]
-    for search_dir in search_dirs:
-        if not os.path.exists(search_dir):
-            continue
-        for f in os.listdir(search_dir):
-            if f.endswith('.crdownload') or f.endswith('.tmp'):
-                continue
-            fpath = os.path.join(search_dir, f)
-            # Check if it's a new file (modified in last 30 seconds)
-            if os.path.getmtime(fpath) > time.time() - 30:
-                # Move to target dir if it's in default Downloads
-                if search_dir != download_dir:
-                    import shutil
-                    target = os.path.join(download_dir, f)
-                    shutil.move(fpath, target)
-                    fpath = target
-                downloaded_path = fpath
-                break
-        if downloaded_path:
-            break
-
-    if not downloaded_path:
+        with fb_page.expect_download(timeout=60000) as dl_info:
+            # Poll for the "Download original" button across all frames (feedback loads lazily)
+            clicked_download = False
+            poll_deadline = time.time() + 30
+            while time.time() < poll_deadline and not clicked_download:
+                for frame in fb_page.frames:
+                    try:
+                        found = frame.evaluate("""() => {
+                            const els = document.querySelectorAll('a, button');
+                            for (const el of els) {
+                                const text = el.innerText.trim().toLowerCase();
+                                if (/download\\s+(the\\s+)?original/.test(text)) { el.click(); return true; }
+                            }
+                            return false;
+                        }""")
+                        if found:
+                            clicked_download = True
+                            break
+                    except Exception:
+                        pass
+                if not clicked_download:
+                    time.sleep(1)
+            if not clicked_download:
+                # Raise so expect_download exits its wait immediately instead of hitting its own timeout
+                raise RuntimeError("download button not found in any frame within 30s")
+            print(f"    [dl] Download button clicked, waiting for download event...", flush=True)
+        download = dl_info.value
+    except Exception as e:
+        print(f"    [dl] FAIL: {e}", flush=True)
+        try: fb_page.close()
+        except: pass
+        disconnect(p, browser)
         return None
+
+    # Step 3: Save download to course _downloads with the suggested filename.
+    # suggested_filename comes from server's Content-Disposition. If missing/UUID-ish,
+    # fall back to using item_name.
+    suggested = download.suggested_filename or ''
+    # Detect if it's a useless UUID.tmp style name and replace with item_name
+    import re as _re
+    if (_re.fullmatch(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.tmp',
+                      suggested.lower()) or not suggested):
+        suggested = item_name  # use the report-visible name
+
+    downloaded_path = os.path.join(course_download_dir, suggested)
+    try:
+        download.save_as(downloaded_path)
+    except Exception as e:
+        print(f"    [dl] FAIL: save_as error: {e}", flush=True)
+        try: fb_page.close()
+        except: pass
+        disconnect(p, browser)
+        return None
+
+    # Close feedback window
+    try: fb_page.close()
+    except: pass
+    disconnect(p, browser)
+
+    # If filename didn't carry an extension, detect by magic bytes and rename
+    cur_ext = os.path.splitext(downloaded_path)[1].lower()
+    if cur_ext not in ('.pdf', '.pptx', '.ppt', '.docx', '.doc'):
+        def detect_ext(path):
+            with open(path, 'rb') as f:
+                head = f.read(8)
+            if head.startswith(b'%PDF-'):
+                return '.pdf'
+            if head.startswith(b'PK\x03\x04'):
+                import zipfile
+                try:
+                    with zipfile.ZipFile(path) as zf:
+                        names = zf.namelist()
+                        if any(n.startswith('ppt/') for n in names): return '.pptx'
+                        if any(n.startswith('word/') for n in names): return '.docx'
+                except Exception:
+                    pass
+            if head[:4] == b'\xd0\xcf\x11\xe0':
+                return '.ppt'  # OLE2 — could be .doc or .ppt; .ppt more common here
+            return None
+        detected = detect_ext(downloaded_path)
+        if detected:
+            new_path = os.path.splitext(downloaded_path)[0] + detected
+            try:
+                os.rename(downloaded_path, new_path)
+                downloaded_path = new_path
+                print(f"    [dl] Renamed by magic bytes: {os.path.basename(downloaded_path)}", flush=True)
+            except Exception as e:
+                print(f"    [dl] WARN: rename to {detected} failed ({e})", flush=True)
+
+    download_dir = course_download_dir
+    print(f"    [dl] Saved: {os.path.basename(downloaded_path)} ({os.path.getsize(downloaded_path):,} bytes)", flush=True)
 
     # Check file size — skip if too large
     size_mb = os.path.getsize(downloaded_path) / (1024 * 1024)
@@ -316,9 +374,8 @@ def download_and_fix_from_feedback(item_name, course_key):
         print(f"    Fix error: {e}", flush=True)
 
     if os.path.exists(fixed_path):
-        # Report if images need alt text (caller can launch subagent)
         if images_needing_alt:
-            print(f"    NOTE: {len(images_needing_alt)} images need alt text (extracted to _imgs_*)", flush=True)
+            print(f"    NOTE: {len(images_needing_alt)} images without alt text (uploading anyway)", flush=True)
         return fixed_path
     return None
 
@@ -384,14 +441,17 @@ def upload_all(course_key):
                 print("  Still no items after reload — stopping", flush=True)
                 break
 
-        # Find first item below 85% that we haven't permanently skipped
+        # Find first non-skipped item. Since the report is sorted by score ascending,
+        # if the first non-skipped item has score >= 85%, we're done with the entire run.
         target = None
+        reached_threshold = False
         for item in items:
-            score_str = item['score'].replace('%', '')
-            if score_str.isdigit() and int(score_str) >= 85:
-                continue
             if item['name'] in skipped:
                 continue
+            score_str = item['score'].replace('%', '')
+            if score_str.isdigit() and int(score_str) >= 85:
+                reached_threshold = True
+                break
 
             name = item['name']
             ext = os.path.splitext(name)[1].lower()
@@ -404,9 +464,9 @@ def upload_all(course_key):
             # Check if we have a fixed file
             fixed_path = fixed_index.get(name)
 
-            # Try without (N) suffix
+            # Try without (N) suffix — also strips preceding whitespace
             if not fixed_path:
-                clean = re.sub(r'\(\d+\)(?=\.\w+$)', '', name).strip()
+                clean = re.sub(r'\s*\(\d+\)(?=\.\w+$)', '', name).strip()
                 fixed_path = fixed_index.get(clean)
 
             if fixed_path and os.path.exists(fixed_path):
@@ -418,14 +478,22 @@ def upload_all(course_key):
                 break
 
         if not target:
-            below = [i for i in items
-                     if i['score'].replace('%', '').isdigit()
-                     and int(i['score'].replace('%', '')) < 85
-                     and i['name'] not in skipped]
-            if not below:
-                print("\nAll items on page are >= 85% or skipped — done!")
-            else:
-                print(f"\n{len(below)} items below 85% but no fixes available")
+            if reached_threshold:
+                print("\nReached an item with score >= 85% — done!")
+                break
+            # No candidates on this page AND haven't hit 85% threshold —
+            # try advancing to next page.
+            from bb_utils import click_next_page
+            p, browser, page = connect()
+            report_page = get_report_page(browser)
+            items_frame = find_items_frame(report_page) if report_page else None
+            advanced = items_frame and click_next_page(items_frame)
+            disconnect(p, browser)
+            if advanced:
+                print("\nNo new candidates on this page — advanced to next page", flush=True)
+                time.sleep(2)
+                continue
+            print("\nNo more candidates and no next page — done!")
             break
 
         name, score, fixed_path = target
@@ -439,11 +507,9 @@ def upload_all(course_key):
                 print(f"    -> download/fix failed, skipping", flush=True)
                 skipped.add(name)
                 results.append({'report_name': name, 'status': 'download failed'})
-                # Close any feedback window and reload report
                 close_feedback_windows()
                 reload_report_content(reload_wait=10, tab_wait=5)
                 continue
-            # Add to index for future
             fixed_index[name] = fixed_path
             print(f"    -> fixed: {os.path.basename(fixed_path)}")
 
@@ -455,14 +521,15 @@ def upload_all(course_key):
         status = upload_item(name, fixed_path)
         print(f"    -> {status}")
 
+        # Mark every attempted item so we don't re-process it this run,
+        # even if the score stays below 85% after upload.
+        skipped.add(name)
         if 'uploaded' in status:
             uploaded += 1
             results.append({'report_name': name, 'status': status})
         elif status == 'not found':
-            skipped.add(name)
             results.append({'report_name': name, 'status': 'not found'})
         else:
-            skipped.add(name)
             results.append({'report_name': name, 'status': status})
 
         # Reload report

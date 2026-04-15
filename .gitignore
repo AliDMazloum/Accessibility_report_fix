@@ -1,0 +1,13 @@
+chrome-profile/
+_downloads/
+course_content/
+data/
+screenshots/
+__pycache__/
+*.pyc
+.env
+*.key
+# Stray course/personal data files at project root
+Module*_alt_text*.json
+alt_text_output.json
+paln.txt
