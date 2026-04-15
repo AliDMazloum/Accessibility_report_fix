@@ -17,8 +17,9 @@ from bb_utils import (get_course, load_json, save_json, download_manifest_filena
                       fix_manifest_filename, COURSE_DIR)
 
 LIBREOFFICE = "C:/Program Files/LibreOffice/program/soffice.exe"
-MAX_FILE_SIZE_MB_PDF = 5
+MAX_FILE_SIZE_MB_PDF = 20
 MAX_FILE_SIZE_MB_OFFICE = 20
+MAX_PDF_PAGES = 150
 
 
 def convert_old_format(input_path, output_dir):
@@ -63,6 +64,21 @@ def fix_single_file(fpath, download_entry):
         return {'report_name': report_name, 'fixed_path': None,
                 'fixes': [], 'images_need_alt': 0,
                 'skipped_reason': f'too large ({size_mb:.1f} MB > {max_size} MB)'}
+
+    # Check PDF page count
+    if ext == '.pdf':
+        try:
+            import pikepdf
+            with pikepdf.open(fpath) as pdf:
+                page_count = len(pdf.pages)
+            if page_count > MAX_PDF_PAGES:
+                return {'report_name': report_name, 'fixed_path': None,
+                        'fixes': [], 'images_need_alt': 0,
+                        'skipped_reason': f'too many pages ({page_count} > {MAX_PDF_PAGES})'}
+        except Exception as e:
+            return {'report_name': report_name, 'fixed_path': None,
+                    'fixes': [], 'images_need_alt': 0,
+                    'skipped_reason': f'could not read PDF pages: {e}'}
 
     # Convert old formats
     working_path = fpath
