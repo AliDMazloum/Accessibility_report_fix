@@ -13,14 +13,15 @@ Usage:
     python scripts/phase5_upload.py <course_key>
     python scripts/phase5_upload.py CYBERINFRA
 """
-import sys, os, time, re
+import sys, os, time, re, json, argparse
 sys.path.insert(0, os.path.dirname(__file__))
 
 from bb_utils import (get_course, connect, disconnect, load_json, save_json,
                       navigate_to_report_content, reload_report_content,
                       find_items_frame, find_feedback_page, find_feedback_frame,
                       close_feedback_windows, click_item_by_name,
-                      get_page_items, fix_manifest_filename, COURSE_DIR, BASE_DIR)
+                      get_page_items, fix_manifest_filename, COURSE_DIR, BASE_DIR,
+                      DATA_DIR)
 
 # Project-wide download landing dir — must match Chrome's configured default
 # (set by scripts/launch_chrome.py). We move files out of here into the course
@@ -179,19 +180,19 @@ def upload_item(item_name, fixed_path):
     return 'uploaded'
 
 
-def download_and_fix_from_feedback(item_name, course_key):
-    """Click item, download from feedback, fix locally. Returns fixed_path or None."""
-    import subprocess
+def download_only_from_feedback(item_name, course_key):
+    """Click report item, download via Ally feedback, save to disk. NO fix/extract.
 
+    Returns saved file path or None. Used by Stage 1 of the new two-stage Phase 5
+    flow: collect downloads first, fix in stage 2, upload in stage 3.
+    """
     course = get_course(course_key)
     course_download_dir = os.path.join(COURSE_DIR, course['dir'], '_downloads')
     os.makedirs(course_download_dir, exist_ok=True)
     os.makedirs(CHROME_DOWNLOAD_DIR, exist_ok=True)
 
-    LIBREOFFICE = "C:/Program Files/LibreOffice/program/soffice.exe"
-
-    # Step 1: Click item to open feedback window (disconnect/reconnect — clicking while
-    # connected can be slow).
+    # Step 1: Click item to open feedback window (disconnect/reconnect; clicking
+    # while connected can be slow).
     print(f"    [dl] Clicking item...", flush=True)
     p, browser, page = connect()
     report_page = get_report_page(browser)
@@ -312,72 +313,127 @@ def download_and_fix_from_feedback(item_name, course_key):
             except Exception as e:
                 print(f"    [dl] WARN: rename to {detected} failed ({e})", flush=True)
 
-    download_dir = course_download_dir
     print(f"    [dl] Saved: {os.path.basename(downloaded_path)} ({os.path.getsize(downloaded_path):,} bytes)", flush=True)
+    return downloaded_path
 
-    # Check file size — skip if too large
-    size_mb = os.path.getsize(downloaded_path) / (1024 * 1024)
-    max_size = 20 if os.path.splitext(downloaded_path)[1].lower() in ('.pptx', '.ppt', '.docx', '.doc') else 5
-    if size_mb > max_size:
-        print(f"    Skipping: too large ({size_mb:.1f} MB)", flush=True)
+
+def fix_pending_downloads(pending, course_key):
+    """Stage 2: apply Phase 4 deterministic fixes to each pending download.
+
+    Mutates each entry to add 'fixed_path', 'images_need_alt', 'images_detail',
+    and 'fix_skipped_reason' if the fix failed. Returns aggregated images list.
+    """
+    from phase4_fix import fix_single_file
+    print(f"\nStage 2: fixing {len(pending)} downloaded files...", flush=True)
+    all_images = []
+    for entry in pending:
+        if entry.get('uploaded'):
+            continue  # Already handled in a previous run
+        fpath = entry.get('downloaded_path')
+        if not fpath or not os.path.exists(fpath):
+            entry['fix_skipped_reason'] = 'downloaded file missing'
+            print(f"  SKIP {entry['report_name']}: file missing", flush=True)
+            continue
+        download_entry = {'report_name': entry['report_name']}
+        result = fix_single_file(fpath, download_entry)
+        if result.get('skipped_reason'):
+            entry['fix_skipped_reason'] = result['skipped_reason']
+            print(f"  SKIP {entry['report_name']}: {result['skipped_reason']}", flush=True)
+            continue
+        entry['fixed_path'] = result.get('fixed_path')
+        entry['images_need_alt'] = result.get('images_need_alt', 0)
+        fixes_str = ', '.join(result.get('fixes', [])) or 'none needed'
+        print(f"  FIXED {entry['report_name']}: {fixes_str}; images={entry['images_need_alt']}", flush=True)
+        if result.get('images_detail'):
+            all_images.append({
+                'report_name': result['report_name'],
+                'fixed_path': entry['fixed_path'],
+                'images': result['images_detail'],
+            })
+    return all_images
+
+
+def upload_pending(course_key):
+    """Stage 3: re-navigate the report and upload each pending fixed file."""
+    pending_path = os.path.join(DATA_DIR, f'phase5_pending_{course_key}.json')
+    if not os.path.exists(pending_path):
+        print(f"No pending file found: {pending_path}")
         return None
 
-    # Step 3: Fix the file
-    ext = os.path.splitext(downloaded_path)[1].lower()
-    stem = os.path.splitext(os.path.basename(downloaded_path))[0]
+    with open(pending_path, encoding='utf-8') as f:
+        pending = json.load(f)
 
-    # Convert old formats
-    working_path = downloaded_path
-    if ext in ('.doc', '.ppt'):
-        new_ext = '.docx' if ext == '.doc' else '.pptx'
-        converted = os.path.join(download_dir, stem + new_ext)
-        if not os.path.exists(converted):
-            try:
-                subprocess.run([LIBREOFFICE, '--headless', '--convert-to', new_ext[1:],
-                               '--outdir', download_dir, downloaded_path],
-                              capture_output=True, timeout=60)
-            except:
-                pass
-        if os.path.exists(converted):
-            working_path = converted
-            ext = new_ext
-            stem = os.path.splitext(os.path.basename(working_path))[0]
+    course = get_course(course_key)
+    course_id = course['id']
 
-    # Backup original, fix writes to original name
-    import shutil
-    backup_path = os.path.join(download_dir, 'backup_' + os.path.basename(working_path))
-    if not os.path.exists(backup_path):
-        shutil.copy2(working_path, backup_path)
-    fixed_path = working_path  # Fixed file keeps the original name
+    # Always reset to page 1 of the Content tab. Stage 1 may have left the report
+    # on a deep page; stage 3 needs to start fresh so pagination finds every item.
+    print("Resetting report to page 1...", flush=True)
+    p, browser, page = connect()
+    report_page = get_report_page(browser)
+    disconnect(p, browser)
+    if report_page:
+        reload_report_content(reload_wait=10, tab_wait=5)
+    else:
+        navigate_to_report_content(course_id, nav_wait=10, tab_wait=5)
 
-    images_needing_alt = []
-    try:
-        if ext == '.pdf':
-            from fix_pdf import fix_pdf
-            from add_headings import add_headings_to_pdf
-            fix_pdf(backup_path, fixed_path)
-            try:
-                add_headings_to_pdf(fixed_path, fixed_path)
-            except:
-                pass
-        elif ext == '.docx':
-            from fix_office import fix_docx, extract_docx_images
-            fix_docx(backup_path, fixed_path)
-            imgs_dir = os.path.join(download_dir, '_imgs_' + os.path.splitext(os.path.basename(fixed_path))[0])
-            images_needing_alt = extract_docx_images(fixed_path, imgs_dir)
-        elif ext == '.pptx':
-            from fix_office import fix_pptx, extract_pptx_images
-            fix_pptx(backup_path, fixed_path)
-            imgs_dir = os.path.join(download_dir, '_imgs_' + os.path.splitext(os.path.basename(fixed_path))[0])
-            images_needing_alt = extract_pptx_images(fixed_path, imgs_dir)
-    except Exception as e:
-        print(f"    Fix error: {e}", flush=True)
+    print(f"\nStage 3: uploading {sum(1 for e in pending if not e.get('uploaded'))} pending files...", flush=True)
+    uploaded_count = 0
+    for entry in pending:
+        if entry.get('uploaded'):
+            continue
+        name = entry['report_name']
+        fixed_path = entry.get('fixed_path')
+        if not fixed_path or not os.path.exists(fixed_path):
+            entry['upload_status'] = 'fixed file missing'
+            print(f"  SKIP {name}: fixed file missing", flush=True)
+            continue
+        # Search across pages for this item
+        from bb_utils import click_next_page
+        found_and_uploaded = False
+        for page_attempt in range(20):
+            close_feedback_windows()
+            status = upload_item(name, fixed_path)
+            if 'uploaded' in status:
+                entry['uploaded'] = True
+                entry['upload_status'] = status
+                uploaded_count += 1
+                print(f"  UPLOADED {name}", flush=True)
+                close_feedback_windows()
+                reload_report_content(reload_wait=5, tab_wait=5)
+                found_and_uploaded = True
+                break
+            if status == 'not found':
+                # Try next page
+                p, browser, page = connect()
+                report_page = get_report_page(browser)
+                items_frame = find_items_frame(report_page) if report_page else None
+                advanced = items_frame and click_next_page(items_frame)
+                disconnect(p, browser)
+                if not advanced:
+                    break
+                time.sleep(2)
+                continue
+            entry['upload_status'] = status
+            print(f"  FAIL {name}: {status}", flush=True)
+            break
+        if not found_and_uploaded and 'upload_status' not in entry:
+            entry['upload_status'] = 'not found in report'
+            print(f"  NOT FOUND {name} after pagination", flush=True)
+        # Persist progress after each item so re-runs are idempotent
+        with open(pending_path, 'w', encoding='utf-8') as f:
+            json.dump(pending, f, indent=2)
 
-    if os.path.exists(fixed_path):
-        if images_needing_alt:
-            print(f"    NOTE: {len(images_needing_alt)} images without alt text (uploading anyway)", flush=True)
-        return fixed_path
-    return None
+    # Cleanup if everything uploaded
+    remaining = [e for e in pending if not e.get('uploaded')]
+    if not remaining:
+        done_path = pending_path.replace('.json', '_done.json')
+        os.replace(pending_path, done_path)
+        print(f"\nAll uploaded. Pending file moved to {os.path.basename(done_path)}", flush=True)
+    else:
+        print(f"\n{uploaded_count} uploaded, {len(remaining)} still pending. Re-run --stage3 after fixing issues.", flush=True)
+
+    return {'uploaded': uploaded_count, 'remaining': len(remaining), 'pending_path': pending_path}
 
 
 def upload_all(course_key):
@@ -414,6 +470,7 @@ def upload_all(course_key):
     results = []
     uploaded = 0
     skipped = set()
+    pending_downloads = []  # Stage 1 collects download-fallback items here
 
     while True:
         # Read items on current page (use report page, not last tab)
@@ -498,20 +555,29 @@ def upload_all(course_key):
 
         name, score, fixed_path = target
 
-        # If no fixed file, try download-fix-upload from feedback
+        # If no fixed file, download only and queue for stage 2 (fix) + stage 3 (upload).
+        # Don't fix or upload during stage 1; pending list is processed after the loop.
         if not fixed_path:
-            print(f"\n  {name} ({score}) — no fix, attempting download from feedback...")
+            print(f"\n  {name} ({score}) — not in fix index, downloading for stage 2...")
             close_feedback_windows()
-            fixed_path = download_and_fix_from_feedback(name, course_key)
-            if not fixed_path:
-                print(f"    -> download/fix failed, skipping", flush=True)
-                skipped.add(name)
+            downloaded_path = download_only_from_feedback(name, course_key)
+            skipped.add(name)
+            if not downloaded_path:
+                print(f"    -> download failed, skipping", flush=True)
                 results.append({'report_name': name, 'status': 'download failed'})
                 close_feedback_windows()
                 reload_report_content(reload_wait=10, tab_wait=5)
                 continue
-            fixed_index[name] = fixed_path
-            print(f"    -> fixed: {os.path.basename(fixed_path)}")
+            pending_downloads.append({
+                'report_name': name,
+                'score': score,
+                'downloaded_path': downloaded_path.replace('\\', '/'),
+                'uploaded': False,
+            })
+            results.append({'report_name': name, 'status': 'downloaded (pending stage 2/3)'})
+            close_feedback_windows()
+            reload_report_content(reload_wait=5, tab_wait=5)
+            continue
 
         size = os.path.getsize(fixed_path)
         print(f"\n  {name} ({score}) -> {os.path.basename(fixed_path)} ({size:,} bytes)")
@@ -541,33 +607,92 @@ def upload_all(course_key):
         'uploaded': uploaded,
         'skipped': sorted(skipped),
         'results': results,
+        'pending_downloads': pending_downloads,
     }
 
 
+def run_stage2_and_persist(pending_downloads, course_key):
+    """Run stage 2 (fix) on pending downloads, persist pending JSON + images JSON.
+    Returns total images needing alt text across all docs."""
+    if not pending_downloads:
+        print("\nNo download-fallback items to fix. Stage 2 skipped.", flush=True)
+        return 0
+
+    all_images = fix_pending_downloads(pending_downloads, course_key)
+
+    # Persist pending list with fix results
+    pending_path = os.path.join(DATA_DIR, f'phase5_pending_{course_key}.json')
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(pending_path, 'w', encoding='utf-8') as f:
+        json.dump(pending_downloads, f, indent=2)
+    print(f"\nPending list saved: {pending_path}", flush=True)
+
+    if all_images:
+        imgs_path = os.path.join(DATA_DIR, f'images_needing_alt_phase5_{course_key}.json')
+        with open(imgs_path, 'w', encoding='utf-8') as f:
+            json.dump(all_images, f, indent=2)
+        total_images = sum(len(e['images']) for e in all_images)
+        print(f"Images needing alt text saved: {imgs_path} ({total_images} images across {len(all_images)} docs)", flush=True)
+        return total_images
+    return 0
+
+
 def main():
-    if len(sys.argv) < 2:
+    parser = argparse.ArgumentParser(description="Phase 5: upload fixed files to Blackboard Ally.")
+    parser.add_argument('course_key', nargs='?', help='Course key from courses.json')
+    parser.add_argument('--stage3', action='store_true',
+                        help='Skip stages 1+2; only upload pending fixed files from data/phase5_pending_<COURSE>.json')
+    args = parser.parse_args()
+
+    if not args.course_key:
         from bb_utils import load_courses
-        print("Usage: python phase5_upload.py <course_key>")
+        print("Usage: python phase5_upload.py <course_key> [--stage3]")
         print(f"Known courses: {', '.join(load_courses().keys())}")
         sys.exit(1)
 
-    course_key = sys.argv[1].upper()
+    course_key = args.course_key.upper()
+
+    if args.stage3:
+        upload_pending(course_key)
+        return
+
+    # Stages 1 + 2
     results = upload_all(course_key)
 
     filename = f"upload_results_{course_key}.json"
-    save_json(results, filename)
+    # Strip pending_downloads from saved results (it's persisted separately)
+    results_for_save = {k: v for k, v in results.items() if k != 'pending_downloads'}
+    save_json(results_for_save, filename)
     print(f"\nSaved to data/{filename}")
 
     print(f"\n{'='*60}")
-    print(f"  Phase 5 Results: {course_key}")
+    print(f"  Phase 5 Stage 1 Results: {course_key}")
     print(f"{'='*60}")
-    print(f"  Uploaded: {results['uploaded']}")
-    print(f"  Skipped:  {len(results['skipped'])}")
+    print(f"  Uploaded (in fix index):       {results['uploaded']}")
+    print(f"  Downloaded (pending stage 2):  {len(results['pending_downloads'])}")
+    print(f"  Skipped:                       {len(results['skipped'])}")
 
-    if results['skipped']:
-        print(f"\n  Skipped items (no fix available):")
-        for s in results['skipped'][:20]:
-            print(f"    - {s}")
+    # Stage 2
+    pending = results.get('pending_downloads', [])
+    total_images = run_stage2_and_persist(pending, course_key)
+
+    fixed_count = sum(1 for e in pending if e.get('fixed_path'))
+    print(f"\n{'='*60}")
+    print(f"  Phase 5 Stage 2 Results: {course_key}")
+    print(f"{'='*60}")
+    print(f"  Files fixed:           {fixed_count}/{len(pending)}")
+    print(f"  Images needing alt:    {total_images}")
+
+    if total_images > 0:
+        print(f"\nNext steps:")
+        print(f"  1. Generate alt text JSONs (launch Claude Code subagents on data/images_needing_alt_phase5_{course_key}.json)")
+        print(f"  2. python scripts/phase4b_apply_alts.py {course_key} data/alt_texts_phase5_{course_key}.json")
+        print(f"  3. python scripts/phase5_upload.py {course_key} --stage3")
+    elif fixed_count > 0:
+        print(f"\nNo alt text needed. Auto-running stage 3...")
+        upload_pending(course_key)
+    else:
+        print(f"\nNothing to upload in stage 3.")
 
 
 if __name__ == '__main__':
