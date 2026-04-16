@@ -3,12 +3,13 @@
 Central module for all Blackboard automation. All phase scripts import from here.
 No other script should define its own navigation, frame-finding, or COURSES logic.
 """
-from playwright.sync_api import sync_playwright
 import time, json, os
 
 # ── Paths ─────────────────────────────────────────────────────────────────
-BASE_DIR = "C:/Users/alima/OneDrive - University of South Carolina/Research/Working Directory/Blackboard_Accessibility_report"
-SCRIPTS_DIR = os.path.join(BASE_DIR, "scripts")
+# Derive BASE_DIR from this file's location so the scripts work on any
+# machine / username (not hard-coded to a specific home dir).
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(SCRIPTS_DIR)
 DATA_DIR = os.path.join(BASE_DIR, "data")
 SCREENSHOTS_DIR = os.path.join(BASE_DIR, "screenshots")
 COURSE_DIR = os.path.join(BASE_DIR, "course_content")
@@ -56,6 +57,7 @@ def fix_manifest_filename(course_key):
 
 def connect():
     """Connect to Chrome via CDP. Returns (playwright, browser, page)."""
+    from playwright.sync_api import sync_playwright
     p = sync_playwright().start()
     browser = p.chromium.connect_over_cdp(CDP_URL)
     page = browser.contexts[0].pages[-1]

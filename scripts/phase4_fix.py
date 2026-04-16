@@ -45,8 +45,15 @@ def convert_old_format(input_path, output_dir):
     return None
 
 
-def fix_single_file(fpath, download_entry):
-    """Fix a single file. Returns {report_name, fixed_path, fixes, images_need_alt, skipped_reason}."""
+def fix_single_file(fpath, download_entry, semantic=None):
+    """Fix a single file. Returns {report_name, fixed_path, fixes, images_need_alt, skipped_reason,
+    semantic_status, semantic_applied}.
+
+    ``semantic`` is a pre-validated semantic dict (from the /semantic-validate
+    Claude Code command) or ``None``. When provided, its values override the
+    deterministic fallbacks for title, language, headings, table-header flags,
+    and lists. When absent, only the deterministic fallbacks apply (same
+    behavior as before the semantic pipeline existed)."""
     from fix_pdf import fix_pdf
     from add_headings import add_headings_to_pdf
     from fix_office import (fix_docx, fix_pptx, extract_pptx_images,
@@ -116,19 +123,22 @@ def fix_single_file(fpath, download_entry):
 
     try:
         if ext == '.pdf':
-            result = fix_pdf(backup_path, fixed_path)
+            result = fix_pdf(backup_path, fixed_path, semantic=semantic)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
             try:
-                result2 = add_headings_to_pdf(fixed_path, fixed_path)
+                heading_override = (semantic or {}).get('headings') or None
+                result2 = add_headings_to_pdf(fixed_path, fixed_path,
+                                              heading_override=heading_override)
                 if result2.get('status') == 'fixed':
-                    fixes.append(f"{result2.get('headings_found', 0)} headings")
+                    tag = '(semantic)' if heading_override else ''
+                    fixes.append(f"{result2.get('headings_found', 0)} headings {tag}".strip())
             except Exception as e:
                 fixes.append(f'headings error: {e}')
 
         elif ext == '.docx':
-            result = fix_docx(backup_path, fixed_path)
+            result = fix_docx(backup_path, fixed_path, semantic=semantic)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
@@ -139,7 +149,7 @@ def fix_single_file(fpath, download_entry):
                 images_needing_alt = images
 
         elif ext == '.pptx':
-            result = fix_pptx(backup_path, fixed_path)
+            result = fix_pptx(backup_path, fixed_path, semantic=semantic)
             if result.get('status') == 'fixed':
                 fixes.extend(result.get('fixed', []))
 
@@ -160,6 +170,20 @@ def fix_single_file(fpath, download_entry):
                 'skipped_reason': f'error: {e}'}
 
     actual_fixed = fixed_path if os.path.exists(fixed_path) else None
+
+    if semantic:
+        semantic_applied = {
+            'title': bool(semantic.get('semantic_title')),
+            'language': bool(semantic.get('language')),
+            'headings_count': len(semantic.get('headings') or []),
+            'tables_checked': len(semantic.get('tables') or []),
+            'lists_count': len(semantic.get('lists') or []),
+        }
+        semantic_status = 'applied'
+    else:
+        semantic_applied = None
+        semantic_status = 'none'
+
     return {
         'report_name': report_name,
         'original_path': os.path.normpath(fpath).replace('\\', '/'),
@@ -168,6 +192,8 @@ def fix_single_file(fpath, download_entry):
         'images_need_alt': len(images_needing_alt),
         'images_detail': images_needing_alt if images_needing_alt else None,
         'skipped_reason': None,
+        'semantic_status': semantic_status,
+        'semantic_applied': semantic_applied,
     }
 
 

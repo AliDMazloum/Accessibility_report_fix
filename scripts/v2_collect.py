@@ -74,7 +74,8 @@ def collect_all(course_key):
                 reached_threshold = True
                 break
             ext = os.path.splitext(item['name'])[1].lower()
-            if item.get('type', '') == 'Ultra document' or not ext:
+            IMAGE_EXTS = {'.png', '.jpg', '.jpeg', '.gif', '.bmp', '.svg', '.webp', '.ico', '.tiff'}
+            if item.get('type', '') == 'Ultra document' or not ext or ext in IMAGE_EXTS:
                 attempted.add(item['name'])
                 continue
             target = item
@@ -105,6 +106,14 @@ def collect_all(course_key):
 
         close_feedback_windows()
         downloaded_path = download_only_from_feedback(name, course_key)
+
+        # Retry once on transient failure (Ally feedback window sometimes loads slowly)
+        if not downloaded_path:
+            print(f"    First attempt failed; retrying...", flush=True)
+            close_feedback_windows()
+            time.sleep(3)
+            downloaded_path = download_only_from_feedback(name, course_key)
+
         attempted.add(name)
 
         entry = {
@@ -112,7 +121,7 @@ def collect_all(course_key):
             'score': score,
             'page_number': current_page,
             'downloaded_path': downloaded_path.replace('\\', '/') if downloaded_path else None,
-            'error': None if downloaded_path else 'download failed',
+            'error': None if downloaded_path else 'download failed (after retry)',
         }
         collected.append(entry)
 
@@ -138,13 +147,48 @@ def collect_all(course_key):
     return collected
 
 
+def clean_v2_data(course_key):
+    """Remove all v2 data files for a course so a fresh run starts clean."""
+    import glob
+    patterns = [
+        f'v2_collected_{course_key}.json',
+        f'v2_fixed_{course_key}.json',
+        f'v2_images_needing_alt_{course_key}.json',
+        f'v2_alt_texts_{course_key}.json',
+        f'v2_upload_results_{course_key}.json',
+        f'phase5_pending_{course_key}.json',
+        f'phase5_pending_{course_key}_done.json',
+        f'semantic_tasks_{course_key}.json',
+        f'semantic_results_{course_key}.json',
+    ]
+    removed = 0
+    for pat in patterns:
+        path = os.path.join(DATA_DIR, pat)
+        if os.path.exists(path):
+            os.remove(path)
+            removed += 1
+    # Also clean staging dirs
+    import shutil
+    for name in (f'v2_alt_tasks_{course_key}', f'alt_tasks_{course_key}',
+                 f'alt_tasks_phase5_{course_key}'):
+        staging = os.path.join(DATA_DIR, name)
+        if os.path.isdir(staging):
+            shutil.rmtree(staging, ignore_errors=True)
+            removed += 1
+    print(f"Cleaned {removed} stale data files/dirs for {course_key}.", flush=True)
+
+
 def main():
-    if len(sys.argv) < 2:
-        from bb_utils import load_courses
-        print("Usage: python v2_collect.py <course_key>")
-        print(f"Known courses: {', '.join(load_courses().keys())}")
-        sys.exit(1)
-    collect_all(sys.argv[1].upper())
+    import argparse
+    parser = argparse.ArgumentParser(description="v2 step 1+2: download from report")
+    parser.add_argument('course_key')
+    parser.add_argument('--clean', action='store_true',
+                        help='Remove stale v2 data files for this course before starting')
+    args = parser.parse_args()
+    course_key = args.course_key.upper()
+    if args.clean:
+        clean_v2_data(course_key)
+    collect_all(course_key)
 
 
 if __name__ == '__main__':

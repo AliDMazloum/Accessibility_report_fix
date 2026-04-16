@@ -150,14 +150,25 @@ def set_title(pdf, title):
         pass
 
 
-def fix_pdf(input_path, output_path=None, title=None, lang='en-US'):
+def fix_pdf(input_path, output_path=None, title=None, lang='en-US', semantic=None):
     """Fix all accessibility issues in a PDF.
+
+    If semantic is provided (dict with semantic_title and/or language), its
+    values take precedence over the filename-derived title and the default
+    language. The explicit title/lang arguments still win over semantic when
+    both are given — this lets callers force a value.
 
     Returns dict with what was fixed.
     """
     if output_path is None:
         stem, ext = os.path.splitext(input_path)
         output_path = stem + '_fixed' + ext
+
+    if semantic:
+        if not title and semantic.get('semantic_title'):
+            title = semantic['semantic_title']
+        if semantic.get('language'):
+            lang = semantic['language']
 
     issues = scan_pdf(input_path)
     if 'error' in issues:
@@ -177,8 +188,13 @@ def fix_pdf(input_path, output_path=None, title=None, lang='en-US'):
         set_language(pdf, lang)
         fixed.append('language')
 
-    if issues.get('no_title'):
-        doc_title = title or title_from_filename(input_path)
+    # Write title if missing. Also write it unconditionally when the caller
+    # supplied an explicit title or a validated semantic title: the existing
+    # title may be a tooling placeholder (e.g. "Microsoft PowerPoint - foo")
+    # that Ally rejects even though scan_pdf considers it non-empty.
+    semantic_title = (semantic or {}).get('semantic_title') if semantic else None
+    if issues.get('no_title') or title or semantic_title:
+        doc_title = title or semantic_title or title_from_filename(input_path)
         set_title(pdf, doc_title)
         fixed.append('title')
 

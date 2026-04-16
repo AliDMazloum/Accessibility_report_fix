@@ -97,11 +97,102 @@ def extract_headings(pdf_path, heading_map):
                     })
 
     doc.close()
+    return _normalize_heading_levels(headings)
+
+
+def _normalize_heading_levels(headings):
+    """Ensure headings start at H1 and have no level gaps.
+
+    Ally flags "Headings do not begin at heading level 1" and "do not
+    follow a logical order" when there are gaps (e.g., H2 without H1) or
+    jumps (H1 to H3 with no H2).
+
+    This function compresses the used levels to a contiguous 1-based
+    sequence: the smallest used level becomes H1, the next becomes H2, etc.
+    """
+    if not headings:
+        return headings
+    used_levels = sorted(set(h['level'] for h in headings))
+    if not used_levels:
+        return headings
+    remap = {old: new for new, old in enumerate(used_levels, start=1)}
+    for h in headings:
+        h['level'] = remap[h['level']]
     return headings
 
 
-def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US'):
+def _match_headings_to_pages(pdf_path, heading_list):
+    """Given a list of {text, level, locator:{page, anchor_text}} items,
+    return list of {page, level, text} matched against the actual PDF text.
+
+    Uses locator.page directly; if anchor_text is present and doesn't appear
+    on that page, falls back to scanning neighboring pages (+/-1) for the
+    anchor. Headings that can't be located at all are dropped.
+    """
+    import pymupdf
+    doc = pymupdf.open(pdf_path)
+    total = len(doc)
+    results = []
+    try:
+        for h in heading_list:
+            text = str(h.get('text', '')).strip()
+            if not text:
+                continue
+            try:
+                level = int(h.get('level', 1))
+            except Exception:
+                level = 1
+            level = max(1, min(3, level))
+
+            locator = h.get('locator') or {}
+            page = locator.get('page')
+            anchor = (locator.get('anchor_text') or text).strip()[:40].lower()
+
+            if not isinstance(page, int) or page < 0 or page >= total:
+                # Try to find anchor in any page
+                found_page = None
+                for p in range(total):
+                    try:
+                        if anchor in doc[p].get_text().lower():
+                            found_page = p
+                            break
+                    except Exception:
+                        continue
+                if found_page is None:
+                    continue
+                page = found_page
+            else:
+                # Verify anchor on that page; fall back to +/-1 if missing.
+                try:
+                    page_text = doc[page].get_text().lower()
+                except Exception:
+                    page_text = ''
+                if anchor and anchor not in page_text:
+                    for delta in (-1, 1):
+                        alt = page + delta
+                        if 0 <= alt < total:
+                            try:
+                                if anchor in doc[alt].get_text().lower():
+                                    page = alt
+                                    break
+                            except Exception:
+                                pass
+
+            results.append({'page': page, 'level': level, 'text': text[:200]})
+    finally:
+        doc.close()
+    return _normalize_heading_levels(results)
+
+
+def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US',
+                        heading_override=None):
     """Add heading structure elements to a PDF.
+
+    If heading_override (list of {text, level, locator}) is provided, it is
+    used instead of the font-size heuristic. Each heading is anchored to a
+    page by locator.page (with anchor_text fallback). Font-size detection
+    remains the path for uncontrolled input.
+
     Returns dict with results."""
     if output_path is None:
         stem, ext = os.path.splitext(input_path)
@@ -111,18 +202,27 @@ def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US'):
         else:
             output_path = stem + '_fixed' + ext
 
-    # Analyze fonts and detect headings
-    font_counter = analyze_fonts(input_path)
-    if not font_counter:
-        return {'status': 'no text found'}
+    heading_map = None
+    body_size = None
+    headings = []
 
-    heading_map, body_size = detect_heading_sizes(font_counter)
-    if not heading_map:
-        return {'status': 'no headings detected (single font size)'}
+    if heading_override:
+        headings = _match_headings_to_pages(input_path, heading_override)
+        if not headings:
+            return {'status': 'no headings found (override supplied but unmatched)'}
+    else:
+        # Analyze fonts and detect headings
+        font_counter = analyze_fonts(input_path)
+        if not font_counter:
+            return {'status': 'no text found'}
 
-    headings = extract_headings(input_path, heading_map)
-    if not headings:
-        return {'status': 'no headings found'}
+        heading_map, body_size = detect_heading_sizes(font_counter)
+        if not heading_map:
+            return {'status': 'no headings detected (single font size)'}
+
+        headings = extract_headings(input_path, heading_map)
+        if not headings:
+            return {'status': 'no headings found'}
 
     # Group headings by page
     headings_by_page = {}
@@ -185,7 +285,13 @@ def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US'):
 
         mcid_counter = i * 100
 
-        # Add heading elements for this page
+        # Add heading elements for this page.
+        # NOTE: MCIDs generated here do not correspond to marked content in
+        # the page's content stream (adding those would require rewriting
+        # every page's content ops). Instead, we attach /ActualText to each
+        # heading struct element — screen readers read /ActualText verbatim
+        # when they walk the struct tree, so the hierarchy and heading text
+        # are both conveyed to AT users without touching content streams.
         if i in headings_by_page:
             for h in headings_by_page[i]:
                 h_name = f'/H{h["level"]}'
@@ -199,6 +305,8 @@ def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US'):
                         '/MCID': mcid_counter,
                     })]),
                     '/Pg': page_ref,
+                    '/ActualText': pikepdf.String(h['text']),
+                    '/Alt': pikepdf.String(h['text']),
                 }))
                 page_elem['/K'].append(h_elem)
                 mcid_counter += 1
@@ -229,15 +337,18 @@ def add_headings_to_pdf(input_path, output_path=None, title=None, lang='en-US'):
     pdf.save(output_path)
     pdf.close()
 
-    return {
+    result = {
         'status': 'fixed',
         'headings_found': len(headings),
         'pages_with_headings': len(headings_by_page),
-        'heading_sizes': {f'H{v}': f'{k}pt' for k, v in heading_map.items()},
-        'body_size': f'{body_size}pt',
         'output': output_path,
         'size': os.path.getsize(output_path),
+        'source': 'override' if heading_override else 'font-size',
     }
+    if heading_map is not None:
+        result['heading_sizes'] = {f'H{v}': f'{k}pt' for k, v in heading_map.items()}
+        result['body_size'] = f'{body_size}pt'
+    return result
 
 
 if __name__ == '__main__':
@@ -264,8 +375,9 @@ if __name__ == '__main__':
         result = add_headings_to_pdf(args.input, args.output, args.title, args.lang)
         if result['status'] == 'fixed':
             print(f"Added {result['headings_found']} headings across {result['pages_with_headings']} pages")
-            print(f"Heading sizes: {result['heading_sizes']}")
-            print(f"Body size: {result['body_size']}")
+            if 'heading_sizes' in result:
+                print(f"Heading sizes: {result['heading_sizes']}")
+                print(f"Body size: {result['body_size']}")
             print(f"Output: {result['output']} ({result['size']:,} bytes)")
         else:
             print(f"Status: {result['status']}")

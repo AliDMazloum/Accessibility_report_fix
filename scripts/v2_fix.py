@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from bb_utils import DATA_DIR
 from phase4_fix import fix_single_file
+from semantic_agents import load_results as load_semantic_results
 
 
 def fix_all(course_key):
@@ -25,9 +26,18 @@ def fix_all(course_key):
     with open(src, encoding='utf-8') as f:
         collected = json.load(f)
 
+    semantic_by_name = load_semantic_results(course_key)
+    if semantic_by_name:
+        print(f"Loaded semantic results for {len(semantic_by_name)} docs")
+    else:
+        print("No semantic_results file found — running deterministic only.")
+        print(f"  (To produce results: prepare tasks and run /semantic-validate {course_key})")
+
     print(f"v2 Fix: {len(collected)} entries")
     fixed_entries = []
     all_images = []
+    semantic_counts = {'applied': 0, 'none': 0, 'already_good': 0,
+                       'skipped_validation': 0, 'skipped_error': 0}
 
     for entry in collected:
         name = entry['report_name']
@@ -38,7 +48,27 @@ def fix_all(course_key):
                                   'fix_skipped_reason': 'downloaded file missing'})
             continue
 
-        result = fix_single_file(fpath, {'report_name': name})
+        # Policy: if the semantic validator rejected this document (or the
+        # validation attempt errored), leave the ORIGINAL file untouched. No
+        # deterministic fallback — we report it as not-fixed so the upload
+        # stage knows to skip it.
+        sem_entry = semantic_by_name.get(name)
+        if sem_entry and sem_entry['status'] != 'applied':
+            status = sem_entry['status']
+            reason = sem_entry.get('reason') or status
+            print(f"  LEAVE {name}: semantic {status} -> keeping original ({reason[:120]})")
+            semantic_counts[status] = semantic_counts.get(status, 0) + 1
+            fixed_entries.append({
+                **entry,
+                'fixed_path': None,
+                'fix_skipped_reason': f'semantic {status}: {reason}',
+                'semantic_status': status,
+                'semantic_applied': None,
+            })
+            continue
+
+        semantic = sem_entry['semantic'] if sem_entry else None
+        result = fix_single_file(fpath, {'report_name': name}, semantic=semantic)
         if result.get('skipped_reason'):
             print(f"  SKIP {name}: {result['skipped_reason']}")
             fixed_entries.append({**entry, 'fixed_path': None,
@@ -47,12 +77,16 @@ def fix_all(course_key):
 
         fixes_str = ', '.join(result.get('fixes', [])) or 'none needed'
         imgs = result.get('images_need_alt', 0)
-        print(f"  FIXED {name}: {fixes_str}; images={imgs}")
+        sem_status = result.get('semantic_status') or 'none'
+        semantic_counts[sem_status] = semantic_counts.get(sem_status, 0) + 1
+        print(f"  FIXED {name}: {fixes_str}; images={imgs}; semantic={sem_status}")
         fixed_entries.append({
             **entry,
             'fixed_path': result.get('fixed_path'),
             'images_need_alt': imgs,
             'fix_skipped_reason': None,
+            'semantic_status': result.get('semantic_status'),
+            'semantic_applied': result.get('semantic_applied'),
         })
         if result.get('images_detail'):
             all_images.append({
@@ -81,6 +115,9 @@ def fix_all(course_key):
     print(f"  Files fixed:           {fixed_count}/{len(collected)}")
     print(f"  Images needing alt:    {total_images}")
     print(f"  Saved list:            {out_fixed}")
+    print(f"  Semantic results:")
+    for k in ('applied', 'none', 'already_good', 'skipped_validation', 'skipped_error'):
+        print(f"    {k:20s} {semantic_counts.get(k, 0)}")
 
     if total_images > 0:
         print(f"\nNext steps:")

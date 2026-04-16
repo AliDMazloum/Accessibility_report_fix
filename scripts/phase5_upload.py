@@ -166,8 +166,10 @@ def upload_item(item_name, fixed_path):
         wait = 15
     elif file_size < 2_000_000:
         wait = 25
-    else:
+    elif file_size < 5_000_000:
         wait = 40
+    else:
+        wait = 55
     time.sleep(wait)
 
     # Reconnect only to close feedback window
@@ -224,7 +226,7 @@ def download_only_from_feedback(item_name, course_key):
 
     download = None
     try:
-        with fb_page.expect_download(timeout=60000) as dl_info:
+        with fb_page.expect_download(timeout=120000) as dl_info:
             # Poll for the "Download original" button across all frames (feedback loads lazily)
             clicked_download = False
             poll_deadline = time.time() + 30

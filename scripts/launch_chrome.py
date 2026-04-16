@@ -60,6 +60,11 @@ def patch_preferences():
     prefs["profile"]["default_content_setting_values"] = prefs["profile"].get("default_content_setting_values", {})
     prefs["profile"]["default_content_setting_values"]["automatic_downloads"] = 1
 
+    # Force PDFs to download instead of opening in Chrome's built-in viewer.
+    # Without this, expect_download() never fires for PDF files.
+    prefs["plugins"] = prefs.get("plugins", {})
+    prefs["plugins"]["always_open_pdf_externally"] = True
+
     savefile = prefs.get("savefile", {})
     savefile["default_directory"] = DOWNLOAD_DIR
     prefs["savefile"] = savefile
