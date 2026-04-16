@@ -250,7 +250,7 @@ Template titles rejected: `"the internet and its uses"`, `"presentation"`, `"pow
 
 | Status | Behavior |
 |---|---|
-| `applied` | Apply deterministic fixes (tags, struct tree) + semantic overrides (title, language, headings, table flags, lists). File is fully fixed. |
+| `applied` | Apply the structural floor (PDF `/StructTreeRoot` + `/MarkInfo.Marked=true`) and write every semantic field (title, language, headings, table flags, lists) from the validated subagent output. File is fully fixed. |
 | `already_good` | **Leave file untouched.** Record `fix_skipped_reason: "semantic already_good"`. |
 | `skipped_validation` | **Leave file untouched.** Record `fix_skipped_reason: "semantic skipped_validation: <reason>"`. |
 | `skipped_error` | **Leave file untouched.** Same as above. |
@@ -258,13 +258,19 @@ Template titles rejected: `"the internet and its uses"`, `"presentation"`, `"pow
 
 **Why "leave untouched" instead of deterministic fallback?** User policy: if we can't validate a genuine semantic improvement, don't claim a partial fix. The backup remains; the downloaded file is left exactly as Ally served it.
 
-**Deterministic fixes** (floor when `applied`, not applied when untouched):
-- **PDF** — `/StructTreeRoot` + `/MarkInfo.Marked=true`, `/Lang`, `/Title`. Font-size heading detection in `add_headings.py`.
-- **PPTX** — `core_properties.title`/`language`, slide title filling, `tblPr.firstRow=1` on tables.
-- **DOCX** — `core_properties.title`/`language`, `Heading 1/2/3` styles via font-size or pattern heuristics, `w:tblHeader` on first table rows.
+**Deterministic fixes** (structural floor when `applied`, not applied when untouched):
+- **PDF** — `/StructTreeRoot` + `/MarkInfo.Marked=true`. Font-size heading detection in `add_headings.py` is only used when no semantic headings are provided.
+- **PPTX** — slide title placeholder filling (when a slide lacks a title shape) and `tblPr.firstRow=1` on tables (only when semantic tables don't override).
+- **DOCX** — `Heading 1/2/3` styles via font-size or pattern heuristics (only when no semantic headings are provided), `w:tblHeader` on first table rows (only when semantic tables don't override).
 
-**Semantic overrides** (when `applied`):
-- **Title / language**: always overwrite when semantic values are present. The title is also written to PDF `/Info/Title` + XMP `dc:title` even if the PDF already had a placeholder title (Ally rejects tooling-generated placeholders like `Microsoft Word - foo.docx`).
+**Filename-derived fallback** (last resort only, when there is no semantic entry at all):
+- Title ← `title_from_filename()` (PDF) or core_properties.title ← filename stem (Office)
+- Language ← `en-US` default
+
+When `semantic_status: applied`, the semantic generator is required to produce both `semantic_title` and `language`, so the filename fallback path does not run.
+
+**Semantic values** (the primary path when `applied` — every field below comes from the validated subagent output):
+- **Title / language**: always overwrite with `semantic.semantic_title` / `semantic.language`. For PDFs, the title is written to both `/Info/Title` and XMP `dc:title`, and it is written *unconditionally* when a semantic title is available — even if `scan_pdf` thinks the file already has a title, because Ally rejects tooling-generated placeholders like `Microsoft Word - foo.docx` that still satisfy `scan_pdf`'s non-empty check.
 - **Headings**:
   - PDF → `add_headings_to_pdf(..., heading_override=semantic.headings)`. Each heading becomes a `/H1|/H2|/H3` struct element with `/ActualText` and `/Alt` set to the heading text, anchored to its page by text match (`anchor_text` substring). Levels are normalized in `_normalize_heading_levels` so the hierarchy always starts at H1 with no gaps, satisfying Ally's "headings begin at level 1" and "follow a logical order" checks.
   - PPTX → level-1 headings with `locator.slide` fill that slide's title placeholder.
@@ -454,11 +460,11 @@ After `semantic-validate` runs, each document has one of these statuses in `sema
 
 | Status | `v2_fix.py` policy | Final file state |
 |---|---|---|
-| `applied` | Apply deterministic + semantic fixes | Fully fixed |
+| `applied` | Apply structural floor + semantic values (title, language, headings, tables, lists all subagent-derived) | Fully fixed |
 | `already_good` | Do nothing | Original file on disk (never went through Fix) |
 | `skipped_validation` | Do nothing | Original file on disk |
 | `skipped_error` | Do nothing | Original file on disk |
-| (no entry) | Apply deterministic only | Partially fixed (floor only) |
+| (no entry) | Apply structural floor + filename-derived title + `en-US` default | Partially fixed (floor + fallback metadata only) |
 
 The three "do nothing" cases preserve the backup and the downloaded file exactly. This is an explicit user policy: "we failed to fix it, so don't pretend we did."
 

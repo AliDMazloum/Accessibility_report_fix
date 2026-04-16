@@ -14,7 +14,7 @@ Blackboard Ally flags many course documents as low accessibility (under 85%). Fi
 
 This project combines:
 
-- **Deterministic fixes** (title, language, struct tree, basic heading tags) as an accessibility floor
+- **Deterministic structural floor** (PDF `/StructTreeRoot` + `/MarkInfo`, filename-title and `en-US` as *last-resort* fallbacks when no semantic entry exists)
 - **Semantic fixes** (content-derived titles, real heading hierarchy, validated table headers, semantic lists, detected language) from a 2+1 multi-agent validation loop
 - **Image alt text** from a parallel 2+1 validation loop per image
 - Full upload automation back to Ally
